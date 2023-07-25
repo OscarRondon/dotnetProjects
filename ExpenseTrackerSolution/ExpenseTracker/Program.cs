@@ -1,3 +1,6 @@
+using ExpenseTracker.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace ExpenseTracker
 {
     public class Program
@@ -8,6 +11,12 @@ namespace ExpenseTracker
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<ApplicationDbContext>(
+                options =>
+                {
+                    options.UseSqlServer();
+                }
+            );
 
             var app = builder.Build();
 
@@ -28,7 +37,8 @@ namespace ExpenseTracker
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}"
+            );
 
             app.Run();
         }
