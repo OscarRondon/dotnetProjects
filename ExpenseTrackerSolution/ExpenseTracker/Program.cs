@@ -11,6 +11,8 @@ namespace ExpenseTracker
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // DI
             builder.Services.AddDbContext<ApplicationDbContext>(
                 options =>
                 {

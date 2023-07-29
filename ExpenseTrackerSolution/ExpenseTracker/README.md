@@ -19,3 +19,7 @@
 	- Create a new project [ASP.Net Web App (MVC)]
 	- Add Nuget Pacage
 	- Add models
+
+##Configuration secret calues (dev)
+
+##Configuration secret calues (prod)
