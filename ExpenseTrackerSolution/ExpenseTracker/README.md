@@ -10,9 +10,8 @@
 
 ##Times
 
-	- Project Init				0.5
-	- Review Documentation		2
-	- Models					1
+	- General Coding			1.5
+	- Review Documentation		6
 
 ##Instructions
 
@@ -20,6 +19,11 @@
 	- Add Nuget Pacage
 	- Add models
 
-##Configuration secret calues (dev)
+##Configuration
 
-##Configuration secret calues (prod)
+	- Create a file "env.json" into forlder Configuration, using "env.template.json"
+	- Set the "env.json" properties as:
+		- Build action: None
+		- Copy to Output directory: Copy always
+	- Make sure to exclude "env.json" file form the source control
+
