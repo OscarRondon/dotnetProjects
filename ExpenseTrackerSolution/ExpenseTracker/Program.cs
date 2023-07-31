@@ -1,5 +1,7 @@
 using ExpenseTracker.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
+using ExpenseTracker.Configuration;
 
 namespace ExpenseTracker
 {
@@ -11,6 +13,7 @@ namespace ExpenseTracker
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddSingleton<EnvConfigurationService>();
 
             // DI
             builder.Services.AddDbContext<ApplicationDbContext>(
@@ -21,6 +24,9 @@ namespace ExpenseTracker
             );
 
             var app = builder.Build();
+
+            EnvConfigurationService _envConfigurationService = app.Services.GetService<EnvConfigurationService>();
+            EnvConfiguration _envConfiguration = _envConfigurationService.Config;
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
