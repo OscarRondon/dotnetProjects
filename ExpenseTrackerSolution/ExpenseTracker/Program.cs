@@ -11,22 +11,22 @@ namespace ExpenseTracker
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // Add Custon configuration File
+            builder.Configuration.AddJsonFile("env.json", optional: true, reloadOnChange: true);
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddSingleton<EnvConfigurationService>();
-
-            // DI
+            builder.Services.AddSingleton<EnvConfigurations>();
             builder.Services.AddDbContext<ApplicationDbContext>(
                 options =>
                 {
-                    options.UseSqlServer();
+                    options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"));
                 }
             );
 
             var app = builder.Build();
 
-            EnvConfigurationService _envConfigurationService = app.Services.GetService<EnvConfigurationService>();
-            EnvConfiguration _envConfiguration = _envConfigurationService.Config;
+            EnvConfigurations _envConfigurationService = app.Services.GetService<EnvConfigurations>();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

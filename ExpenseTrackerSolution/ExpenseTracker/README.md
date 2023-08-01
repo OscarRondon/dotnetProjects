@@ -1,5 +1,8 @@
 ﻿#Expense Tracker Solution
 
+	- Project Template: ASP.Net Core Web App (MVC)
+	- DataBase: MS Sql Server
+
 
 ##Nuget Packages
 
@@ -16,14 +19,15 @@
 ##Instructions
 
 	- Create a new project [ASP.Net Web App (MVC)]
+	- Create Configuration rutines
 	- Add Nuget Pacage
-	- Add models
+	- Create models
 
 ##Configuration
 
-	- Create a file "env.json" into forlder Configuration, using "env.template.json"
+	- Create a file "env.json" into root forlder, using "env.template.json"
 	- Set the "env.json" properties as:
-		- Build action: None
+		- Build action: Content
 		- Copy to Output directory: Copy always
 	- Make sure to exclude "env.json" file form the source control
 
