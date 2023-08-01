@@ -13,8 +13,8 @@
 
 ##Times
 
-	- General Coding			2.25
-	- Review Documentation		6.75
+	- General Coding			2.75
+	- Review Documentation		8
 
 ##Instructions
 
