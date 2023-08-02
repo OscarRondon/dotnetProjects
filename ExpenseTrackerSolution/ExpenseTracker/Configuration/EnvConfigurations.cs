@@ -4,11 +4,18 @@ namespace ExpenseTracker.Configuration
 {
     public class EnvConfigurations
     {
-        public string DevConnection { get; }
+        public string dbServer { get; }
+        public string dbName { get; }
+        public string dbUser { get; }
+        public string dbPwd { get; }
+
 
         public EnvConfigurations(IConfiguration configuration) 
         {
-            DevConnection = configuration.GetSection("ConnectionStrings:DevConnection").Value;
+            dbServer = configuration.GetSection("DataBase:DBServer").Value ?? "";
+            dbName = configuration.GetSection("DataBase:DBName").Value ?? "";
+            dbUser = configuration.GetSection("DataBase:DBUser").Value ?? "";
+            dbPwd = configuration.GetSection("DataBase:DBPwd").Value ?? "";
         }
 
         // Read File from a directory

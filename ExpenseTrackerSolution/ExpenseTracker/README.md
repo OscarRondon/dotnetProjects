@@ -13,8 +13,8 @@
 
 ##Times
 
-	- General Coding			2.75
-	- Review Documentation		8
+	- General Coding			1.75
+	- Review Documentation		8.5
 
 ##Instructions
 
@@ -22,6 +22,9 @@
 	- Create Configuration rutines
 	- Add Nuget Pacage
 	- Create models
+	- Create Db contex
+	- Run in Nuget Manager Console: Add-Migration "Initial Create"
+	- Run in Nuget Manager Console: Update-Database
 
 ##Configuration
 

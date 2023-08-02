@@ -2,6 +2,8 @@ using ExpenseTracker.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using ExpenseTracker.Configuration;
+using Microsoft.Extensions.Options;
+using System.Data.Common;
 
 namespace ExpenseTracker
 {
@@ -18,15 +20,14 @@ namespace ExpenseTracker
             builder.Services.AddControllersWithViews();
             builder.Services.AddSingleton<EnvConfigurations>();
             builder.Services.AddDbContext<ApplicationDbContext>(
-                options =>
+                options => 
                 {
-                    options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"));
+                    options.UseSqlServer(DbConnection(builder.Configuration));
                 }
             );
-
             var app = builder.Build();
 
-            EnvConfigurations _envConfigurationService = app.Services.GetService<EnvConfigurations>();
+            //EnvConfigurations _envConfigurationService = app.Services.GetService<EnvConfigurations>();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -49,6 +50,21 @@ namespace ExpenseTracker
             );
 
             app.Run();
+        }
+
+        private static string DbConnection(ConfigurationManager configuration)
+        {
+            string dbServer = configuration.GetSection("DataBase:DBServer").Value ?? "";
+            string dbName = configuration.GetSection("DataBase:DBName").Value ?? "";
+            string dbUser = configuration.GetSection("DataBase:DBUser").Value ?? "";
+            string dbPwd = configuration.GetSection("DataBase:DBPwd").Value ?? "";
+            string dbConnectioString = configuration.GetSection("DataBase:ConnectionStrings:MSSql").Value ?? "";
+            dbConnectioString = dbConnectioString.Replace("{DBServer}", dbServer);
+            dbConnectioString = dbConnectioString.Replace("{DBName}", dbName);
+            dbConnectioString = dbConnectioString.Replace("{DBUser}", dbUser);
+            dbConnectioString = dbConnectioString.Replace("{DBPwd}", dbPwd);
+            
+            return dbConnectioString;
         }
     }
 }
