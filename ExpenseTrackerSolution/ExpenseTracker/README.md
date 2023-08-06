@@ -9,12 +9,15 @@
 	- Microsoft.EntityFrameworkCore
 	- Microsoft.EntityFrameworkCore.SqlServer
 	- Microsoft.EntityFrameworkCore.Tools
+	- Syncfusion.EJ2.AspNet.Core [UI Library]
+	- Syncfusion.Licensing
+	- Newtonsonf.Json
 
 
 ##Times
 
-	- General Coding			1.75
-	- Review Documentation		8.5
+	- General Coding			2.75
+	- Review Documentation		10.5
 
 ##Instructions
 
