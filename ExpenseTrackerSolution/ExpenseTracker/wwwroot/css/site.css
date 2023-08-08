@@ -25,6 +25,10 @@ body {
     overflow: hidden;
 }
 
+.border-red {
+    border: solid red 1px;
+}
+
 .e-bigger {
     font-size: x-large;
 }
