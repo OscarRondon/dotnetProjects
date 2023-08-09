@@ -27,7 +27,7 @@
 	- Create models
 	- Create Db contex
 	- Run in Nuget Manager Console: Add-Migration "Initial Create"
-	- Run in Nuget Manager Console: Update-Database
+	- Run in Nuget Manager Console: Update-Database (for data base creation)
 
 ##Configuration
 
