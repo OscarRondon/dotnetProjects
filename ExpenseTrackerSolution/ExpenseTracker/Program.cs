@@ -27,6 +27,8 @@ namespace ExpenseTracker
             );
             var app = builder.Build();
 
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(app.Configuration.GetSection("SyncfusionLicense").Value);
+
             //EnvConfigurations _envConfigurationService = app.Services.GetService<EnvConfigurations>();
 
             // Configure the HTTP request pipeline.
