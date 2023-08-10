@@ -4,7 +4,7 @@
     ViewData["Title"] = "Categories";
 }
 
-<h1>Index</h1>
+<h1>Categories</h1>
 
 <p>
     <a asp-action="AddOrEdit">Create New</a>
@@ -43,8 +43,12 @@
             <a class="btn btn-sm no-a-decoration" href="Category/AddOrEdit/${CategoryId}">
                 <i class="fa-solid fa-pen fa-lg"></i>
             </a>
-            <a class="btn btn-sm no-a-decoration" href="Category/Delete/${CategoryId}">
-                <i class="fa-solid fa-trash fa-lg"></i>
-            </a>
+            <form action="Category/Delete/${CategoryId}" method="post">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-sm no-a-decoration"
+                        onclick="return confirm(&quot;This is a permanently acction. Are you sure to continue?&quot;)">
+                    <i class="fa-solid fa-trash fa-lg  text-danger"></i>
+                </button>
+            </form>
         </div>
     </script>
