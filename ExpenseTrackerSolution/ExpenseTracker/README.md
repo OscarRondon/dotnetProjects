@@ -16,8 +16,8 @@
 
 ##Times
 
-	- General Coding			4.5
-	- Review Documentation		13
+	- General Coding			5.5
+	- Review Documentation		13.5
 
 ##Instructions
 

@@ -1,11 +1,10 @@
 ﻿@model ExpenseTracker.Models.Category
 
 @{
-    ViewData["Title"] = "Categories - Add or Update";
+    ViewData["Title"] = "Categories - " + (Model.CategoryId == 0 ? "Add new Category" : "Edit Category");
+    ViewData["PageTitle"] = Model.CategoryId == 0 ? "Add new Category" : "Edit Category";
 }
 
-<h1>Add or Update</h1>
-<h4>Category</h4>
 <hr style="color:aliceblue"/>
 
 <div class="row">
