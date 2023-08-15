@@ -31,6 +31,9 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Categories</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Transaction" asp-action="Index">Transactions</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
@@ -58,7 +61,12 @@
                                         }
                                     </div>
                                 </div>
-                                Breadcrum component!
+                                @if (ViewData["Breadcrum"] != null)
+                                { 
+                                <ejs-breadcrumb id="breadcrumb"
+                                                separatorTemplate="@Html.Raw("<span class='fa-solid fa-angle-right' />")" />
+                                }
+
                             </div>
                         </div>
                     </div>

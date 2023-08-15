@@ -9,6 +9,8 @@
 	- Microsoft.EntityFrameworkCore
 	- Microsoft.EntityFrameworkCore.SqlServer
 	- Microsoft.EntityFrameworkCore.Tools
+	- Microsoft.VisualStudio.Web.CodeGeneration.Design
+	- Microsoft.VisualStudio.Web.CodeGeneration.Utils
 	- Syncfusion.EJ2.AspNet.Core [UI Library]
 	- Syncfusion.Licensing
 	- Newtonsonf.Json

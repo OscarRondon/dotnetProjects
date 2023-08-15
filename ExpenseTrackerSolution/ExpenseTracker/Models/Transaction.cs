@@ -18,11 +18,11 @@ namespace ExpenseTracker.Models
         public DateTime CreateDate { get; set; } = DateTime.Now;
 
         [Column(TypeName = "datetime")]
-        public DateTime? UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; } = DateTime.Now;
 
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
 
 
     }

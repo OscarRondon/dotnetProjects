@@ -3,13 +3,14 @@
 @{
     ViewData["Title"] = "Categories - " + (Model.CategoryId == 0 ? "Add new Category" : "Edit Category");
     ViewData["PageTitle"] = Model.CategoryId == 0 ? "Add new Category" : "Edit Category";
+    ViewData["Breadcrum"] = "Y";
 }
 
-<hr style="color:aliceblue"/>
+<hr style="color:aliceblue" />
 
 <div class="row">
     <div class="col-md-7">
-        <div class="widget p-5">
+        <div class="widget p-5"  style="background-color:#212b36">
             <form asp-action="AddOrEdit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" id="CategoryId" name="CategoryId" value="@Model.CategoryId" />
@@ -36,11 +37,11 @@
             </form>
         </div>
     </div>
-     <div class="col-md-5">
-     <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#212b36">
-         <i class="fa-solid fa-shapes fa-2xl"></i>
-     </div>
- </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-shapes fa-4x"></i>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
