@@ -21,8 +21,27 @@ namespace ExpenseTracker.Models
         public DateTime? UpdateDate { get; set; } = DateTime.Now;
 
         [ForeignKey("Category")]
+        [Range(1, int.MaxValue, ErrorMessage = "Select a valid Category")]
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
+
+        [NotMapped]
+        public string? CategoryTitleWithIcon
+        {
+            get
+            {
+                return Category == null ? "" : Category.Icon + " " + Category.Title;
+            }
+        }
+
+        [NotMapped]
+        public string? FormattedAmount
+        {
+            get
+            {
+                return ((Category == null || Category.Type == "Expense") ? "- " : "+ ") + Amount.ToString("C0");
+            }
+        }
 
 
     }
