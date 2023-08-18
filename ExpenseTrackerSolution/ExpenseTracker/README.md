@@ -2,6 +2,7 @@
 
 	- Project Template: ASP.Net Core Web App (MVC)
 	- DataBase: MS Sql Server
+	- Source: https://www.youtube.com/watch?v=zQ5eijfpuu8&list=PLjrh5YRNPzdRwEBBejxtFAHaRRA6ydyQy&index=18
 
 
 ##Nuget Packages
@@ -18,7 +19,7 @@
 
 ##Times
 
-	- General Coding			11
+	- General Coding			15
 	- Review Documentation		13.5
 
 ##Instructions
