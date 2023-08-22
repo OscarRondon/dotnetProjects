@@ -1,4 +1,4 @@
-﻿#Expense Tracker Solution
+﻿#Authentication System
 
 	- Project Template: ASP.Net Core Web App (MVC)
 	- DataBase: MS Sql Server
@@ -7,14 +7,12 @@
 
 ##Nuget Packages
 
-	- Microsoft.EntityFrameworkCore
+	- Microsoft.AspNetCore.Identity.EntityFrameworkCore
+	- Microsoft.AspNetCore.Identity.UI
 	- Microsoft.EntityFrameworkCore.SqlServer
 	- Microsoft.EntityFrameworkCore.Tools
 	- Microsoft.VisualStudio.Web.CodeGeneration.Design
 	- Microsoft.VisualStudio.Web.CodeGeneration.Utils
-	- Syncfusion.EJ2.AspNet.Core [UI Library]
-	- Syncfusion.Licensing
-	- Newtonsonf.Json
 
 
 ##Times
@@ -25,8 +23,10 @@
 ##Instructions
 
 	- Create a new project [ASP.Net Web App (MVC)]
-	- Create Configuration rutines
-	- Add Nuget Pacage
+	- Right click on project > Add > New Scaffolded Item > Identity (choose the options of the presented form)
+	- Add config files
+	- Program.cs > Add Service for Razor Pages [builder.Services.AddRazorPages();]
+	- Program.cs > Map Razor Pages [app.MapRazorPages();]
 	- Create models
 	- Create Db contex
 	- Run in Nuget Manager Console: Add-Migration "Initial Create"
