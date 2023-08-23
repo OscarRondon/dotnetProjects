@@ -1,4 +1,4 @@
-﻿#Authentication System
+﻿#Authentication System [4 h]
 
 	- Project Template: ASP.Net Core Web App (MVC)
 	- DataBase: MS Sql Server
@@ -12,13 +12,7 @@
 	- Microsoft.EntityFrameworkCore.SqlServer
 	- Microsoft.EntityFrameworkCore.Tools
 	- Microsoft.VisualStudio.Web.CodeGeneration.Design
-	- Microsoft.VisualStudio.Web.CodeGeneration.Utils
-
-
-##Times
-
-	- General Coding		0.5	
-	- Review Documentation		
+	- Microsoft.VisualStudio.Web.CodeGeneration.Utils	
 
 ##Instructions
 
@@ -27,8 +21,7 @@
 	- Add config files
 	- Program.cs > Add Service for Razor Pages [builder.Services.AddRazorPages();]
 	- Program.cs > Map Razor Pages [app.MapRazorPages();]
-	- Create models
-	- Create Db contex
+	- Modify Auth model
 	- Run in Nuget Manager Console: Add-Migration "Initial Create"
 	- Run in Nuget Manager Console: Update-Database (for data base creation)
 
