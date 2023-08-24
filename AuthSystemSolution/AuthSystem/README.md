@@ -1,8 +1,9 @@
-﻿#Authentication System [4 h]
+﻿#Authentication System [6 h]
 
 	- Project Template: ASP.Net Core Web App (MVC)
 	- DataBase: MS Sql Server
 	- Source: https://www.youtube.com/watch?v=wzaoQiS_9dI&list=PLjrh5YRNPzdQMQSFaxP8XrouoVq4QDw2H&index=16&t=47s
+	- Source code: https://github.com/CodAffection/Asp.Net-Core-MVC-Identity---Complete-User-Authentication-System
 
 
 ##Nuget Packages
