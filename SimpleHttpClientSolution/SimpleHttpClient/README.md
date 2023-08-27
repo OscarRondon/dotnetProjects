@@ -1,4 +1,4 @@
-﻿#Authentication System [2.5 h]
+﻿#Authentication System [6 h]
 
 	- Project Template: Blazor Server App
 	- Source: https://www.youtube.com/watch?v=cwgck1k0YKU&list=PLjrh5YRNPzdQMQSFaxP8XrouoVq4QDw2H&index=11
@@ -7,6 +7,7 @@
 
 ##Nuget Packages
 
+- System.Net.Http.Json
 
 
 ##Instructions

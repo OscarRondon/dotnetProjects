@@ -1,7 +1,81 @@
 ﻿@page "/Weather"
 
+@inject IConfiguration _appConfig
+@inject IHttpClientFactory _clientFactory
+
 <h3>Wheather Data</h3>
 
+@if (string.IsNullOrWhiteSpace(errorString) == false)
+{
+    <div class="h2">@errorString</div>
+}
+else if (weatherForecast is null)
+{
+    <div class="h4">Loading...</div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Date</th>
+                <th>Weather State</th>
+                <th>Low</th>
+                <th>High</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var w in weatherForecast.forecast.forecastday)
+            {
+                <tr>
+                    <td>@w.date</td>
+                    <td>@w.day.condition.text</td>
+                    <td>@w.day.mintemp_f</td>
+                    <td>@w.day.maxtemp_f</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
 @code {
+
+    WeatherForecastModel? weatherForecast;
+    string errorString = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        var request = new HttpRequestMessage
+        {
+            Method = HttpMethod.Get,
+            RequestUri = new Uri(_appConfig.GetSection("RapidApi:WeatherApi:BaseUrl").Value + "/forecast.json?q=Florida&days=3"),
+            Headers ={
+                { "X-RapidAPI-Key", _appConfig.GetSection("RapidApi:WeatherApi:X-RapidApi-Key").Value },
+                { "X-RapidAPI-Host", _appConfig.GetSection("RapidApi:WeatherApi:X-RapidAPI-Host").Value },
+            }
+        };
+
+        var client = _clientFactory.CreateClient();
+
+        HttpResponseMessage response = await client.SendAsync(request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            weatherForecast = await response.Content.ReadFromJsonAsync<WeatherForecastModel>();
+            errorString = "";
+        }
+        else
+        {
+            errorString = $"There was an error getting our forecast: {response.ReasonPhrase}";
+        }
+
+        //using (var response = await client.SendAsync(request))
+        //{
+        //    response.EnsureSuccessStatusCode();
+        //    var body = await response.Content.ReadAsStringAsync();
+        //    Console.WriteLine(body);
+        //}
+    }
 
 }
