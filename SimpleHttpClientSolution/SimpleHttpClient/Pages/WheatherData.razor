@@ -58,24 +58,33 @@ else
 
         var client = _clientFactory.CreateClient();
 
-        HttpResponseMessage response = await client.SendAsync(request);
+        //HttpResponseMessage response = await client.SendAsync(request);
 
-        if (response.IsSuccessStatusCode)
-        {
-            weatherForecast = await response.Content.ReadFromJsonAsync<WeatherForecastModel>();
-            errorString = "";
-        }
-        else
-        {
-            errorString = $"There was an error getting our forecast: {response.ReasonPhrase}";
-        }
-
-        //using (var response = await client.SendAsync(request))
+        //if (response.IsSuccessStatusCode)
         //{
-        //    response.EnsureSuccessStatusCode();
-        //    var body = await response.Content.ReadAsStringAsync();
-        //    Console.WriteLine(body);
+        //    weatherForecast = await response.Content.ReadFromJsonAsync<WeatherForecastModel>();
+        //    errorString = "";
         //}
+        //else
+        //{
+        //    errorString = $"There was an error getting our forecast: {response.ReasonPhrase}";
+        //}
+
+        using (HttpResponseMessage response = await client.SendAsync(request))
+        {
+            //response.EnsureSuccessStatusCode();
+            //var body = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                weatherForecast = await response.Content.ReadFromJsonAsync<WeatherForecastModel>();
+                errorString = "";
+            }
+            else
+            {
+                errorString = $"There was an error getting our forecast: {response.ReasonPhrase}";
+            }
+        }
     }
 
 }
