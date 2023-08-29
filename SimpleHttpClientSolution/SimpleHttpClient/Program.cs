@@ -14,6 +14,12 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddHttpClient();
+builder.Services.AddHttpClient("RapidApi", opt =>
+{
+    opt.BaseAddress = new Uri(builder.Configuration.GetSection("RapidApi:WeatherApi:BaseUrl").Value);
+    opt.DefaultRequestHeaders.Add("X-RapidAPI-Key", builder.Configuration.GetSection("RapidApi:WeatherApi:X-RapidApi-Key").Value);
+    opt.DefaultRequestHeaders.Add("X-RapidAPI-Host", builder.Configuration.GetSection("RapidApi:WeatherApi:X-RapidAPI-Host").Value);
+});
 
 var app = builder.Build();
 

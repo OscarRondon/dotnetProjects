@@ -46,17 +46,19 @@ else
     protected override async Task OnInitializedAsync()
     {
 
-        var request = new HttpRequestMessage
-        {
-            Method = HttpMethod.Get,
-            RequestUri = new Uri(_appConfig.GetSection("RapidApi:WeatherApi:BaseUrl").Value + "/forecast.json?q=Florida&days=3"),
-            Headers ={
-                { "X-RapidAPI-Key", _appConfig.GetSection("RapidApi:WeatherApi:X-RapidApi-Key").Value },
-                { "X-RapidAPI-Host", _appConfig.GetSection("RapidApi:WeatherApi:X-RapidAPI-Host").Value },
-            }
-        };
+        //var request = new HttpRequestMessage
+        //{
+        //    Method = HttpMethod.Get,
+        //    RequestUri = new Uri(_appConfig.GetSection("RapidApi:WeatherApi:BaseUrl").Value + "/forecast.json?q=Florida&days=10"),
+        //    Headers ={
+        //        { "X-RapidAPI-Key", _appConfig.GetSection("RapidApi:WeatherApi:X-RapidApi-Key").Value },
+        //        { "X-RapidAPI-Host", _appConfig.GetSection("RapidApi:WeatherApi:X-RapidAPI-Host").Value },
+        //    }
+        //};
 
-        var client = _clientFactory.CreateClient();
+        //var client = _clientFactory.CreateClient();
+
+        //Option #1 to request data
 
         //HttpResponseMessage response = await client.SendAsync(request);
 
@@ -70,20 +72,35 @@ else
         //    errorString = $"There was an error getting our forecast: {response.ReasonPhrase}";
         //}
 
-        using (HttpResponseMessage response = await client.SendAsync(request))
-        {
-            //response.EnsureSuccessStatusCode();
-            //var body = await response.Content.ReadAsStringAsync();
+        //Option #2 to request data
+        //using (HttpResponseMessage response = await client.SendAsync(request))
+        //{
+        //    //response.EnsureSuccessStatusCode();
+        //    //var body = await response.Content.ReadAsStringAsync();
 
-            if (response.IsSuccessStatusCode)
-            {
-                weatherForecast = await response.Content.ReadFromJsonAsync<WeatherForecastModel>();
-                errorString = "";
-            }
-            else
-            {
-                errorString = $"There was an error getting our forecast: {response.ReasonPhrase}";
-            }
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        weatherForecast = await response.Content.ReadFromJsonAsync<WeatherForecastModel>();
+        //        errorString = "";
+        //    }
+        //    else
+        //    {
+        //        errorString = $"There was an error getting our forecast: {response.ReasonPhrase}";
+        //    }
+        //}
+
+        //Option #3 to request data
+        var client = _clientFactory.CreateClient("RapidApi");
+
+        try
+        {
+            //We have to add a named Http client in the Program.cs, in this case is builder.Services.AddHttpClient("RapidApi",...
+            weatherForecast = await client.GetFromJsonAsync<WeatherForecastModel>("/forecast.json?q=Florida&days=10");
+            errorString = "";
+        }
+        catch (Exception ex)
+        {
+            errorString = $"There was an error getting our forecast: {ex.Message}";
         }
     }
 
