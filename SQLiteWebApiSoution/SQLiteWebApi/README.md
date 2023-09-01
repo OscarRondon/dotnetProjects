@@ -24,6 +24,7 @@
 	- Run in Nuget Manager Console: dotnet ef migrations add Initial -o Data/Migrations (you have to ensure that you are inside the application directory)
 	- Run in Nuget Manager Console: dotnet ef database update
 	- In project Properties > build > Documentation File > chek Generate a file conteining API Documentation
+	- In Program.cs modify builder.Services.AddControllers() to builder.Services.AddControllers().AddNewtonsoftJson(); < for patch operations
 
 
 ##Configuration
