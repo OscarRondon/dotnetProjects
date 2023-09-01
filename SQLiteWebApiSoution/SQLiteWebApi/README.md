@@ -1,4 +1,4 @@
-﻿#Authentication System [5 h]
+﻿#Authentication System [16 h]
 
 	- Project Template: ASP.Net Core Web API
 	- Source: https://www.youtube.com/watch?v=JG2TeGBs8MUs
@@ -12,9 +12,10 @@
 	- Microsoft.EntityFrameworkCore.Tools
 	- Microsoft.EntityFrameworkCore.SQLite
 	- Microsoft.EntityFrameworkCore.SQLite.Core
+	- Microsoft.AspNetCore.JsonPatch
+	- Microsoft.AspNetCore.Mvc.NewtonsoftJson
+	- Swashbuckle.AspNetCore.Newtonsoft
 	- CsvHelper (package for .csv file reading)
-
-	- Microsoft.EntityFrameworkCore.SQLite.Design
 
 ##Instructions
 
@@ -22,6 +23,7 @@
 	- Run in Nuget Manager Console: dotnet tool update --global dotnet-ef
 	- Run in Nuget Manager Console: dotnet ef migrations add Initial -o Data/Migrations (you have to ensure that you are inside the application directory)
 	- Run in Nuget Manager Console: dotnet ef database update
+	- In project Properties > build > Documentation File > chek Generate a file conteining API Documentation
 
 
 ##Configuration
