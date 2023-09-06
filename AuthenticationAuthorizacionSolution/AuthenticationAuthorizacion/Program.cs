@@ -26,7 +26,10 @@ builder.Services.AddDbContext<AuthDbContext>(opt =>
 {
     opt.UseSqlServer(connectionString);
 });
-builder.Services.AddIdentity<IdentityUser,  IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AuthDbContext>();
+builder.Services.AddIdentity<IdentityUser,  IdentityRole>()
+    .AddEntityFrameworkStores<AuthDbContext>();
 
 var app = builder.Build();
 
@@ -48,5 +51,19 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+using(var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var roles = new[] { "Admin", "User", "Financial", "Logistics" };
+    foreach (var role in roles)
+    {
+        if(!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+
+}
 
 app.Run();
