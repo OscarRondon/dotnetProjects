@@ -1,4 +1,4 @@
-﻿#Authentication System [0.5 h]
+﻿#Authentication System [2 h]
 
 	- Project Template: ASP.Net Core Web App
 	- DataBase: 
