@@ -9,6 +9,7 @@
 
 	- Microsoft.AspNetCore.Identity.EntityFrameworkCore
 	- Microsoft.AspNetCore.Identity.UI
+	- Microsoft.EntityFrameworkCore
 	- Microsoft.EntityFrameworkCore.SqlServer
 	- Microsoft.EntityFrameworkCore.Tools
 	- Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -16,7 +17,9 @@
 
 ##Instructions
 
-	- Create a new project [ASP.Net Web App (MVC)]
+	- On Program.cs > builder.Services.AddDbContext
+	- On Program.cs > builder.Services.AddIdentity<IdentityUser,  IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
+	- On Program.cs > app.UseAuthentication();
 	- Right click on project > Add > New Scaffolded Item > Identity (choose the options of the presented form)
 	- Add config files
 	- Program.cs > Add Service for Razor Pages [builder.Services.AddRazorPages();]
