@@ -27,8 +27,11 @@ builder.Services.AddDbContext<AuthDbContext>(opt =>
     opt.UseSqlServer(connectionString);
 });
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AuthDbContext>();
-builder.Services.AddIdentity<IdentityUser,  IdentityRole>()
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+//    .AddRoles<IdentityRole>()
+//    .AddEntityFrameworkStores<AuthDbContext>();
+
+builder.Services.AddIdentity<IdentityUser,  IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<AuthDbContext>();
 
 var app = builder.Build();
