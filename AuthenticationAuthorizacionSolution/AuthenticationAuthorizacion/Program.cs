@@ -31,7 +31,9 @@ builder.Services.AddDbContext<AuthDbContext>(opt =>
 //    .AddRoles<IdentityRole>()
 //    .AddEntityFrameworkStores<AuthDbContext>();
 
-builder.Services.AddIdentity<IdentityUser,  IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.AddIdentity<IdentityUser,  IdentityRole>(options => {
+    options.SignIn.RequireConfirmedAccount = false;
+    })
     .AddEntityFrameworkStores<AuthDbContext>();
 
 var app = builder.Build();
