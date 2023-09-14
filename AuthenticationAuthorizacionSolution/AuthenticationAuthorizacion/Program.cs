@@ -36,6 +36,11 @@ builder.Services.AddIdentity<IdentityUser,  IdentityRole>(options => {
     })
     .AddEntityFrameworkStores<AuthDbContext>();
 
+builder.Services.ConfigureApplicationCookie(conf =>
+{
+    conf.LoginPath = "/Identity/Account/Login";
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
