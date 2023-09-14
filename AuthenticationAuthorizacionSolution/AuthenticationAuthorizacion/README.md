@@ -1,9 +1,10 @@
-﻿#Authentication System [6 h]
+﻿#Authentication System [8 h]
 
 	- Project Template: ASP.Net Core Web App
 	- DataBase: 
 	- Source: https://www.youtube.com/watch?v=B0_gM-wBlmE&list=PLjrh5YRNPzdQMQSFaxP8XrouoVq4QDw2H&index=14&t=8s
-	- Source2 [Roles]: https://www.google.com/search?q=asp.net+identity+manage+roles&sca_esv=563180349&sxsrf=AB5stBib8md7Fn6Y24GF6md3-pgGI10VvQ%3A1694033426659&ei=Eub4ZKLqJ-y75OUPmfKoiA8&ved=0ahUKEwiiu4il7paBAxXsHbkGHRk5CvEQ4dUDCA8&uact=5&oq=asp.net+identity+manage+roles&gs_lp=Egxnd3Mtd2l6LXNlcnAiHWFzcC5uZXQgaWRlbnRpdHkgbWFuYWdlIHJvbGVzMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMggQABiKBRiGAzIIEAAYigUYhgMyCBAAGIoFGIYDSJsiUNMKWPkbcAF4AZABAJgBzwKgAdIZqgEGMi0xMC4yuAEDyAEA-AEBwgIKEAAYRxjWBBiwA8ICCBAAGIoFGJECwgIKEAAYgAQYFBiHAsICBRAAGIAEwgIGEAAYHhgNwgIIEAAYCBgeGA3iAwQYACBBiAYBkAYI&sclient=gws-wiz-serp#fpstate=ive&vld=cid:ecbd6b0d,vid:Y6DCP-yH-9Q
+	- Source2 [Roles]: https://www.youtube.com/watch?v=Y6DCP-yH-9Q
+	- In the project folder you can find instructions to override roleManager (that can give you an idea to override other things)
 
 
 ##Nuget Packages

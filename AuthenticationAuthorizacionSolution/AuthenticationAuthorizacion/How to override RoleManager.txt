@@ -1,0 +1,156 @@
+﻿ 1. Create a class that extends RoleProvider.
+
+    namespace MyApp
+    {
+
+
+     public class MyRoleProvider : RoleProvider
+        {
+            public override string ApplicationName
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+
+                set
+                {
+                    throw new NotImplementedException();
+                }
+            }
+
+            public override void AddUsersToRoles(string[] usernames, string[] roleNames)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override void CreateRole(string roleName)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override bool DeleteRole(string roleName, bool throwOnPopulatedRole)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override string[] FindUsersInRole(string roleName, string usernameToMatch)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override string[] GetAllRoles()
+            {
+                throw new NotImplementedException();
+            }
+
+            public override string[] GetRolesForUser(string username)
+            {
+                using (ApplicationDbContext db = new ApplicationDbContext())
+                {
+                        // get user roles here using user name.
+
+                }
+            }
+
+
+
+            public override string[] GetUsersInRole(string roleName)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override bool IsUserInRole(string username, string roleName)
+            {
+
+                return GetRolesForUser(username).Contains(roleName);
+
+            }
+
+            public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override bool RoleExists(string roleName)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+}
+
+    2. Create a custom filter that extends AuthorizeAttribute and overwrite its methods.
+
+      public class MyAuthFilter : AuthorizeAttribute
+    {
+
+
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            base.OnAuthorization(filterContext);
+       }
+
+
+        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+        {
+            var routeValues = new RouteValueDictionary(new
+            {
+                controller = "Account",
+                action = "Login",
+
+
+            });
+
+             filterContext.Result = new RedirectToRouteResult(routeValues);
+
+            base.HandleUnauthorizedRequest(filterContext);
+        }
+
+        protected override bool AuthorizeCore(HttpContextBase httpContext)
+        {
+            string[] roles = Roles.Split(',');
+
+            string userName = HttpContext.Current.User.Identity.Name;
+
+            MyRoleProvider myProvider = new MyRoleProvider();
+
+
+            foreach (string role in roles)
+            {
+                bool success = myProvider.IsUserInRole(userName, role);
+
+                if (success == true)
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
+    3. Configure your custom role provider in your web.config.
+      <system.web>
+        <roleManager defaultProvider="MyRoleProvider" enabled="true" cacheRolesInCookie="true">
+          <providers>
+            <clear />
+            <add name="MyRoleProvider" type="MyApp.MyRoleProvider" />
+          </providers>
+        </roleManager>
+      </system.web>
+
+      Note: The type here uses the fully qualified namespace and your class name = MyApp.MyRoleProvider. Yours can be different
+
+    4. Use your custom filter instead of the default Authorize attribute for your controllers and actions. E.g 
+
+    [MyAuthFilter]
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            ViewBag.Title = "Home Page";
+
+            return View();
+        }
+    }

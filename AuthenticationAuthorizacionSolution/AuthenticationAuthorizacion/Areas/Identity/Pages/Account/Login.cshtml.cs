@@ -20,11 +20,13 @@ namespace AuthenticationAuthorizacion.Areas.Identity.Pages.Account
     public class LoginModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
             _logger = logger;
         }
 
@@ -105,7 +107,18 @@ namespace AuthenticationAuthorizacion.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
 
+            var userOscar = new IdentityUser
+            {
+                UserName = "Oscar",
+                Email = "correo@correo"
+            };
+
+            await _signInManager.SignInAsync(user: userOscar, isPersistent: false);
+
+            return LocalRedirect(returnUrl);
+
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
 
             if (ModelState.IsValid)
             {

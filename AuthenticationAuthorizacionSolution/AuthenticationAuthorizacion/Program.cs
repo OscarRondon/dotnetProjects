@@ -62,7 +62,8 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-using(var scope = app.Services.CreateScope())
+#region Seeding
+using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     var roles = new[] { "Admin", "User", "Financial", "Logistics" };
@@ -73,7 +74,29 @@ using(var scope = app.Services.CreateScope())
             await roleManager.CreateAsync(new IdentityRole(role));
         }
     }
-
 }
+
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+    string adminEmail = "admin@admin.com";
+    string adminPass = "Admin.123";
+    
+
+    if(await userManager.FindByEmailAsync(adminEmail) == null)
+    {
+        var userAdmin = new IdentityUser
+        {
+            UserName = "Admin",
+            Email = adminEmail
+        };
+
+        await userManager.CreateAsync(userAdmin, adminPass);
+
+        await userManager.AddToRoleAsync(userAdmin, "Admin");
+    }
+}
+#endregion
 
 app.Run();

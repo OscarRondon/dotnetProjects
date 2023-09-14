@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AuthenticationAuthorizacion.Pages
 {
-    [Authorize]
+    [Authorize(Roles ="Pepe")]
     public class PrivacyModel : PageModel
     {
         private readonly ILogger<PrivacyModel> _logger;
