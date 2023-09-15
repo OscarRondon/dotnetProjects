@@ -7,24 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add Custon configuration File
 builder.Configuration.AddJsonFile("env.json", optional: true, reloadOnChange: true);
 
-// Get values from .env file
-string dbServer = builder.Configuration.GetSection("DataBase:DBServer").Value ?? "";
-string dbName = builder.Configuration.GetSection("DataBase:DBName").Value ?? "";
-string dbUser = builder.Configuration.GetSection("DataBase:DBUser").Value ?? "";
-string dbPwd = builder.Configuration.GetSection("DataBase:DBPwd").Value ?? "";
-string dbConnectioString = builder.Configuration.GetSection("DataBase:ConnectionStrings:MSSql").Value ?? "";
-dbConnectioString = dbConnectioString.Replace("{DBServer}", dbServer);
-dbConnectioString = dbConnectioString.Replace("{DBName}", dbName);
-dbConnectioString = dbConnectioString.Replace("{DBUser}", dbUser);
-dbConnectioString = dbConnectioString.Replace("{DBPwd}", dbPwd);
-
-var connectionString = dbConnectioString ?? throw new InvalidOperationException("Connection string not found.");
-
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<AuthDbContext>(opt =>
 {
-    opt.UseSqlServer(connectionString);
+    opt.UseSqlServer(GetDbStringConnection(builder.Configuration));
 });
 
 //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -100,3 +87,22 @@ using (var scope = app.Services.CreateScope())
 #endregion
 
 app.Run();
+
+
+static string GetDbStringConnection(ConfigurationManager Configuration)
+{
+    // Get values from .env file
+    string dbServer = Configuration.GetSection("DataBase:DBServer").Value ?? "";
+    string dbName = Configuration.GetSection("DataBase:DBName").Value ?? "";
+    string dbUser = Configuration.GetSection("DataBase:DBUser").Value ?? "";
+    string dbPwd = Configuration.GetSection("DataBase:DBPwd").Value ?? "";
+    string dbConnectioString = Configuration.GetSection("DataBase:ConnectionStrings:MSSql").Value ?? "";
+    dbConnectioString = dbConnectioString.Replace("{DBServer}", dbServer);
+    dbConnectioString = dbConnectioString.Replace("{DBName}", dbName);
+    dbConnectioString = dbConnectioString.Replace("{DBUser}", dbUser);
+    dbConnectioString = dbConnectioString.Replace("{DBPwd}", dbPwd);
+
+    var connectionString = dbConnectioString ?? throw new InvalidOperationException("Connection string not found.");
+
+    return connectionString;
+}
