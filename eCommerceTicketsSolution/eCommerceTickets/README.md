@@ -1,4 +1,4 @@
-﻿#eTickets [2]
+﻿# eCommerceTickets [2.5]
 
 This is the demo of an eCommerce ASP.NET MVC 5 application that you are going to build step by step starting with an empty project in Visual Studio.
 This application is an eCommerce application used to buy movies online from different cinemas. 
@@ -10,7 +10,7 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 	- Source: https://www.youtube.com/playlist?list=PL2Q8rFbm-4ruTcZY39MNOsEu4p76HQ5VX
 	- Source code: https://github.com/etrupja/complete-ecommerce-aspnet-mvc-application
 
-##Nuget Packages
+## Nuget Packages
 
 	- Microsoft.AspNetCore.Identity.EntityFrameworkCore
 	- Microsoft.AspNetCore.Identity.UI
@@ -20,7 +20,7 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 	- Microsoft.VisualStudio.Web.CodeGeneration.Design
 	- Microsoft.VisualStudio.Web.CodeGeneration.Utils	
 
-##Instructions
+## Instructions
 
 	- On Program.cs > builder.Services.AddDbContext
 	- On Program.cs > builder.Services.AddIdentity<IdentityUser,  IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
@@ -33,7 +33,7 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 	- Run in Nuget Manager Console: Add-Migration "Initial Create"
 	- Run in Nuget Manager Console: Update-Database (for data base creation)
 
-##Configuration
+## Configuration
 
 	- Create a file "env.json" into root forlder, using "env.template.json"
 	- Set the "env.json" properties as:
