@@ -1,0 +1,40 @@
+﻿namespace eCommerceTickets.Data
+{
+    public enum MovieCategory
+    {
+        Action = 1,
+        Adventure,
+        Animation,
+        Biography,
+        Comedy,
+        Crime,
+        CultMovie,
+        Disney,
+        Documentary,
+        Drama,
+        Family,
+        Fantasy,
+        FilmNoir,
+        Gangster,
+        History,
+        Horror,
+        Military,
+        Music,
+        Musical,
+        Mystery,
+        Nature,
+        NeoNoir,
+        Period,
+        Pixar,
+        RoadMovie,
+        Romance,
+        SciFi,
+        Short,
+        Spy,
+        SuperHero,
+        Thriller,
+        VisuallyStunning,
+        War,
+        Western
+    }
+}

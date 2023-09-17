@@ -12,11 +12,11 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 
 ## Nuget Packages
 
-	- Microsoft.AspNetCore.Identity.EntityFrameworkCore
-	- Microsoft.AspNetCore.Identity.UI
 	- Microsoft.EntityFrameworkCore
 	- Microsoft.EntityFrameworkCore.SqlServer
 	- Microsoft.EntityFrameworkCore.Tools
+	- Microsoft.AspNetCore.Identity.EntityFrameworkCore
+	- Microsoft.AspNetCore.Identity.UI
 	- Microsoft.VisualStudio.Web.CodeGeneration.Design
 	- Microsoft.VisualStudio.Web.CodeGeneration.Utils	
 
