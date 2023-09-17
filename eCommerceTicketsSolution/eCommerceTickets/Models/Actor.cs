@@ -9,5 +9,8 @@ namespace eCommerceTickets.Models
         public string ProfilePicture { get; set; }
         public string FullName { get; set; }
         public string Bio { get; set; }
+
+        //Relationships
+        public IEnumerable<Actor_Movie> ActorsMovies { get; set; }
     }
 }

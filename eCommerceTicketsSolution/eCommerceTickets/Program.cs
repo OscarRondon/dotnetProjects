@@ -1,9 +1,16 @@
+using eCommerceTickets.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add Custon configuration File
 builder.Configuration.AddJsonFile("env.json", optional: true, reloadOnChange: true);
 
 // Add services to the container.
+builder.Services.AddDbContext<AppDbContext>(opt =>
+{
+    opt.UseSqlServer(GetDbStringConnection(builder.Configuration));
+});
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

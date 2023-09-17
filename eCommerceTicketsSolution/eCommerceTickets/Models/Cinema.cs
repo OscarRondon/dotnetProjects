@@ -9,5 +9,8 @@ namespace eCommerceTickets.Models
         public string Lgo { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+
+        //Relationships
+        public IEnumerable<Movie> Movies { get; set; }
     }
 }

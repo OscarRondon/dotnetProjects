@@ -1,4 +1,4 @@
-﻿namespace eCommerceTickets.Data
+﻿namespace eCommerceTickets.Models.Enums
 {
     public enum MovieCategory
     {

@@ -10,5 +10,8 @@ namespace eCommerceTickets.Models
         public string FullName { get; set; }
         public string Bio { get; set; }
 
+        //Relationships
+        public IEnumerable<Movie> Movies { get; set; }
+
     }
 }
