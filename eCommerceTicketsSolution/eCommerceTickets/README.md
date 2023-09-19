@@ -26,10 +26,12 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 	- On Program.cs > builder.Services.AddIdentity<IdentityUser,  IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
 	- On Program.cs > app.UseAuthentication();
 	- Right click on project > Add > New Scaffolded Item > Identity (choose the options of the presented form)
+	
 	- Add config files
 	- Program.cs > Add Service for Razor Pages [builder.Services.AddRazorPages();]
 	- Program.cs > Map Razor Pages [app.MapRazorPages();]
 	- Modify Auth model
+
 	- Run in Nuget Manager Console: Add-Migration "Initial Create"
 	- Run in Nuget Manager Console: Update-Database (for data base creation)
 
