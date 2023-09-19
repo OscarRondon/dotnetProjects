@@ -14,7 +14,7 @@ namespace eCommerceTickets.Models
         public string Image { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public MovieCategory[] MovieCategories { get; set; }
+        public MovieCategory MovieCategory { get; set; }
 
         //Relationships
         public IEnumerable<Actor_Movie> ActorsMovies { get; set; }
