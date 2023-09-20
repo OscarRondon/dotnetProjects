@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Actors\" />
     <Folder Include="Views\Cinemas\" />
     <Folder Include="Views\Movies\" />
     <Folder Include="Views\Producers\" />

@@ -1,4 +1,5 @@
 ﻿using eCommerceTickets.Data;
+using eCommerceTickets.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +17,7 @@ namespace eCommerceTickets.Controllers
         public async Task<IActionResult> Index()
         {
             var actors = await _context.Actors.ToListAsync();
-            return View();
+            return View(actors);
         }
     }
 }
