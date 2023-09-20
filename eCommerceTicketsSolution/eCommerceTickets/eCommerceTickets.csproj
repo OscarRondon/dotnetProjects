@@ -15,10 +15,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Cinemas\" />
-    <Folder Include="Views\Movies\" />
-    <Folder Include="Views\Producers\" />
-  </ItemGroup>
-
 </Project>
