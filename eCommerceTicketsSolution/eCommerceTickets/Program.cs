@@ -1,4 +1,5 @@
 using eCommerceTickets.Data;
+using eCommerceTickets.Data.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +13,7 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseSqlServer(GetDbStringConnection(builder.Configuration));
 });
 builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
+builder.Services.AddScoped<IActorsService, ActorsService>();
 
 var app = builder.Build();
 
@@ -30,8 +31,6 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
-app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",
