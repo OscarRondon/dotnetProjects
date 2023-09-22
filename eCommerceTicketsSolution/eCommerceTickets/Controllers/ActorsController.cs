@@ -14,10 +14,17 @@ namespace eCommerceTickets.Controllers
             _service = service;
         }
 
+        //Get: Actors/Index
         public async Task<IActionResult> Index()
         {
             var actors = await _service.GetAll();
             return View(actors);
+        }
+
+        //Get: Actors/Create
+        public async Task<IActionResult> Create()
+        {
+            return View();
         }
     }
 }

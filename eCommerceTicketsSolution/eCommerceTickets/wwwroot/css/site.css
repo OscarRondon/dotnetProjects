@@ -22,3 +22,10 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.fixed-box-bottom-right{
+    position: fixed;
+    right:25px;
+    bottom: 25px;
+}
