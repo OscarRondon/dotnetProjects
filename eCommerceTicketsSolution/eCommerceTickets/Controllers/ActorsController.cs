@@ -1,5 +1,6 @@
 ﻿using eCommerceTickets.Data;
 using eCommerceTickets.Data.Services;
+using eCommerceTickets.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +26,18 @@ namespace eCommerceTickets.Controllers
         public async Task<IActionResult> Create()
         {
             return View();
+        }
+
+        //Post: Actors/Create
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("FullName, ProfilePicture, Bio")]Actor actor)
+        {
+            if(!ModelState.IsValid) 
+            {
+                return View(actor);
+            }
+            _service.Add(actor);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
