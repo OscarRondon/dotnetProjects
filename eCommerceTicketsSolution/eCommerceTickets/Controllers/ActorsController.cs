@@ -28,6 +28,16 @@ namespace eCommerceTickets.Controllers
             return View();
         }
 
+        //Get: Actors/Details/Id
+        public async Task<IActionResult> Details(int id)
+        {
+            var actor = await _service.GetById(id);
+            if (actor == null)
+                return View("Empty");
+
+            return View(actor);
+        }
+
         //Post: Actors/Create
         [HttpPost]
         public async Task<IActionResult> Create([Bind("FullName, ProfilePicture, Bio")]Actor actor)

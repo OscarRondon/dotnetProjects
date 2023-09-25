@@ -17,9 +17,9 @@ namespace eCommerceTickets.Data.Services
             return await _context.Actors.ToListAsync();
         }
 
-        public Actor GetById(int id) 
+        public async Task<Actor> GetById(int id) 
         {
-            return null;
+            return await _context.Actors.Where(a => a.Id == id).FirstOrDefaultAsync();
         }
 
         public void Add(Actor actor)

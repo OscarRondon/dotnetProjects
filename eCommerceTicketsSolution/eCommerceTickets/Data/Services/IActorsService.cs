@@ -6,7 +6,7 @@ namespace eCommerceTickets.Data.Services
     {
         public Task<IEnumerable<Actor>> GetAll();
 
-        public Actor GetById( int id);
+        public Task<Actor> GetById( int id);
 
         public void Add(Actor actor);
 
