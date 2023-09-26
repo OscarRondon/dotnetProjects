@@ -1,4 +1,4 @@
-﻿# eCommerceTickets [12.5]
+﻿# eCommerceTickets [14]
 
 This is the demo of an eCommerce ASP.NET MVC 5 application that you are going to build step by step starting with an empty project in Visual Studio.
 This application is an eCommerce application used to buy movies online from different cinemas. 
@@ -7,7 +7,7 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 
 	- Project Template: ASP.Net Core Web App (Model - View - Controller)
 	- DataBase: MS SQL Server Express
-	- Source: https://www.youtube.com/playlist?list=PL2Q8rFbm-4ruTcZY39MNOsEu4p76HQ5VX
+	- Source: https://www.udemy.com/course/complete-ecommerce-aspnet-mvc-application/learn/quiz/5323698/results?expanded=1077162896#overview
 	- Source code: https://github.com/etrupja/complete-ecommerce-aspnet-mvc-application
 
 ## Nuget Packages
@@ -15,6 +15,7 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 	- Microsoft.EntityFrameworkCore
 	- Microsoft.EntityFrameworkCore.SqlServer
 	- Microsoft.EntityFrameworkCore.Tools
+
 	- Microsoft.AspNetCore.Identity.EntityFrameworkCore
 	- Microsoft.AspNetCore.Identity.UI
 	- Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -28,10 +29,7 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 	- Right click on project > Add > New Scaffolded Item > Identity (choose the options of the presented form)
 	
 	- Add config files
-	- Program.cs > Add Service for Razor Pages [builder.Services.AddRazorPages();]
-	- Program.cs > Map Razor Pages [app.MapRazorPages();]
 	- Modify Auth model
-
 	- Run in Nuget Manager Console: Add-Migration "Initial Create"
 	- Run in Nuget Manager Console: Update-Database (for data base creation)
 

@@ -10,7 +10,7 @@ namespace eCommerceTickets.Data.Services
 
         public void Add(Actor actor);
 
-        public Actor Update(int id, Actor newActorData);
+        public Task<Actor> Update(int id, Actor newActorData);
 
         public void Delete(int id);
     }

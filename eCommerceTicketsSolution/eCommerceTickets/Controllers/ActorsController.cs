@@ -38,6 +38,16 @@ namespace eCommerceTickets.Controllers
             return View(actor);
         }
 
+        //Get: Actors/Edit/Id
+        public async Task<IActionResult> Edit(int id)
+        {
+            var actor = await _service.GetById(id);
+            if (actor == null)
+                return View("NotFound");
+
+            return View(actor);
+        }
+
         //Post: Actors/Create
         [HttpPost]
         public async Task<IActionResult> Create([Bind("FullName, ProfilePicture, Bio")]Actor actor)
@@ -47,6 +57,19 @@ namespace eCommerceTickets.Controllers
                 return View(actor);
             }
             _service.Add(actor);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Post: Actors/Edit/Id
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id, FullName, ProfilePicture, Bio")] Actor actor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(actor);
+            }
+            _service.Update(id, actor);
             return RedirectToAction(nameof(Index));
         }
     }

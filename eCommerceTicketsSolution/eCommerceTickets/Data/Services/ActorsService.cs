@@ -28,9 +28,11 @@ namespace eCommerceTickets.Data.Services
             _context.SaveChanges();
         }
 
-        public Actor Update(int id, Actor newActorData)
+        public async Task<Actor> Update(int id, Actor newActorData)
         {
-            return null;
+            _context.Update(newActorData);
+            await _context.SaveChangesAsync();
+            return newActorData;
         }
 
         public void Delete(int id) 
