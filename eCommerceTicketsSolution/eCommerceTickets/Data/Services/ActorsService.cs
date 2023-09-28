@@ -22,21 +22,24 @@ namespace eCommerceTickets.Data.Services
             return await _context.Actors.Where(a => a.Id == id).FirstOrDefaultAsync();
         }
 
-        public void Add(Actor actor)
+        public async Task Add(Actor actor)
         {
             _context.Actors.Add(actor);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         public async Task<Actor> Update(int id, Actor newActorData)
         {
-            _context.Update(newActorData);
+            _context.Actors.Update(newActorData);
             await _context.SaveChangesAsync();
             return newActorData;
         }
 
-        public void Delete(int id) 
-        { 
+        public async Task Delete(int id) 
+        {
+            var result = await _context.Actors.FirstOrDefaultAsync(a => a.Id == id);
+            _context.Actors.Remove(result);
+            await _context.SaveChangesAsync();
         }
     }
 }

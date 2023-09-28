@@ -48,6 +48,16 @@ namespace eCommerceTickets.Controllers
             return View(actor);
         }
 
+        //Get: Actors/Delete/Id
+        public async Task<IActionResult> Delete(int id)
+        {
+            var actor = await _service.GetById(id);
+            if (actor == null)
+                return View("NotFound");
+
+            return View(actor);
+        }
+
         //Post: Actors/Create
         [HttpPost]
         public async Task<IActionResult> Create([Bind("FullName, ProfilePicture, Bio")]Actor actor)
@@ -70,6 +80,19 @@ namespace eCommerceTickets.Controllers
                 return View(actor);
             }
             _service.Update(id, actor);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Post: Actors/Delete/Id
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var actor = await _service.GetById(id);
+            if (actor == null)
+                return View("NotFound");
+            await _service.Delete(id);
+
             return RedirectToAction(nameof(Index));
         }
     }

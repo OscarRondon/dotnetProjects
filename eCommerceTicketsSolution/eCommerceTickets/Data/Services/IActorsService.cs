@@ -8,10 +8,10 @@ namespace eCommerceTickets.Data.Services
 
         public Task<Actor> GetById( int id);
 
-        public void Add(Actor actor);
+        public Task Add(Actor actor);
 
         public Task<Actor> Update(int id, Actor newActorData);
 
-        public void Delete(int id);
+        public Task Delete(int id);
     }
 }
