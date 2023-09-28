@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using eCommerceTickets.Data.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace eCommerceTickets.Models
 {
-    public class Actor
+    public class Actor: IEntityBase
     {
         [Key]
         public int Id { get; set; }

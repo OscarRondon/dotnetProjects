@@ -66,7 +66,7 @@ namespace eCommerceTickets.Controllers
             {
                 return View(actor);
             }
-            _service.Add(actor);
+            await _service.Add(actor);
             return RedirectToAction(nameof(Index));
         }
 
@@ -79,7 +79,7 @@ namespace eCommerceTickets.Controllers
             {
                 return View(actor);
             }
-            _service.Update(id, actor);
+            await _service.Update(id, actor);
             return RedirectToAction(nameof(Index));
         }
 

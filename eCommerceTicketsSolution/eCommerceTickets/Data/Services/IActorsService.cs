@@ -1,17 +1,9 @@
-﻿using eCommerceTickets.Models;
+﻿using eCommerceTickets.Data.Base;
+using eCommerceTickets.Models;
 
 namespace eCommerceTickets.Data.Services
 {
-    public interface IActorsService
+    public interface IActorsService: IEntityBaseRepository<Actor>
     {
-        public Task<IEnumerable<Actor>> GetAll();
-
-        public Task<Actor> GetById( int id);
-
-        public Task Add(Actor actor);
-
-        public Task<Actor> Update(int id, Actor newActorData);
-
-        public Task Delete(int id);
     }
 }
