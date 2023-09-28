@@ -33,7 +33,7 @@ namespace eCommerceTickets.Controllers
         {
             var actor = await _service.GetById(id);
             if (actor == null)
-                return View("Empty");
+                return Redirect("/Errors/NotFound");
 
             return View(actor);
         }
@@ -43,7 +43,7 @@ namespace eCommerceTickets.Controllers
         {
             var actor = await _service.GetById(id);
             if (actor == null)
-                return View("NotFound");
+                return Redirect("/Errors/NotFound");
 
             return View(actor);
         }
@@ -53,7 +53,7 @@ namespace eCommerceTickets.Controllers
         {
             var actor = await _service.GetById(id);
             if (actor == null)
-                return View("NotFound");
+                return Redirect("/Errors/NotFound");
 
             return View(actor);
         }
@@ -90,7 +90,7 @@ namespace eCommerceTickets.Controllers
         {
             var actor = await _service.GetById(id);
             if (actor == null)
-                return View("NotFound");
+                return Redirect("/Errors/NotFound");
             await _service.Delete(id);
 
             return RedirectToAction(nameof(Index));
