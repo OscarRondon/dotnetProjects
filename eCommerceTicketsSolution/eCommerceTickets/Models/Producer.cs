@@ -9,16 +9,19 @@ namespace eCommerceTickets.Models
         public int Id { get; set; }
 
         [Display(Name = "Profile Picture")]
+        [Required(ErrorMessage = "Profile Picture is require")]
         public string ProfilePicture { get; set; }
 
         [Display(Name = "Full Name")]
+        [Required(ErrorMessage = "Full Name is require")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Full Name must be between 3 and 50 chars")]
         public string FullName { get; set; }
 
         [Display(Name = "Biography")]
         public string Bio { get; set; }
 
         //Relationships
-        public IEnumerable<Movie> Movies { get; set; }
+        public IEnumerable<Movie>? Movies { get; set; }
 
     }
 }
