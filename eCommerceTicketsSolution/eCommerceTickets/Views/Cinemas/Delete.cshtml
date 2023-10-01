@@ -1,30 +1,30 @@
-﻿@model Producer
+﻿@model Cinema
 
 @{
-    ViewData["Title"] = "Delete Producer";
+    ViewData["Title"] = "Delete Cinema";
 }
 
 <div class="row text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1>Delete confirmation for @Model.FullName</h1>
+            <h1>Delete confirmation for @Model.Name</h1>
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
                 <div class="form-group text-center">
-                    <img id="ProfilePicturePreview" class="border-info rounded-circle" style="max-width: 150px" />
+                    <img id="LogoPreview" class="border-info rounded-circle" style="max-width: 150px" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="ProfilePicture" class="control-label"></label>
-                    <input asp-for="ProfilePicture" class="form-control" readonly />
+                    <label asp-for="Logo" class="control-label"></label>
+                    <input asp-for="Logo" class="form-control" readonly />
                 </div>
                 <div class="form-group">
-                    <label asp-for="FullName" class="control-label"></label>
-                    <input asp-for="FullName" class="form-control" readonly />
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" readonly />
                 </div>
                 <div class="form-group">
-                    <label asp-for="Bio" class="control-label"></label>
-                    <input asp-for="Bio" class="form-control" readonly />
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" readonly />
                 </div>
 
                 <div class="form-group">
@@ -42,8 +42,8 @@
 @section Scripts{
     <script>
         $(document).ready(function () {
-            let output = document.getElementById('ProfilePicturePreview');
-            output.src = $("#ProfilePicture").val();
+            let output = document.getElementById('LogoPreview');
+            output.src = $("#Logo").val();
         })
     </script>
 }
