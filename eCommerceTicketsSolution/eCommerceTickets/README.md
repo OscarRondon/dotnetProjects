@@ -1,4 +1,4 @@
-﻿# eCommerceTickets [21.5]
+﻿# eCommerceTickets [24]
 
 This is the demo of an eCommerce ASP.NET MVC 5 application that you are going to build step by step starting with an empty project in Visual Studio.
 This application is an eCommerce application used to buy movies online from different cinemas. 
@@ -7,7 +7,7 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 
 	- Project Template: ASP.Net Core Web App (Model - View - Controller)
 	- DataBase: MS SQL Server Express
-	- Source: https://www.udemy.com/course/complete-ecommerce-aspnet-mvc-application/learn/quiz/5323698/results?expanded=1077162896#overview
+	- Source: https://www.udemy.com/course/complete-ecommerce-aspnet-mvc-application/
 	- Source code: https://github.com/etrupja/complete-ecommerce-aspnet-mvc-application
 
 ## Nuget Packages
