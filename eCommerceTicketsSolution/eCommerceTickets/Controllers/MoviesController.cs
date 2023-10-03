@@ -2,6 +2,7 @@
 using eCommerceTickets.Data.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace eCommerceTickets.Controllers
@@ -29,9 +30,12 @@ namespace eCommerceTickets.Controllers
         }
 
         //GET: Movies/Create
-        public IActionResult create()
+        public async Task<IActionResult> create()
         {
-            ViewData["welcome"] = "Welcome to my store";
+            var moviesDropDonwsData = await _service.GetNewMovieDropdownsValues();
+            ViewBag.Cinemas = new SelectList(moviesDropDonwsData.Cinemas, "Id", "Name");
+            ViewBag.Producers = new SelectList(moviesDropDonwsData.Producers, "Id", "FullName");
+            ViewBag.Actors = new SelectList(moviesDropDonwsData.Actors, "Id", "FullName");
             return View();
         }
     }
