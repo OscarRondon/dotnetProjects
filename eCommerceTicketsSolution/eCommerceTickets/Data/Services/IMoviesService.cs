@@ -9,5 +9,9 @@ namespace eCommerceTickets.Data.Services
         Task<Movie> GetMovieById(int id);
 
         Task<NewMovieDropdownsVM> GetNewMovieDropdownsValues();
+
+        Task AddNewMovie(NewMovieVM movie);
+
+        Task UpdateMovie(NewMovieVM movie);
     }
 }

@@ -1,20 +1,21 @@
 ﻿@model eCommerceTickets.ViewModels.NewMovieVM
-@using eCommerceTickets.Models.Enums
+@using eCommerceTickets.Models.Enums;
 
 @{
-    ViewData["Title"] = "Create a new movie";
+    ViewData["Title"] = "Update movie";
 }
 
 <div class="row">
     <div class="col-md-8 offset-2">
         <p>
-            <h4>Create a new movie</h4>
+            <h4>Update movie</h4>
         </p>
 
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form asp-action="Create">
+                <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -24,12 +25,12 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="StartDate" class="control-label"></label>
-                                <input asp-for="StartDate" type="datetime-local" class="form-control" />
+                                <input asp-for="StartDate" type="date" class="form-control" />
                                 <span asp-validation-for="StartDate" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="EndDate" class="control-label"></label>
-                                <input asp-for="EndDate" type="datetime-local" class="form-control" />
+                                <input asp-for="EndDate" type="date" class="form-control" />
                                 <span asp-validation-for="EndDate" class="text-danger"></span>
                             </div>
                             <div class="form-group">
@@ -79,7 +80,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                        <input type="submit" value="Update" class="btn btn-outline-success float-right" />
                         <a class="btn btn-outline-secondary" asp-action="Index">Show all</a>
                     </div>
 
@@ -93,6 +94,11 @@
 
 @section Scripts{
     <script>
+        $(document).ready(function () {
+            var output = document.getElementById("ImageUrlPreview");
+            output.src = $("#Image").val();
+        });
+
         $("#Image").on("change", function () {
             var output = document.getElementById("ImageUrlPreview");
             output.src = $(this).val();

@@ -8,6 +8,7 @@ namespace eCommerceTickets.ViewModels
 {
     public class NewMovieVM
     {
+        public int Id { get; set; }
 
         [Display(Name = "Movie Name")]
         [Required(ErrorMessage ="Movie Name is require")]
@@ -34,7 +35,7 @@ namespace eCommerceTickets.ViewModels
 
         //Relationships
         [Display(Name = "Select Actor(s)")]
-        public IEnumerable<int> ActorIds { get; set; }
+        public IEnumerable<int>? ActorIds { get; set; }
 
         [Display(Name = "Select a Cinema")]
         public int CinemaId { get; set; }
