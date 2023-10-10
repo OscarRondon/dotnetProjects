@@ -17,6 +17,10 @@ builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<ICinemasService, CinemasServices>();
 builder.Services.AddScoped<IMoviesService, MoviesService>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+//builder.Services.AddScoped<ShoppingCartService>();
+builder.Services.AddScoped(sc => ShoppingCartService.GetShoppingCart(sc));
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -46,6 +50,7 @@ app.Use(async (ctx, next) =>
 });
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 

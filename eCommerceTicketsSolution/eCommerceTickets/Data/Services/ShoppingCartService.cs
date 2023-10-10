@@ -1,9 +1,10 @@
-﻿using eCommerceTickets.Models;
+﻿using eCommerceTickets.Data.Base;
+using eCommerceTickets.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace eCommerceTickets.Data.Services
 {
-    public class ShopingCartService
+    public class ShoppingCartService
     {
         private readonly AppDbContext _context;
 
@@ -11,9 +12,24 @@ namespace eCommerceTickets.Data.Services
 
         public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
-        public ShopingCartService(AppDbContext context)
+        public ShoppingCartService(AppDbContext context, IServiceProvider service)
         {
             _context = context;
+
+            //ISession session = service.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            //string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+            //session.SetString("cartId", cartId);
+            //ShoppingCartId = cartId;
+
+        }
+
+        public static ShoppingCartService GetShoppingCart(IServiceProvider service)
+        {
+            ISession session = service.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            var context = service.GetService<AppDbContext>();
+            string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+            session.SetString("CartId", cartId);
+            return new ShoppingCartService(context, service) { ShoppingCartId = cartId } ;
         }
 
         public async Task AddShoppingCartItem(Movie movie)
