@@ -7,13 +7,22 @@ namespace eCommerceTickets.Controllers
     public class OrdersController : Controller
     {
         private readonly IMoviesService _moviesService;
+        private readonly IOrdersService _ordersService;
         private readonly ShoppingCartService _shopingCartService;
 
-
-        public OrdersController(IMoviesService moviesService, ShoppingCartService shopingCartService)
+        public OrdersController(IMoviesService moviesService, ShoppingCartService shopingCartService, IOrdersService ordersService)
         {
             _moviesService = moviesService;
+            _ordersService = ordersService;
             _shopingCartService = shopingCartService;
+        }
+
+        //GET: Index
+        public async Task<IActionResult> Index()
+        {
+            string userId = "";
+            var orders = await _ordersService.GetOrdersByUserId(userId);
+            return View(orders);
         }
 
         //GET: ShopingCart
@@ -49,6 +58,18 @@ namespace eCommerceTickets.Controllers
                 await _shopingCartService.RemoveShoppingCartItem(movie);
             }
             return RedirectToAction(nameof(ShoppingCart));
+        }
+
+        public async Task<IActionResult> CompleteOrder()
+        {
+            string userId = "";
+            string userEmailAddress = "";
+            var items = await _shopingCartService.GetShoppingCartItems();
+
+            await _ordersService.StoreOrder(items, userId, userEmailAddress);
+            await _shopingCartService.ClearShoppingCart();
+
+            return View("OrderCompleted");
         }
     }
 }

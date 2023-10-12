@@ -23,6 +23,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped(sc => ShoppingCartService.GetShoppingCart(sc));
 builder.Services.AddSession();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

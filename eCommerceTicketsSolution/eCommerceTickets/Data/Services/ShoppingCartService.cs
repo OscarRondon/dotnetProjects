@@ -79,5 +79,12 @@ namespace eCommerceTickets.Data.Services
             var total = await _context.ShoppingCartItems.Where(sc => sc.ShoppingCartId == ShoppingCartId).Select(m => m.Movie.Price * m.Quantity).SumAsync();
             return total;
         }
+
+        public async Task ClearShoppingCart()
+        {
+            var carItems = await _context.ShoppingCartItems.Where(sc => sc.ShoppingCartId == ShoppingCartId).ToListAsync();
+            _context.ShoppingCartItems.RemoveRange(carItems);
+            await _context.SaveChangesAsync();
+        }
     }
 }
