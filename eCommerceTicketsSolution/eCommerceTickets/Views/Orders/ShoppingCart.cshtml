@@ -60,6 +60,10 @@
 
                 </div>
                 <span style="padding: 5px">|</span>
+                <div id="paypal-btn2">
+
+                </div>
+                <span style="padding: 5px">|</span>
                 <a class="btn btn-outline-success" asp-controller="Movies" asp-action="Index">
                     Add more Items
                 </a>
@@ -70,6 +74,33 @@
 </div>
 
 @section Scripts{
+
+    <!-- https://www.youtube.com/watch?v=qLXDsoYOopU -->
+    @*<script src="https://www.paypal.com/sdk/js?client-id=AZx1h8lwkuqNbRGEI4mSgxZExZiNmZUlARCRVCMx8HxcV71B_VWLA5HlI-Gvyn4I1bIJnmw3mX9nlrQq&currency=USD&disable-funding=paylater,bancontact"></script>
+
+    <script>
+        let paypal_buttons = paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color: 'gold',
+                shape: 'rect',
+                label: 'paypal'
+            },
+
+            createOrder() {
+                return fetch("/Orders/ShoppingCart", {
+                    method: "POST"
+                })
+                    .then((response) => response.json())
+                    .then((order) => order.id);
+            }
+        });
+        paypal_buttons.render('#paypal-btn2');
+    </script>*@
+
+
+    <!-- ******************************************************************************************************************* -->
+
 
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
@@ -115,4 +146,6 @@
 
         }, '#paypal-btn')
     </script>
+
+
 }
