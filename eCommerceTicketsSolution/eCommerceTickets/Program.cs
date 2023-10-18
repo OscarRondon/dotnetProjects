@@ -1,5 +1,8 @@
 using eCommerceTickets.Data;
 using eCommerceTickets.Data.Services;
+using eCommerceTickets.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,8 +22,19 @@ builder.Services.AddScoped<ICinemasService, CinemasServices>();
 builder.Services.AddScoped<IMoviesService, MoviesService>();
 builder.Services.AddScoped<IOrdersService, OrdersService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-//builder.Services.AddScoped<ShoppingCartService>();
-builder.Services.AddScoped(sc => ShoppingCartService.GetShoppingCart(sc));
+builder.Services.AddScoped<ShoppingCartService>();
+//builder.Services.AddScoped(sc => ShoppingCartService.GetShoppingCart(sc));
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+})
+    .AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+});
+//builder.Services.AddAuthorization();
+builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 
 
@@ -53,7 +67,7 @@ app.Use(async (ctx, next) =>
 
 app.UseRouting();
 app.UseSession();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -62,6 +76,7 @@ app.MapControllerRoute(
 
 //Seed Database
 AppDbInitializer.Seed(app);
+AppDbInitializer.SeedUsersAndRoles(app).Wait();
 
 app.Run();
 

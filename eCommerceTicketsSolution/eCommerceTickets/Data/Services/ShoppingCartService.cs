@@ -16,10 +16,10 @@ namespace eCommerceTickets.Data.Services
         {
             _context = context;
 
-            //ISession session = service.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            //string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
-            //session.SetString("cartId", cartId);
-            //ShoppingCartId = cartId;
+            ISession session = service.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+            session.SetString("CartId", cartId);
+            ShoppingCartId = cartId;
 
         }
 
