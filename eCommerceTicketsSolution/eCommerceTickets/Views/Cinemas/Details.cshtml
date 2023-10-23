@@ -16,19 +16,22 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Logo" class="control-label"></label>
-                    <input asp-for="Logo" class="form-control" readonly/>
+                    <input asp-for="Logo" class="form-control" readonly />
                 </div>
                 <div class="form-group">
                     <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" readonly/>
+                    <input asp-for="Name" class="form-control" readonly />
                 </div>
                 <div class="form-group">
                     <label asp-for="Description" class="control-label"></label>
-                    <input asp-for="Description" class="form-control" readonly/>
+                    <input asp-for="Description" class="form-control" readonly />
                 </div>
 
                 <div class="form-group">
-                    <a class="btn btn-outline-success float-start" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-outline-success float-start" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                    }
                     <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
                 </div>
             </div>
