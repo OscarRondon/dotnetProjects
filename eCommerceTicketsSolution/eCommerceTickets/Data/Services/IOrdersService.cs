@@ -8,5 +8,7 @@ namespace eCommerceTickets.Data.Services
         Task StoreOrder(List<ShoppingCartItem> items, string userId, string userEmailAddress);
 
         Task<List<Order>> GetOrdersByUserId(string userId);
+
+        Task<List<Order>> GetOrdersByUserIdAndRoleAsync(string userId, string userRole);
     }
 }

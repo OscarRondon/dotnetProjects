@@ -1,6 +1,10 @@
 ﻿using eCommerceTickets.Data.Services;
+using eCommerceTickets.Models;
+using eCommerceTickets.Models.Enums;
 using eCommerceTickets.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace eCommerceTickets.Controllers
 {
@@ -10,7 +14,11 @@ namespace eCommerceTickets.Controllers
         private readonly IOrdersService _ordersService;
         private readonly ShoppingCartService _shopingCartService;
 
-        public OrdersController(IMoviesService moviesService, ShoppingCartService shopingCartService, IOrdersService ordersService)
+        public OrdersController(
+            IMoviesService moviesService, 
+            ShoppingCartService shopingCartService, 
+            IOrdersService ordersService
+            )
         {
             _moviesService = moviesService;
             _ordersService = ordersService;
@@ -20,8 +28,11 @@ namespace eCommerceTickets.Controllers
         //GET: Index
         public async Task<IActionResult> Index()
         {
-            string userId = "";
-            var orders = await _ordersService.GetOrdersByUserId(userId);
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userRole = User.FindFirst(ClaimTypes.Role).Value;
+            var orders = userRole != UserRoles.Admin.ToString() ? 
+                await _ordersService.GetOrdersByUserId(userId):
+                await _ordersService.GetOrdersByUserIdAndRoleAsync(userId, userRole);
             return View(orders);
         }
 
@@ -62,8 +73,8 @@ namespace eCommerceTickets.Controllers
 
         public async Task<IActionResult> CompleteOrder()
         {
-            string userId = "";
-            string userEmailAddress = "";
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier).Value; ;
+            string userEmailAddress = User.FindFirst(ClaimTypes.Email).Value; ;
             var items = await _shopingCartService.GetShoppingCartItems();
 
             await _ordersService.StoreOrder(items, userId, userEmailAddress);

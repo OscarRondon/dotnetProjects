@@ -1,4 +1,5 @@
 ﻿using eCommerceTickets.Models;
+using eCommerceTickets.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace eCommerceTickets.Data.Services
@@ -7,14 +8,23 @@ namespace eCommerceTickets.Data.Services
     {
         private readonly AppDbContext _context;
 
-        public OrdersService(AppDbContext context) 
+        public OrdersService(AppDbContext context)
         {
             _context = context;
         }
 
         public async Task<List<Order>> GetOrdersByUserId(string userId)
         {
-            var orders = await _context.Orders.Include(oi => oi.OrderItems).ThenInclude(m => m.Movie).Where(o => o.UserId == userId).ToListAsync();
+            var orders = await _context.Orders.Include(u => u.User).Include(oi => oi.OrderItems).ThenInclude(m => m.Movie).Where(o => o.UserId == userId).ToListAsync();
+            return orders;
+        }
+
+        public async Task<List<Order>> GetOrdersByUserIdAndRoleAsync(string userId, string userRole)
+        {
+            var orders = userRole != UserRoles.Admin.ToString() ?
+                await _context.Orders.Include(u => u.User).Include(oi => oi.OrderItems).ThenInclude(m => m.Movie).Where(o => o.UserId == userId).ToListAsync():
+                await _context.Orders.Include(u => u.User).Include(oi => oi.OrderItems).ThenInclude(m => m.Movie).ToListAsync();
+
             return orders;
         }
 

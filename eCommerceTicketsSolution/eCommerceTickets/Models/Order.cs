@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eCommerceTickets.Models
 {
@@ -14,6 +15,8 @@ namespace eCommerceTickets.Models
         [Display(Name = "UserId")]
         [Required(ErrorMessage = "UserId is require")]
         public string UserId {  get; set; }
+        [ForeignKey(nameof(UserId))]
+        public ApplicationUser User { get; set; }
 
         public List<OrderItem> OrderItems { get; set; }
         
