@@ -4,6 +4,7 @@ using eCommerceTickets.Models.Enums;
 using eCommerceTickets.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace eCommerceTickets.Controllers
@@ -26,6 +27,12 @@ namespace eCommerceTickets.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+        }
+
+        public async Task<IActionResult> Users()
+        {
+            var users = await _context.Users.ToListAsync();
+            return View(users);
         }
 
         #region Login
@@ -100,16 +107,20 @@ namespace eCommerceTickets.Controllers
         }
         #endregion
 
+        #region Logout
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Movies");
         }
+        #endregion
 
+        #region AccessDenied
         public IActionResult AccessDenied(string ReturnUrl)
         {
             return View();
         }
+        #endregion
     }
 }
