@@ -1,11 +1,13 @@
 ﻿using eCommerceTickets.Data;
 using eCommerceTickets.Data.Services;
 using eCommerceTickets.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace eCommerceTickets.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CinemasController : Controller
     {
         private readonly ICinemasService _service;
@@ -15,6 +17,7 @@ namespace eCommerceTickets.Controllers
         }
 
         //Get: Cinemas Index
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var cinemas = await _service.GetAll();
@@ -22,6 +25,7 @@ namespace eCommerceTickets.Controllers
         }
 
         //Get: Cinemas/Details/Id
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var cinema = await _service.GetById(id);

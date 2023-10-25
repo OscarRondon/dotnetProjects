@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eCommerceTickets.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class MoviesController : Controller
     {
         private readonly IMoviesService _service;
@@ -19,6 +20,7 @@ namespace eCommerceTickets.Controllers
         }
 
         //GET: Movies/Index
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var movies = await _service.GetAll(c => c.Cinema, p => p.Producer);
@@ -43,6 +45,7 @@ namespace eCommerceTickets.Controllers
         }
 
         //GET: Movies/Details/1
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var movie = await _service.GetMovieById(id);

@@ -1,4 +1,4 @@
-﻿# eCommerceTickets [55.5]
+﻿# eCommerceTickets [57.5]
 
 This is the demo of an eCommerce ASP.NET MVC 5 application that you are going to build step by step starting with an empty project in Visual Studio.
 This application is an eCommerce application used to buy movies online from different cinemas. 
@@ -16,10 +16,6 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 	- Microsoft.EntityFrameworkCore.SqlServer
 	- Microsoft.EntityFrameworkCore.Tools
 	- Microsoft.AspNetCore.Identity.EntityFrameworkCore
-
-	- Microsoft.AspNetCore.Identity.UI
-	- Microsoft.VisualStudio.Web.CodeGeneration.Design
-	- Microsoft.VisualStudio.Web.CodeGeneration.Utils	
 
 ## Instructions
 

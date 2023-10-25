@@ -2,12 +2,14 @@
 using eCommerceTickets.Models;
 using eCommerceTickets.Models.Enums;
 using eCommerceTickets.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace eCommerceTickets.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly IMoviesService _moviesService;

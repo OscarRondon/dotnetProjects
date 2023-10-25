@@ -1,11 +1,14 @@
 ﻿using eCommerceTickets.Data;
 using eCommerceTickets.Data.Services;
 using eCommerceTickets.Models;
+using eCommerceTickets.Models.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace eCommerceTickets.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProducersController : Controller
     {
         private readonly IProducersService _service;
@@ -16,6 +19,7 @@ namespace eCommerceTickets.Controllers
         }
 
         //Get: Producers Index
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var producers = await _service.GetAll();
@@ -23,6 +27,7 @@ namespace eCommerceTickets.Controllers
         }
 
         //Get: Producers/Details/Id
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var producer = await _service.GetById(id);
