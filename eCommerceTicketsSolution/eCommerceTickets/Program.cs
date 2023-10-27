@@ -13,7 +13,8 @@ builder.Configuration.AddJsonFile("env.json", optional: true, reloadOnChange: tr
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
-    opt.UseSqlServer(GetDbStringConnection(builder.Configuration));
+    //opt.UseSqlServer(GetDbStringConnection(builder.Configuration));
+    opt.UseSqlServer(GetAZDbStringConnection(builder.Configuration));
 });
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IActorsService, ActorsService>();
@@ -89,6 +90,24 @@ static string GetDbStringConnection(ConfigurationManager Configuration)
     string dbUser = Configuration.GetSection("DataBase:DBUser").Value ?? "";
     string dbPwd = Configuration.GetSection("DataBase:DBPwd").Value ?? "";
     string dbConnectioString = Configuration.GetSection("DataBase:ConnectionStrings:MSSql").Value ?? "";
+    dbConnectioString = dbConnectioString.Replace("{DBServer}", dbServer);
+    dbConnectioString = dbConnectioString.Replace("{DBName}", dbName);
+    dbConnectioString = dbConnectioString.Replace("{DBUser}", dbUser);
+    dbConnectioString = dbConnectioString.Replace("{DBPwd}", dbPwd);
+
+    var connectionString = dbConnectioString ?? throw new InvalidOperationException("Connection string not found.");
+
+    return connectionString;
+}
+
+static string GetAZDbStringConnection(ConfigurationManager Configuration)
+{
+    // Get values from .env file
+    string dbServer = Configuration.GetSection("DataBase:AZDBServer").Value ?? "";
+    string dbName = Configuration.GetSection("DataBase:AZDBName").Value ?? "";
+    string dbUser = Configuration.GetSection("DataBase:AZDBUser").Value ?? "";
+    string dbPwd = Configuration.GetSection("DataBase:AZDBPwd").Value ?? "";
+    string dbConnectioString = Configuration.GetSection("DataBase:ConnectionStrings:AzureDB").Value ?? "";
     dbConnectioString = dbConnectioString.Replace("{DBServer}", dbServer);
     dbConnectioString = dbConnectioString.Replace("{DBName}", dbName);
     dbConnectioString = dbConnectioString.Replace("{DBUser}", dbUser);
