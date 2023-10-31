@@ -1,10 +1,10 @@
-﻿# eCommerceTickets [62] [WebSite](https://ecommercetickets.azurewebsites.net)
+﻿# eCommerceTickets [WebSite](https://ecommercetickets.azurewebsites.net)
 
 This is the demo of an eCommerce ASP.NET MVC 5 application that you are going to build step by step starting with an empty project in Visual Studio.
 This application is an eCommerce application used to buy movies online from different cinemas. 
 You will be able to add items to your card, pay using PayPal and also log in as an administrator to add new cinemas, actors, producers, and movies. 
 
-## Project
+## Project [62]
 -----------------------------------------------------------------------------------------------------------------------------------------
 ```
 	- Project Template: ASP.Net Core Web App (Model - View - Controller)
@@ -39,4 +39,4 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 ```
 
 
-## Testing
+## Testing [2]
