@@ -39,4 +39,12 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 ```
 
 
-## Testing [2]
+## Testing [8]
+
+### Nuget Packages
+```
+	- Moq
+	- MockQueryable.Moq
+	- Microsoft.EntityFrameworkCore
+	- Microsoft.EntityFrameworkCore.InMemory
+```

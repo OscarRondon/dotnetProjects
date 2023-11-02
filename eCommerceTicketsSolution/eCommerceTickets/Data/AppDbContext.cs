@@ -6,6 +6,10 @@ namespace eCommerceTickets.Data
 {
     public class AppDbContext:IdentityDbContext<ApplicationUser>
     {
+        public AppDbContext()
+        {
+
+        }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) 
         {
             
@@ -28,7 +32,7 @@ namespace eCommerceTickets.Data
         public DbSet<Actor> Actors {  get; set; }
         public DbSet<Movie> Movies {  get; set; }
         public DbSet<Actor_Movie> ActorsMovies {  get; set; }
-        public DbSet<Cinema> Cinemas {  get; set; }
+        public virtual DbSet<Cinema> Cinemas {  get; set; }
         public DbSet<Producer> Producers {  get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
