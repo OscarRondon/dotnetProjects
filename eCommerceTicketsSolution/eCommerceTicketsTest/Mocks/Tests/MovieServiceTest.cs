@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eCommerceTicketsTest.Mock
+namespace eCommerceTicketsTest.Mocks.Tests
 {
     public class MovieServiceTest
     {
