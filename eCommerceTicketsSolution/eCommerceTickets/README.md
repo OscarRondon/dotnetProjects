@@ -9,8 +9,6 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 ```
 	- Project Template: ASP.Net Core Web App (Model - View - Controller)
 	- DataBase: MS SQL Server Express
-	- Source: https://www.udemy.com/course/complete-ecommerce-aspnet-mvc-application/
-	- Source code: https://github.com/etrupja/complete-ecommerce-aspnet-mvc-application
 ```
 ### Nuget Packages
 ```
