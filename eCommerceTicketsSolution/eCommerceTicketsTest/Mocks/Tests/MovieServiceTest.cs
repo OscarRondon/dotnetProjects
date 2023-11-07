@@ -10,7 +10,13 @@ namespace eCommerceTicketsTest.Mocks.Tests
 {
     public class MovieServiceTest
     {
+        public MovieServiceTest()
+        {
+            
+        }
+
         [Fact]
+        [Trait("Mock", "MovieService")]
         public void MovieServcie_GetMovieById()
         {
             // Arrange

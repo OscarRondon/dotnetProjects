@@ -4,15 +4,29 @@ using eCommerceTickets.Models;
 using eCommerceTicketsTest.Mocks.Data;
 using eCommerceTicketsTest.Mocks.Utilities;
 using Microsoft.EntityFrameworkCore;
+using MockQueryable.Moq;
 using Moq;
+using Xunit.Abstractions;
 
 namespace eCommerceTicketsTest.Mocks.Tests
 {
     public class CinemaServiceTest
     {
+        private readonly ITestOutputHelper _testOutputHelper;
+
+        public CinemaServiceTest(ITestOutputHelper testOutputHelper)
+        {
+            _testOutputHelper = testOutputHelper;
+
+            _testOutputHelper.WriteLine("Constructor");
+        }
+
         [Fact]
+        [Trait("Mock", "CinemaService")]
         public async void CinemaService_GetAllCinemas()
         {
+            _testOutputHelper.WriteLine("CinemaService_GetAllCinemas");
+
             // Arrange
 
             var cinemasMockData = MockData.GetMockListOfCinemas().AsQueryable();
@@ -35,6 +49,28 @@ namespace eCommerceTicketsTest.Mocks.Tests
             // Assert
             Assert.NotNull(cinemas);
             Assert.Equal(5, cinemas.Count());
+        }
+
+        [Fact]
+        [Trait("Mock", "CinemaService")]
+        public async void CinemaService_GetCinemaById()
+        {
+            //This methos uses MockQueryable.Moq
+            _testOutputHelper.WriteLine("CinemaService_GetCinemaById");
+
+            // Arrange
+            var cinemasMockData = MockData.GetMockListOfCinemas().BuildMock().BuildMockDbSet();
+            var dbContextMock = new Mock<AppDbContext>();
+            dbContextMock.Setup(m => m.Set<Cinema>()).Returns(cinemasMockData.Object);
+
+
+            // Act
+            CinemasServices cinemasServices = new(dbContextMock.Object);
+            var cinema = await cinemasServices.GetById(3);
+
+            // Assert
+            Assert.NotNull(cinema);
+            Assert.Equal("Cinema 3", cinema.Name);
         }
 
     }

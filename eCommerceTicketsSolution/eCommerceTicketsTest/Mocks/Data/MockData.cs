@@ -32,7 +32,7 @@ namespace eCommerceTicketsTest.Mocks.Data
                     Id = 3,
                     Name = "Cinema 3",
                     Logo = "http://dotnethow.net/images/cinemas/cinema-3.jpeg",
-                    Description = "This is the description of the first cinema"
+                    Description = "This is the description of the third cinema"
                 },
                 new Cinema()
                 {
