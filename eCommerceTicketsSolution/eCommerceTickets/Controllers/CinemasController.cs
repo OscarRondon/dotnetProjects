@@ -20,6 +20,7 @@ namespace eCommerceTickets.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
+             
             var cinemas = await _service.GetAll();
             return View(cinemas);
         }

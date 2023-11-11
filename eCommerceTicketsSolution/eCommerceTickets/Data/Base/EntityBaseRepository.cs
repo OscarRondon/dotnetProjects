@@ -34,8 +34,15 @@ namespace eCommerceTickets.Data.Base
 
         public async Task<T> Update(int id, T newEntity)
         {
-            EntityEntry entityEntry = _context.Entry<T>(newEntity);
-            entityEntry.State = EntityState.Modified;
+            // opt 1
+            //EntityEntry entityEntry = _context.Entry<T>(newEntity);
+            //entityEntry.State = EntityState.Modified;
+            
+            // opt 2
+            //_context.Update<T>(newEntity);
+
+            //opt 3
+            _context.Set<T>().Update(newEntity);
             await _context.SaveChangesAsync();
             return newEntity;
         }
@@ -43,8 +50,15 @@ namespace eCommerceTickets.Data.Base
         public async Task Delete(int id)
         {
             var entity = await _context.Set<T>().FirstOrDefaultAsync(a => a.Id == id);
-            EntityEntry entityEntry = _context.Entry<T>(entity);
-            entityEntry.State = EntityState.Deleted;
+            // opt 1
+            //EntityEntry entityEntry = _context.Entry<T>(entity);
+            //entityEntry.State = EntityState.Deleted;
+
+            // opt 2
+            //_context.Remove<T>(entity);
+
+            // opt 3
+            _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();
 
         }
