@@ -44,5 +44,6 @@ You will be able to add items to your card, pay using PayPal and also log in as 
 	- Moq
 	- MockQueryable.Moq
 	- Microsoft.EntityFrameworkCore
-	- Microsoft.EntityFrameworkCore.InMemory
+
+	// - Microsoft.EntityFrameworkCore.InMemory
 ```
