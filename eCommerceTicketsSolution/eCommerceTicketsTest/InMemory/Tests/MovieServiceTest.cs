@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eCommerceTicketsTest.InMemory
+namespace eCommerceTicketsTest.InMemory.Tests
 {
     public class MovieServiceTest
     {
