@@ -7,9 +7,9 @@ namespace eCommerceTickets.Data
 
     public class AppDbInitializer
     {
-        public static void Seed(IApplicationBuilder applicationBuilder)
+        public static void Seed(IServiceProvider serviceProvider)
         {
-            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            using (var serviceScope = serviceProvider.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
 
@@ -318,9 +318,9 @@ namespace eCommerceTickets.Data
 
         }
 
-        public static async Task SeedUsersAndRoles(IApplicationBuilder applicationBuilder)
+        public static async Task SeedUsersAndRoles(IServiceProvider serviceProvider)
         {
-            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            using (var serviceScope = serviceProvider.CreateScope())
             {
 
                 //Roles

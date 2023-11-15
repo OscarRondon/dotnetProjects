@@ -76,8 +76,8 @@ app.MapControllerRoute(
     pattern: "{controller=Movies}/{action=Index}/{id?}");
 
 //Seed Database
-AppDbInitializer.Seed(app);
-AppDbInitializer.SeedUsersAndRoles(app).Wait();
+AppDbInitializer.Seed(app.Services);
+AppDbInitializer.SeedUsersAndRoles(app.Services).Wait();
 
 app.Run();
 

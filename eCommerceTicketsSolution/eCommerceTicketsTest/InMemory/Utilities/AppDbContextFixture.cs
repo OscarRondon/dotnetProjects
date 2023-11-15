@@ -1,29 +1,57 @@
 ﻿using eCommerceTickets.Data;
-using eCommerceTicketsTest.InMemory.Data;
+using eCommerceTickets.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace eCommerceTicketsTest.InMemory.Utilities
 {
-    public class AppDbContextFixture: IDisposable
+    public class AppDbContextFixture : IDisposable
     {
-        private static DbContextOptions<AppDbContext> dbContextOptions = new DbContextOptionsBuilder<AppDbContext>().UseInMemoryDatabase(databaseName: "eCommerceTicketsDBTest").Options;
-        public AppDbContext appDbContext;
+        //DbContextOptions<AppDbContext> dbContextOptions = new DbContextOptionsBuilder<AppDbContext>().UseInMemoryDatabase(databaseName: "eCommerceTicketsDBTest").Options;
+        public AppDbContext appDbContextTest;
+        public UserManager<ApplicationUser> userManagerTest;
+        public RoleManager<IdentityRole> roleManagerTest;
 
         public AppDbContextFixture()
         {
-            appDbContext = new AppDbContext(dbContextOptions);
-            appDbContext.Database.EnsureCreated();
-            AppDbInitializerTest.Seed(appDbContext);
+            IServiceCollection serviceCollection = new ServiceCollection();
+
+            serviceCollection.AddLogging(login => login.AddConsole());
+
+            serviceCollection.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseInMemoryDatabase(databaseName: "eCommerceTicketsDBTest");
+            });
+            appDbContextTest = serviceCollection.BuildServiceProvider().GetService<AppDbContext>();
+            appDbContextTest.Database.EnsureCreated();
+
+            
+            
+            serviceCollection.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+            })
+                .AddUserManager<UserManager<ApplicationUser>>()
+                .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
+
+            userManagerTest = serviceCollection.BuildServiceProvider().GetService<UserManager<ApplicationUser>>();
+            roleManagerTest = serviceCollection.BuildServiceProvider().GetService<RoleManager<IdentityRole>>();
+
+
+            AppDbInitializer.Seed(serviceCollection.BuildServiceProvider());
+            AppDbInitializer.SeedUsersAndRoles(serviceCollection.BuildServiceProvider()).Wait();
         }
 
         public void Dispose()
         {
-            appDbContext.Database.EnsureDeleted();
+            appDbContextTest.Database.EnsureDeleted();
+            appDbContextTest.Dispose();
+            userManagerTest.Dispose();
+            roleManagerTest.Dispose();
         }
     }
 }

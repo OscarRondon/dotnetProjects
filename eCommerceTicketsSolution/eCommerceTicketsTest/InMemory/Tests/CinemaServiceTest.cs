@@ -1,6 +1,5 @@
 ﻿using eCommerceTickets.Data;
 using eCommerceTickets.Data.Services;
-using eCommerceTicketsTest.InMemory.Data;
 using eCommerceTicketsTest.InMemory.Utilities;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -25,7 +24,7 @@ namespace eCommerceTicketsTest.InMemory.Tests
         public async void CinemaService_GetAllCinemas()
         {
             // Arrange
-            CinemasServices cinemasServices = new(_appDbContextFixture.appDbContext);
+            CinemasServices cinemasServices = new(_appDbContextFixture.appDbContextTest);
 
             // Acts
             var cinemas = await cinemasServices.GetAll();
