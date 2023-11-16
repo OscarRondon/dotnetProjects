@@ -1,0 +1,34 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world from Blazor Server App</h1>
+
+
+<br />
+<br />
+<br />
+
+<p> @FullName </p>
+<input @bind-value="FullName" />
+
+<p>Is Active: @Active</p>
+<label>
+<input type="checkbox" @bind="Active" /> Active
+</label>
+
+<label>
+
+</label>
+
+<p>Welcome to your new app.</p>
+
+@code{
+
+    string FullName = "Oscar Rondon";
+    bool Active = true;
+    string RadioValue = "";
+}
+
+
+<SurveyPrompt Title="How is Blazor working for you?" />
