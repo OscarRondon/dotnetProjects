@@ -1,0 +1,56 @@
+﻿@page "/team/{Id}"
+
+@code
+{
+    //Parameters
+
+    [Parameter]
+    public string Id { get; set; }
+}
+
+<h3>Team Component!!!</h3>
+
+
+
+@code {
+
+    private List<TeamModel> teams;
+    private List<MemberModel> allMembers;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        teams = new List<TeamModel>();
+        teams.Add(new TeamModel { Id = 1, Name = "Red", Region = "Region one" });
+        teams.Add(new TeamModel { Id = 2, Name = "Blue", Region = "Region two" });
+        teams.Add(new TeamModel { Id = 4, Name = "Yellow", Region = "Region three" });
+
+        allMembers = new List<MemberModel>();
+        allMembers.Add(new MemberModel { Id = 1, Name = "Johm", Age = 20,  TeamId = 1});
+        allMembers.Add(new MemberModel { Id = 2, Name = "Mike", Age = 25,  TeamId = 1});
+        allMembers.Add(new MemberModel { Id = 3, Name = "Julie", Age = 26,  TeamId = 1});
+        allMembers.Add(new MemberModel { Id = 4, Name = "Ross", Age = 22,  TeamId = 2});
+        allMembers.Add(new MemberModel { Id = 5, Name = "Alexandra", Age = 19,  TeamId = 2});
+        allMembers.Add(new MemberModel { Id = 6, Name = "Caroline", Age = 27,  TeamId = 3});
+        allMembers.Add(new MemberModel { Id = 6, Name = "Fox", Age = 23,  TeamId = 4});
+
+    }
+
+    public class TeamModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Region { get; set; }
+
+    }
+
+    public class MemberModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public int TeamId { get; set; }
+    }
+
+}
