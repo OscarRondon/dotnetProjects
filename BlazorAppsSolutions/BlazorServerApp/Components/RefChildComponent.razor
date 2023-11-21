@@ -1,0 +1,16 @@
+﻿@if (shownControl)
+{
+    <h3>RefChildComponent</h3>
+}
+
+@code {
+
+    bool shownControl = false;
+
+    public void ChangeVisibility()
+    {
+        shownControl = !shownControl;
+        StateHasChanged();
+    }
+
+}

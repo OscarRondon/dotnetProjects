@@ -16,17 +16,22 @@
 
 <hr />
 
-<TittleComponent DisplayText="Cascading" />
-
-<CascadingValue Name="Counter" Value="@currentCount">
-    <DummyComponent />
-</CascadingValue>
+<div style="border: solid red 1px">
+    <TittleComponent DisplayText="Cascading params" />
+    <CascadingValue Name="Counter" Value="@currentCount">
+        <CascadeParamsComponent />
+    </CascadingValue>
+</div>
 
 @code {
+    [Parameter]
+    public EventCallback<int> setCurrentCount { set; get; }
+    
     private int currentCount = 0;
 
     private void IncrementCount()
     {
         currentCount++;
+        setCurrentCount.InvokeAsync(currentCount);
     }
 }

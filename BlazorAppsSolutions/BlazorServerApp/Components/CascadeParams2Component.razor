@@ -1,0 +1,12 @@
+﻿<div style="margin-left: 20px">
+    <h3>CascadindParams 2 Component</h3>
+
+    <p>
+        Parent counter: @counterValueFromParent
+    </p>
+</div>
+@code {
+
+    [CascadingParameter(Name = "Counter")]
+    public int counterValueFromParent { get; set; }
+}

@@ -9,28 +9,60 @@
 <br />
 <br />
 
-<p> @FullName </p>
-<input @bind-value="FullName" />
+<div style="border: solid purple 1px; padding: 5px">
+    <h4>Binding data</h4>
+    <p> @FullName </p>
+    <input @bind-value="FullName" />
 
-<p>Is Active: @Active</p>
-<label>
-    <input type="checkbox" @bind="Active" /> Active
-</label>
+    <p>Is Active: @Active</p>
+    <label>
+        <input type="checkbox" @bind="Active" /> Active
+    </label>
 
-<br />
-<p>Radio value: @RadioValue</p>
-<label>
-    <input type="radio" value="1" name="RadioValue" @onclick="@(() => RadioValue = "1")" checked="@(RadioValue == "1")" />1
-    <input type="radio" value="2" name="RadioValue" @onclick="@(() => RadioValue = "2")"  checked="@(RadioValue == "2")" />2
-</label>
+    <br />
+    <p>Radio value: @RadioValue</p>
+    <label>
+        <input type="radio" value="1" name="RadioValue" @onclick="@(() => RadioValue = "1")" checked="@(RadioValue == "1")" />1
+        <input type="radio" value="2" name="RadioValue" @onclick="@(() => RadioValue = "2")" checked="@(RadioValue == "2")" />2
+    </label>
+</div>
+
+<hr />
+
+<div style="border: solid green 1px; padding: 5px">
+    <h4>Using Components Callback communication [Counter: @currentCount]</h4>
+    <Counter setCurrentCount="SetCurrentCount" />
+</div>
+
+<hr />
+
+<div style="border: solid purple 1px; padding: 5px">
+    <h4>Using Reference Child Component</h4>
+    <br />
+    <button class="btn btn-primary" @onclick="(()=> { refChildComp.ChangeVisibility(); })">Show control</button>
+    <br />
+    <br />
+    <RefChildComponent @ref="refChildComp"/>
+</div>
+
+<hr />
 
 <p>Welcome to your new app.</p>
 
 @code{
 
+    private RefChildComponent refChildComp;
+
+    private int currentCount = 0;
+
     string FullName = "Oscar Rondon";
     bool Active = true;
     string RadioValue = "";
+
+    private void SetCurrentCount(int count)
+    {
+        currentCount = count;
+    }
 }
 
 
