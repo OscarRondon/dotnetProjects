@@ -8,11 +8,20 @@
     public string Id { get; set; }
 }
 
-<h3>Team Component!!!</h3>
+<h3>Team @team.Name</h3>
 
+<ul>
+    @foreach (var menber in teamMembers)
+    {
+        <li> @menber.Name | @menber.Age </li>
+    }
+</ul>
 
 
 @code {
+
+    TeamModel team = null;
+    List<MemberModel> teamMembers = null;
 
     private List<TeamModel> teams;
     private List<MemberModel> allMembers;
@@ -27,13 +36,17 @@
         teams.Add(new TeamModel { Id = 4, Name = "Yellow", Region = "Region three" });
 
         allMembers = new List<MemberModel>();
-        allMembers.Add(new MemberModel { Id = 1, Name = "Johm", Age = 20,  TeamId = 1});
-        allMembers.Add(new MemberModel { Id = 2, Name = "Mike", Age = 25,  TeamId = 1});
-        allMembers.Add(new MemberModel { Id = 3, Name = "Julie", Age = 26,  TeamId = 1});
-        allMembers.Add(new MemberModel { Id = 4, Name = "Ross", Age = 22,  TeamId = 2});
-        allMembers.Add(new MemberModel { Id = 5, Name = "Alexandra", Age = 19,  TeamId = 2});
-        allMembers.Add(new MemberModel { Id = 6, Name = "Caroline", Age = 27,  TeamId = 3});
-        allMembers.Add(new MemberModel { Id = 6, Name = "Fox", Age = 23,  TeamId = 4});
+        allMembers.Add(new MemberModel { Id = 1, Name = "Johm", Age = 20, TeamId = 1 });
+        allMembers.Add(new MemberModel { Id = 2, Name = "Mike", Age = 25, TeamId = 1 });
+        allMembers.Add(new MemberModel { Id = 3, Name = "Julie", Age = 26, TeamId = 1 });
+        allMembers.Add(new MemberModel { Id = 4, Name = "Ross", Age = 22, TeamId = 2 });
+        allMembers.Add(new MemberModel { Id = 5, Name = "Alexandra", Age = 19, TeamId = 2 });
+        allMembers.Add(new MemberModel { Id = 6, Name = "Caroline", Age = 27, TeamId = 3 });
+        allMembers.Add(new MemberModel { Id = 6, Name = "Fox", Age = 23, TeamId = 4 });
+
+        team = teams.Find(x => x.Id == int.Parse(Id));
+        teamMembers = allMembers.Where(x => x.TeamId == int.Parse(Id)).ToList();
+
 
     }
 

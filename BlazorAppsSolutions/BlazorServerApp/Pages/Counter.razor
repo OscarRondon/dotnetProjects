@@ -8,6 +8,20 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<br />
+
+<br />
+
+
+
+<hr />
+
+<TittleComponent DisplayText="Cascading" />
+
+<CascadingValue Name="Counter" Value="@currentCount">
+    <DummyComponent />
+</CascadingValue>
+
 @code {
     private int currentCount = 0;
 
