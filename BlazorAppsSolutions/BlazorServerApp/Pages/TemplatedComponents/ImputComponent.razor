@@ -1,0 +1,22 @@
+﻿<h3>ImputComponent</h3>
+
+<div class="field is-horizontal">
+    <div class="field-label is-normal">
+        <label class="label">@NameLabel</label>
+    </div>
+    <div class="field-body">
+        <div class="field">
+            <p class="control">
+                @ImputFragment
+            </p>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string NameLabel { set; get; }
+
+    [Parameter]
+    public RenderFragment ImputFragment { get; set; }
+}
