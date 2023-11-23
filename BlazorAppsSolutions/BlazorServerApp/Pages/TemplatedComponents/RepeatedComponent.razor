@@ -1,0 +1,46 @@
+﻿@typeparam TItem
+
+<h3>RepeatedComponent</h3>
+
+@Header
+@foreach (var item in GenericList)
+{
+    @Row(item)
+}
+@Footer
+
+@if (ItemToEdit != null)
+{
+    <br />
+    <hr style="background-color: grey" />
+    @EditTemplate(ItemToEdit)
+    <br />
+}
+
+@code {
+
+    [Parameter]
+    public RenderFragment Header { get; set; }
+
+    [Parameter]
+    public RenderFragment<TItem> Row { get; set; }
+
+    [Parameter]
+    public RenderFragment Footer { get; set; }
+
+    [Parameter]
+    public RenderFragment<TItem> EditTemplate { get; set; }
+
+    [Parameter]
+    public List<TItem> GenericList { get; set; }
+
+    public TItem ItemToEdit { get; set; }
+
+}
+
+
+@code{
+
+
+
+}

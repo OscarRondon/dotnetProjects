@@ -33,7 +33,12 @@ https://www.youtube.com/watch?v=4G_BzLxa9Nw&list=PLjrh5YRNPzdQMQSFaxP8XrouoVq4QD
 
 BlazorAppSolutions 
 [ 
-	Templated component : 
-		- RenderFragment
-		- Generic Typed Item List
+	Templated component: 
+		- Generic Typed RenderFragment
+		- Generic Typed RenderFragment as a Form
+
+	Lifecycle:
+		- Rendering Triggered
+		- Events Sequence
+
 ]

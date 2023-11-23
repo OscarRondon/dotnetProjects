@@ -17,17 +17,46 @@
 <div style="border: solid darkviolet 1px; padding: 5px">
     <h4> Generic Typed Item List</h4>
     <br />
-    <AutoGridComponent
-        Items="employees"
-        ColumsToExcludeCSV="Id"
-     />
+    <AutoGridComponent Items="employees"
+                       ColumsToExcludeCSV="Id" />
+</div>
 
+<br />
+<hr style="background-color: grey" />
+<br />
+<div style="border: solid darkviolet 1px; padding: 5px">
+    <h4> Generic Typed RenderFragment</h4>
+    <br />
+    <RepeatedComponent @ref="repeater" GenericList="customers">
+        <Header>
+            <h2>Customer data</h2>
+        </Header>
+        <Row Context="customer">
+            <p class="fs-5 fw-bold">@customer.CompanyName</p>
+            <p class="ml-5">@customer.ContactName</p>
+            <p class="ml-5">@customer.PhoneNumber</p>
+            <button class="btn btn-outline-info mt-3" @onclick="()=> { EditCustomer(customer); }">Edit</button>
+        </Row>
+        <Footer />
+        <EditTemplate Context="currentCustomer">
+            <div>
+                <text>Company Name:</text>
+                <input class="form-control" @bind-value="currentCustomer.CompanyName" />
+                <text>Contact Name:</text>
+                <input class="form-control" @bind-value="currentCustomer.ContactName" />
+                <text>Phone number:</text>
+                <input class="form-control" @bind-value="currentCustomer.PhoneNumber" />
+            </div>
+        </EditTemplate>
+    </RepeatedComponent>
 </div>
 
 
 @code {
 
+    private RepeatedComponent<Customer> repeater;
     private List<Employee> employees;
+    private List<Customer> customers;
 
     protected override void OnInitialized()
     {
@@ -39,7 +68,23 @@
             new Employee {Id = 1, Name = "Joh Doe", Title = "Developer", Department = "Dev"},
             new Employee {Id = 1, Name = "Jane Doe", Title = "Developer", Department = "Dev"},
             new Employee {Id = 1, Name = "Jeff Thomas", Title = "Developer", Department = "Dev"},
-            });
+                        });
+
+
+        customers = new List<Customer>();
+        customers.AddRange(new Customer[3]
+    {
+            new Customer {Id = 1, CompanyName = "Seidor", ContactName = "John Doe", PhoneNumber = "111 - 111 1111"},
+            new Customer {Id = 1, CompanyName = "InterSystems", ContactName = "Jane Doe", PhoneNumber = "222 - 222 2222"},
+            new Customer {Id = 1, CompanyName = "Tree of Life Software", ContactName = "Jeff Thomas", PhoneNumber = "333 - 333 3333"},
+                    });
+
+    }
+
+    public void EditCustomer(Customer customer)
+    {
+        repeater.ItemToEdit = customer;
+        Console.WriteLine(customer);
     }
 
     public class Employee
@@ -49,5 +94,13 @@
         public string Title { get; set; }
         public string Department { get; set; }
 
+    }
+
+    public class Customer
+    {
+        public int Id { get; set; }
+        public string CompanyName { get; set; }
+        public string ContactName { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }
