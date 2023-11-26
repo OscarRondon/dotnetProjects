@@ -1,0 +1,84 @@
+﻿@page "/formvalidations"
+
+@using System.ComponentModel.DataAnnotations
+
+<h3>Form Validations Page!!!</h3>
+
+@*<form action="/backendService">
+        <label class="d-block mb-3" id="lbl_fname" name="lbl_fName">
+            First Name:
+            <input type="text" id="txt_fName" name="txt_fName" placeholder="John" autocomplete="off" />
+        </label>
+        <label class="d-block mb-3" id="lbl_lname" name="lbl_lName">
+            Last Name:
+            <input type="text" id="txt_lName" name="txt_lName" placeholder="Doe" autocomplete="off" />
+        </label>
+        <label class="d-block mb-3" id="lbl_pNumber" name="lbl_pNumber">
+            Phone:
+            <input type="text" id="txt_pNumber" name="txt_pNumber" placeholder="655 386 4455" autocomplete="off" />
+        </label>
+        <label class="d-block mb-3" id="lbl_email" name="lbl_email">
+            Email:
+            <input type="email" id="em_email" name="em_email" placeholder="john.doe@email.com" autocomplete="off" />
+        </label>
+
+        <input class="btn btn-outline-primary" type="submit" value="Send" />
+    </form>*@
+
+<EditForm Model="person" OnValidSubmit="ValidFormSubmit" OnInvalidSubmit="InvalidFormSubmit" action="/backendService">
+
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <label class="d-block mb-3" id="lbl_fname" name="lbl_fName">
+        First Name:
+        <InputText @bind-Value="person.FirstName" id="txt_fName" name="txt_fName" placeholder="John" autocomplete="off" />
+    </label>
+    <label class="d-block mb-3" id="lbl_lname" name="lbl_lName">
+        Last Name:
+        <InputText @bind-Value="person.LastName" id="txt_lName" name="txt_lName" placeholder="Doe" autocomplete="off" />
+    </label>
+    <label class="d-block mb-3" id="lbl_pNumber" name="lbl_pNumber">
+        Phone:
+        <InputText @bind-Value="person.PhoneNumber" id="txt_pNumber" name="txt_pNumber" placeholder="655 386 4455" autocomplete="off" />
+    </label>
+    <label class="d-block mb-3" id="lbl_email" name="lbl_email">
+        Email:
+        <InputText @bind-Value="person.Email" id="em_email" name="em_email" placeholder="john.doe@email.com" autocomplete="off" />
+    </label>
+
+    <input class="btn btn-outline-primary" type="submit" value="Send" />
+</EditForm>
+
+@code {
+
+    Person person = new Person();
+
+    private void ValidFormSubmit()
+    {
+
+    }
+
+    private void InvalidFormSubmit()
+    {
+
+    }
+
+    public class Person
+    {
+        [Required]
+        [StringLength(100)]
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
+
+        [Required]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+    }
+
+}

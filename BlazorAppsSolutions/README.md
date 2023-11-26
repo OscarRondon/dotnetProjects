@@ -21,6 +21,11 @@ https://www.youtube.com/watch?v=4G_BzLxa9Nw&list=PLjrh5YRNPzdQMQSFaxP8XrouoVq4QD
 - (3:27:27) Templated Components - Generic Typed RenderFragment as a Form
 - (3:37:30) When is Rendering Triggered
 - (3:59:45) Lifecycle Events Sequence
+	- SetParameters{Async}
+	- OnInitialized{Async}
+	- OnParametersSet{Async}
+	- ShouldRender
+	- OnAfterRender{Async}
 - (4:11:39) Avoiding Data Initialization Pitfall
 - (4:16:15) Forms and Validations
 - (4:22:00) Dependency Injection
@@ -33,12 +38,7 @@ https://www.youtube.com/watch?v=4G_BzLxa9Nw&list=PLjrh5YRNPzdQMQSFaxP8XrouoVq4QD
 
 BlazorAppSolutions 
 [ 
-	Templated component: 
-		- Generic Typed RenderFragment
-		- Generic Typed RenderFragment as a Form
-
-	Lifecycle:
-		- Rendering Triggered
-		- Events Sequence
-
+	* Avoiding Data Initialization Pitfall
+	* Forms and Validations
+	* Dependency Injection
 ]
