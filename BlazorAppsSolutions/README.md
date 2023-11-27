@@ -29,7 +29,7 @@ https://www.youtube.com/watch?v=4G_BzLxa9Nw&list=PLjrh5YRNPzdQMQSFaxP8XrouoVq4QD
 - (4:11:39) Avoiding Data Initialization Pitfall
 - (4:16:15) Forms and Validations
 - (4:22:00) Dependency Injection
-- (4:49:34) State Management with Flux in C#
+- (4:49:34) State Management with Flux in C# [Architectural pattern bse on observer pattern]
 - (5:34:37) Authentication
 - (6:04:18) Creating a reusable DataGrid Component - Columns Configuration
 - (6:36:27) Creating a reusable DataGrid Component - Paging
@@ -38,7 +38,5 @@ https://www.youtube.com/watch?v=4G_BzLxa9Nw&list=PLjrh5YRNPzdQMQSFaxP8XrouoVq4QD
 
 BlazorAppSolutions 
 [ 
-	* Avoiding Data Initialization Pitfall
-	* Forms and Validations
-	* Dependency Injection
+	* State Management with Flux in C#
 ]

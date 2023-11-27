@@ -1,4 +1,5 @@
 using BlazorServerApp.Data;
+using BlazorServerApp.Stores;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddScoped<BlazorServerApp.Stores.Counter2Store.CounterStore>();
+builder.Services.AddScoped<IActionDispatcher, ActionDispatcher>();
 
 var app = builder.Build();
 

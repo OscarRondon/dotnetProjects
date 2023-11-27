@@ -1,0 +1,38 @@
+﻿@page "/counter2"
+@implements IDisposable
+
+@inject BlazorServerApp.Stores.Counter2Store.CounterStore _counterStore;
+@inject BlazorServerApp.Stores.IActionDispatcher _actionDispatcher;
+
+<PageTitle>Counter 2 Page Component</PageTitle>
+
+<h1>Counter 2 Page Component</h1>
+
+<p role="status">Current count: @_counterStore.GetState().Count</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        _counterStore.AddStateChangeListeners(ForceUpdateView);
+    }
+
+    private void IncrementCount()
+    {
+        _actionDispatcher.Dispatch(new BlazorServerApp.Stores.Counter2Store.IncrementAction());
+    }
+
+    private void ForceUpdateView()
+    {
+        StateHasChanged();
+    }
+
+    void IDisposable.Dispose()
+    {
+        _counterStore.RemoveStateChangeListeners(ForceUpdateView);
+    }
+}

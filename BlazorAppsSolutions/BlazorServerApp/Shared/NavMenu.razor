@@ -1,4 +1,7 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject BlazorServerApp.Stores.Counter2Store.CounterStore _counterStore;
+@implements IDisposable
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">BlazorServerApp</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -17,6 +20,11 @@
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="counter">
                 <span class="oi oi-plus" aria-hidden="true"></span> Counter
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="counter2">
+                <span class="oi oi-plus" aria-hidden="true"></span> Counter 2 [@_counterStore.GetState().Count]
             </NavLink>
         </div>
         <div class="nav-item px-3">
@@ -57,8 +65,24 @@
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        _counterStore.AddStateChangeListeners(ForceUpdateView);
+    }
+
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    private void ForceUpdateView()
+    {
+        StateHasChanged();
+    }
+
+    void IDisposable.Dispose()
+    {
+        _counterStore.RemoveStateChangeListeners(ForceUpdateView);
     }
 }
