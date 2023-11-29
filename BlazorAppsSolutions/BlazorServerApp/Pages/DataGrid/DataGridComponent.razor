@@ -1,0 +1,62 @@
+﻿@typeparam TItem
+
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr>
+            @if (Columns == null || Columns.Count <= 0)
+            {
+                //Create columns with reflection
+            }
+            else
+            {
+                //Create columns base on property "Columns"
+                @foreach (var col in Columns)
+                {
+                    <th> @col.Caption</th>
+                }
+
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in DataItemList)
+        {
+
+            <tr>
+                @foreach (var col in Columns)
+                {
+                    var value = typeof(TItem).GetProperty(col.DataField).GetValue(item);
+                    if (col.DataType != DataTypeEnum.none && !string.IsNullOrEmpty(col.Format))
+                        switch (col.DataType)
+                        {
+                            case DataTypeEnum.Date:
+                            case DataTypeEnum.DateTime:
+                                value = DateTime.Parse(value.ToString()).ToString(col.Format);
+                                break;
+                            case DataTypeEnum.Boolean:
+                                value = bool.Parse(value.ToString()).ToString();
+                                break;
+                            case DataTypeEnum.Currency:
+                                value = double.Parse(value.ToString()).ToString(col.Format);
+                                break;
+                        }
+                    <td align="@col.Aligment.ToString()">
+                        @value
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+
+    [Parameter]
+    public List<TItem> DataItemList { get; set; }
+
+    [Parameter]
+    public List<DataGridColumnDefinition> Columns { get; set; }
+
+}
+
+

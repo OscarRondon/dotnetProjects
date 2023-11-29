@@ -1,0 +1,64 @@
+﻿@page "/datagrid"
+
+<h3>Data Grid Container Page</h3>
+
+<DataGridComponent TItem="Employee" DataItemList="employees" Columns="columnsDefinition"/>
+
+@code {
+
+    private List<Employee> employees;
+    private List<Customer> customers;
+    private List<DataGridColumnDefinition> columnsDefinition;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        employees = new List<Employee>();
+        employees.AddRange(new Employee[3]
+        {
+        new Employee {Id = 1, Name = "Joh Doe", Title = "Developer", Department = "Dev", EmpymentDate = DateTime.Now, Salary = 1500},
+        new Employee {Id = 1, Name = "Jane Doe", Title = "Developer", Department = "Dev", EmpymentDate = DateTime.Now, Salary = 1500},
+        new Employee {Id = 1, Name = "Jeff Thomas", Title = "Developer", Department = "Dev", EmpymentDate = DateTime.Now, Salary = 1500.99},
+                                });
+
+
+        customers = new List<Customer>();
+        customers.AddRange(new Customer[3]
+        {
+        new Customer {Id = 1, CompanyName = "Seidor", ContactName = "John Doe", PhoneNumber = "111 - 111 1111"},
+        new Customer {Id = 1, CompanyName = "InterSystems", ContactName = "Jane Doe", PhoneNumber = "222 - 222 2222"},
+        new Customer {Id = 1, CompanyName = "Tree of Life Software", ContactName = "Jeff Thomas", PhoneNumber = "333 - 333 3333"},
+                            });
+
+        columnsDefinition = new List<DataGridColumnDefinition>()
+        {
+            new DataGridColumnDefinition { DataField = "Name", Caption = "Name"},
+            new DataGridColumnDefinition { DataField = "Title", Caption = "Title"},
+            new DataGridColumnDefinition { DataField = "Department", Caption = "Department"},
+            new DataGridColumnDefinition { DataField = "EmpymentDate", Caption = "Empyment Date", DataType = DataTypeEnum.Date, Format="yyyy-MM-dd"},
+            new DataGridColumnDefinition { DataField = "Salary", Caption = "Salary", Aligment = AligmentEnum.right, DataType = DataTypeEnum.Currency, Format = "c"}
+        };
+
+    }
+
+    public class Employee
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Title { get; set; }
+        public string Department { get; set; }
+        public DateTime EmpymentDate { get; set; }
+        public double Salary { get; set; }
+
+    }
+
+    public class Customer
+    {
+        public int Id { get; set; }
+        public string CompanyName { get; set; }
+        public string ContactName { get; set; }
+        public string PhoneNumber { get; set; }
+    }
+
+}

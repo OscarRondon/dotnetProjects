@@ -38,5 +38,5 @@ https://www.youtube.com/watch?v=4G_BzLxa9Nw&list=PLjrh5YRNPzdQMQSFaxP8XrouoVq4QD
 
 BlazorAppSolutions 
 [ 
-	* Authentication
+	* Creating a reusable DataGrid Component - Columns Configuration
 ]
