@@ -1,4 +1,4 @@
-﻿namespace BlazorServerApp.Models
+﻿namespace BlazorServerApp.Configurations
 {
     public enum DataTypeEnum
     {

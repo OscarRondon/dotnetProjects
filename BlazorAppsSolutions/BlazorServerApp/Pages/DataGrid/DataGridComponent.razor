@@ -1,5 +1,25 @@
 ﻿@typeparam TItem
 
+@inject IJSRuntime JsRuntime
+
+@code {
+
+    // Component parameters
+
+    [Parameter]
+    public List<TItem> DataItemList { get; set; }
+
+    [Parameter]
+    public List<DataGridColumnDefinition> Columns { get; set; }
+
+    [Parameter]
+    public int currentPageNumber { get; set; } = 1;
+
+    [Parameter]
+    public PagingConf Paging { get; set; }
+
+}
+
 <table class="table table-bordered table-sm">
     <thead>
         <tr>
@@ -19,7 +39,8 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in DataItemList)
+        @foreach (var item in DataItemList.Skip(Paging.ItemsToSkip(currentPageNumber)).Take(Paging.ItemsToTake(DataItemList.Count)))
+        @*@foreach (var item in DataItemList)*@
         {
 
             <tr>
@@ -49,14 +70,35 @@
     </tbody>
 </table>
 
+@if (Paging != null && Paging.Enabled)
+{
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" @onclick="PrevPage">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link"  @onclick="NextPage">Next</a></li>
+        </ul>
+    </nav>
+}
+
+
 @code {
 
-    [Parameter]
-    public List<TItem> DataItemList { get; set; }
+    private async void PrevPage()
+    {
+        currentPageNumber = Paging.PrevPageNumber(currentPageNumber);
+        StateHasChanged();
+        await JsRuntime.InvokeVoidAsync("alert", "Warning!");
+    }
 
-    [Parameter]
-    public List<DataGridColumnDefinition> Columns { get; set; }
-
+    private async void NextPage()
+    {
+        await JsRuntime.InvokeVoidAsync("alert", currentPageNumber);
+        currentPageNumber = Paging.NextPageNumber(currentPageNumber, DataItemList.Count);
+        StateHasChanged();
+    }
 }
 
 
