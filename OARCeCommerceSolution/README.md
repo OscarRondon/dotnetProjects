@@ -47,7 +47,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 	// - Microsoft.EntityFrameworkCore.InMemory
 ```
 
-BlazorECommerceSolution
+OARCeCommerceSolution
 [
-	
+	- Add product Model
 ]
