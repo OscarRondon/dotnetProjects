@@ -49,5 +49,8 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	- Add product Model
+	* First component
+	* Imagge does'nt show up fix
+	* CSS Isolation
+	* Update to Boostrap 5.0, add Boostrap Icons 
 ]
