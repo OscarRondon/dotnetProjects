@@ -1,20 +1,22 @@
-# eCommercer solution []
+# eCommercer Blazor solution
 
 This is an eCommerce ASP.NET Blazor Web Assembly app
 
-## Project [62]
+## Project
 -----------------------------------------------------------------------------------------------------------------------------------------
 ```
 	- Project Template: ASP.NET Blazor Web Assembly app -> ASP.Net core hosted
 	- DataBase: MS SQL Server
 ```
 
-### Nuget Packages
+### Nuget Packages Server
 ```
+	- Swashbuckle.AspNetCore
+	- Swashbuckle.AspNetCore.SwaggerUI
 	- Microsoft.EntityFrameworkCore
+	- Microsoft.EntityFrameworkCore.Design
 	- Microsoft.EntityFrameworkCore.SqlServer
-	- Microsoft.EntityFrameworkCore.Tools
-	- Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
 ```
 ### Instructions
 ```
@@ -49,8 +51,11 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	* First component
-	* Imagge does'nt show up fix
-	* CSS Isolation
-	* Update to Boostrap 5.0, add Boostrap Icons 
+	* Add Product Controller (server)
+	* Call the web api for Products (client)
+	* Add SwaggerUI to (server)
+	* Add .en file (server)
+	* Add EF (server)
+	* Add DataContext (server)
+	* Register the DBContext & configure SQLServer
 ]
