@@ -1,41 +1,43 @@
-﻿@inject HttpClient _httpClient
+﻿@inject IProductService _productService;
 
-@if (Products == null)
+@if (_productService.Products == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <ul class="list-unstyled">
-        @foreach (var product in Products)
-        {
-            <li class="media my-3">
-                <div class="media-img-wrapper me-2">
-                    <a href="#">
-                        <img class="media-img" src="@product.ImageUrl" alt="@product.Title" />
-                    </a>
-                </div>
-                <div class="media-body">
-                    <a href="#">
-                        <h4 class="mb-0">@product.Title</h4>
-                    </a>
-                    <p>@product.Description</p>
-                    <h5 class="price">$ @product.Price</h5>
-                </div>
-            </li>
-        }
-    </ul>
+    if (_productService.Products.Count > 0)
+    {
+        <ul class="list-unstyled">
+            @foreach (var product in _productService.Products)
+            {
+                <li class="media my-3">
+                    <div class="media-img-wrapper me-2">
+                        <a href="#">
+                            <img class="media-img" src="@product.ImageUrl" alt="@product.Title" />
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <a href="#">
+                            <h4 class="mb-0">@product.Title</h4>
+                        </a>
+                        <p>@product.Description</p>
+                        <h5 class="price">$ @product.Price</h5>
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p><em>No products listed...</em></p>
+    }
 }
 
 @code {
 
-    private static List<Product> Products;
-
     protected override async Task OnInitializedAsync()
     {
-        //await Task.Delay(5000);
-        var result = await _httpClient.GetFromJsonAsync<List<Product>>("api/product");
-        if (result != null)
-            Products = result;
+        await _productService.GetProducts();
     }
 }

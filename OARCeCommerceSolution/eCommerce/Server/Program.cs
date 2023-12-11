@@ -1,12 +1,15 @@
 global using Microsoft.EntityFrameworkCore;
 global using eCommerce.Shared;
 global using eCommerce.Server.Data;
-using Microsoft.AspNetCore.ResponseCompression;
-using System;
+global using eCommerce.Server.Services;
+using eCommerce.Server.Services.ProductService;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddJsonFile("env.json", optional: true, reloadOnChange: true);
+string envFilePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).FullName, "Server", "env.json");
+
+builder.Configuration.AddJsonFile(envFilePath, optional: false, reloadOnChange: true);
 
 // Add services to the container.
 
@@ -21,6 +24,9 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IProductService, ProductService>();
+
 
 var app = builder.Build();
 

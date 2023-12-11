@@ -25,15 +25,23 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 	- On Program.cs > app.UseAuthentication();
 	- Right click on project > Add > New Scaffolded Item > Identity (choose the options of the presented form)
 	- Add config files
-	- Run in Nuget Manager Console: Add-Migration "Initial Create"
-	- Run in Nuget Manager Console: Update-Database (for data base creation)
+	- Install or update Entity framework command line tools
+		- run in Nuget Manager Console: dotnet ef
+		- run in Nuget Manager Console: dotnet tool uninstall --global dotnet-ef
+		- run in Nuget Manager Console: dotnet tool install --global dotnet-ef
+	- Run in Nuget Manager Console (create migration): 
+		- Place on server directory
+		- run > dotnet ef migrations add "Initial Create"
+		- run > dotnet ef database update
+
 ```
 ### Configuration
 ```
 	- Create a file "env.json" into root forlder, using "env.template.json"
 	- Set the "env.json" properties as:
-		- Build action: Content
+		- Build action: Content 
 		- Copy to Output directory: Copy always
+	- Register the new file to de app configuration in Program.cs
 	- Make sure to exclude "env.json" file form the source control
 ```
 
@@ -51,11 +59,9 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	* Add Product Controller (server)
-	* Call the web api for Products (client)
-	* Add SwaggerUI to (server)
-	* Add .en file (server)
-	* Add EF (server)
-	* Add DataContext (server)
-	* Register the DBContext & configure SQLServer
+	* Add Initial create migration for DB
+	* Get the products form de DB
+	* Add Generic Service Response
+	* Add ProducService to Server
+	* Add ProducService to Client
 ]
