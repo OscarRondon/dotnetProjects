@@ -1,5 +1,6 @@
 ﻿@page "/weather"
 @inject HttpClient Http
+@inject ClientAppSettings _settings
 
 <PageTitle>Weather</PageTitle>
 
@@ -41,9 +42,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        var result = await Http.GetFromJsonAsync<object>("Configs/env.json");
-
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>(_settings.BackendApiURL+"WeatherForecast");
     }
 
     public class WeatherForecast

@@ -20,7 +20,18 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        name: "AllowOrigin",
+        configurePolicy =>
+        {
+            configurePolicy.WithOrigins(GetCORS(builder.Configuration))
+            .AllowAnyHeader().AllowAnyMethod();
+        }
+        );
+});
+// Customs services
 builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
@@ -31,6 +42,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("AllowOrigin");
 
 app.UseHttpsRedirection();
 
@@ -56,4 +69,11 @@ static string GetDbStringConnection(ConfigurationManager Configuration)
     var connectionString = dbConnectioString ?? throw new InvalidOperationException("Connection string not found.");
 
     return connectionString;
+}
+
+static string[] GetCORS(ConfigurationManager Configuration)
+{
+    // Get values from .env file
+    string[] cors = Configuration.GetSection("CORS:AllowOrigin").Get<string[]>().Length > 0 ? Configuration.GetSection("CORS:AllowOrigin").Get<string[]>() : ["*"];
+    return cors;
 }

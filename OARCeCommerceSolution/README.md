@@ -52,11 +52,13 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 ### Configuration
 ```
-	- Create a file "env.json" into wwwroot folder, using "env.template.json"
-	- Set the "env.json" properties as:
-		- Build action: Content 
-		- Copy to Output directory: Copy always
-	- Make sure to exclude "env.json" file form the source control
+	- Create a file "appsettings.json" into wwwroot folder
+	- Create a Folder into de Project "Settings"
+	- Create class for settings "ClientAppSettings"
+	- Add the following into Program.cs
+		var settings = new ClientAppSettings();
+		builder.Configuration.Bind(settings);
+		builder.Services.AddSingleton(settings);
 ```
 
 ## Testing [14]
@@ -72,6 +74,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	* Split solution in 3 projects
-	* begin construction of setting file reading
+	* Add Settings File (client)
+	* Add CORS (server)
+	* Update weather page to consume server weather service
 ]

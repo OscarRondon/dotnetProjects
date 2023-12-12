@@ -15,10 +15,4 @@
     <ProjectReference Include="..\eCommerceShared\eCommerceShared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="wwwroot\Configs\env.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>
