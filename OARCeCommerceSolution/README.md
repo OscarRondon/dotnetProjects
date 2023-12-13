@@ -74,7 +74,6 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	* Add Settings File (client)
-	* Add CORS (server)
-	* Update weather page to consume server weather service
+	* Add ProductList component
+	
 ]
