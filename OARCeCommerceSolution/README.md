@@ -74,6 +74,6 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	
+	* Add Product Details
 	
 ]

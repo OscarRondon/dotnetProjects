@@ -14,11 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerceShared", "eCommerceShared\eCommerceShared.csproj", "{063F07EF-B996-47FB-859B-39308C19F21F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerceShared", "eCommerceShared\eCommerceShared.csproj", "{063F07EF-B996-47FB-859B-39308C19F21F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerceServer", "eCommerceServer\eCommerceServer.csproj", "{D0CDFC2B-FF0B-45EC-B3DC-660881B47D87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerceServer", "eCommerceServer\eCommerceServer.csproj", "{D0CDFC2B-FF0B-45EC-B3DC-660881B47D87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerceClient", "eCommerceClient\eCommerceClient.csproj", "{0672D3B4-10C0-4823-BCD0-AABD41BBAE0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerceClient", "eCommerceClient\eCommerceClient.csproj", "{0672D3B4-10C0-4823-BCD0-AABD41BBAE0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
