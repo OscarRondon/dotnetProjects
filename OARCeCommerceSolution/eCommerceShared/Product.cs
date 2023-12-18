@@ -16,5 +16,9 @@ namespace eCommerceShared
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; } = 0;
+
+        public int CategoryId { get; set; }
+        [ForeignKey("CategoryId")]
+        public Category? Category { get; set; }
     }
 }

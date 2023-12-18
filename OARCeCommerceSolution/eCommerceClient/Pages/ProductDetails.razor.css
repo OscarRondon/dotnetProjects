@@ -10,15 +10,6 @@
     transform: scale(1.1);
 }
 
-.media {
-    display: flex;
-    align-items: flex-start;
-}
-
-.media-body {
-    flex: 1
-}
-
 .media-img-wrapper {
     max-width: 500px;
     max-height: 500px;

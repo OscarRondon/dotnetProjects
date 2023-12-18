@@ -5,7 +5,7 @@
 
 @if (product == null)
 {
-    <p><em>Loading.Product Detail..</em></p>
+    <p><em>@Message</em></p>
 }
 else
 {
@@ -24,12 +24,18 @@ else
 
 @code {
     private Product? product = null;
+    string Message = String.Empty;
 
     [Parameter]
     public int Id { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {
-        product = productService.Products.Find(p => p.Id == Id);
+        Message = "Loading.Product Detail..";
+        var result = await productService.GetProduct(Id);
+        if (result.Data != null)
+            product = result.Data;
+        else
+            Message = result.Message;
     }
 }

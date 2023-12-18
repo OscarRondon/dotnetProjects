@@ -104,6 +104,15 @@ code {
     color: #c02d76;
 }
 
+.media {
+    display: flex;
+    align-items: flex-start;
+}
+
+.media-body {
+    flex: 1
+}
+
 .price {
     color: forestgreen;
 }

@@ -16,6 +16,13 @@ namespace eCommerceClient.Services.ProductService
         }
 
         public List<Product> Products { get; set; } = new List<Product>();
+
+        public async Task<ServiceResponse<Product>> GetProduct(int Id)
+        {
+            var result = await _httpClient.GetFromJsonAsync<ServiceResponse<Product>>(_settings.BackendApiURL + "product/" + Id.ToString());
+            return result;
+        }
+
         public async Task GetProducts()
         {
             var result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>(_settings.BackendApiURL+"product");
