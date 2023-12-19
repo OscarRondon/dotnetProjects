@@ -74,8 +74,8 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	* 	Get sigle product (server)
-	* 	Get sigle product (client)
-	*	CSS Fix
-	*	Add Category (Shared Library)
+	* 	Add Category Seeding & Migration
+	*	Seeding more products
+	*	Get all Categories with a new service & controller
+
 ]

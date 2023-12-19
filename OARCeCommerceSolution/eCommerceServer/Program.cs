@@ -2,6 +2,7 @@ global using Microsoft.EntityFrameworkCore;
 global using eCommerceShared;
 global using eCommerceServer.Data;
 global using eCommerceServer.Services.ProductService;
+global using eCommerceServer.Services.CategoryService;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +34,7 @@ builder.Services.AddCors(options =>
 });
 // Customs services
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 
