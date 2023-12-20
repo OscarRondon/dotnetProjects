@@ -74,8 +74,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	* 	Add Category Seeding & Migration
-	*	Seeding more products
-	*	Get all Categories with a new service & controller
-
+	*	Add CategoryService (client)
+	*	Add Categories in the NavMenu (client)
+	*	Get product by Category (server)
 ]

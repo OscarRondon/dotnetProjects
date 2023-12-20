@@ -16,7 +16,7 @@ namespace eCommerceServer.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ServiceResponse<IEnumerable<Product>>>> GetProducts()
+        public async Task<ActionResult<ServiceResponse<IEnumerable<Product>>>> GetProductsAsync()
         {
             var result = await _productService.GetProductsAsync();
             return Ok(result);
@@ -24,9 +24,17 @@ namespace eCommerceServer.Controllers
 
         [HttpGet]
         [Route("{Id:int}")]
-        public async Task<ActionResult<ServiceResponse<Product>>> GetProduct(int Id)
+        public async Task<ActionResult<ServiceResponse<Product>>> GetProductAsync(int Id)
         {
             var result = await _productService.GetProductAsync(Id);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("category/{categoryUrl}")]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<Product>>>> GetProductsByCategoryAsync(string categoryUrl)
+        {
+            var result = await _productService.GetProductsByCategoryAsync(categoryUrl);
             return Ok(result);
         }
     }

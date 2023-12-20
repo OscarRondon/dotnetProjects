@@ -1,6 +1,7 @@
 global using eCommerceShared;
 global using eCommerceClient.Settings;
 global using eCommerceClient.Services.ProductService;
+global using eCommerceClient.Services.CategoryService;
 using eCommerceClient;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -17,5 +18,6 @@ builder.Configuration.Bind(settings);
 builder.Services.AddSingleton(settings);
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 await builder.Build().RunAsync();

@@ -32,7 +32,7 @@ else
     protected override async Task OnParametersSetAsync()
     {
         Message = "Loading.Product Detail..";
-        var result = await productService.GetProduct(Id);
+        var result = await productService.GetProductAsync(Id);
         if (result.Data != null)
             product = result.Data;
         else
