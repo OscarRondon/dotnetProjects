@@ -74,7 +74,5 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Add CategoryService (client)
-	*	Add Categories in the NavMenu (client)
-	*	Get product by Category (server)
+	*	
 ]
