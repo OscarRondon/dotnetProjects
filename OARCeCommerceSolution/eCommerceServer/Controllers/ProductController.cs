@@ -31,7 +31,7 @@ namespace eCommerceServer.Controllers
         }
 
         [HttpGet]
-        [Route("category/{categoryUrl}")]
+        [Route("Category/{categoryUrl}")]
         public async Task<ActionResult<ServiceResponse<IEnumerable<Product>>>> GetProductsByCategoryAsync(string categoryUrl)
         {
             var result = await _productService.GetProductsByCategoryAsync(categoryUrl);

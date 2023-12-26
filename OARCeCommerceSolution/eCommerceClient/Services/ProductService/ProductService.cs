@@ -15,19 +15,27 @@ namespace eCommerceClient.Services.ProductService
             _settings = settings;
         }
 
+
         public List<Product> Products { get; set; } = new List<Product>();
+
+        public event Action ProductChanged;
 
         public async Task<ServiceResponse<Product>> GetProductAsync(int Id)
         {
-            var result = await _httpClient.GetFromJsonAsync<ServiceResponse<Product>>(_settings.BackendApiURL + "product/" + Id.ToString());
+            var result = await _httpClient.GetFromJsonAsync<ServiceResponse<Product>>(_settings.BackendApiURL + "Product/" + Id.ToString());
             return result;
         }
 
-        public async Task GetProductsAsync()
+        public async Task GetProductsAsync(string categoryUrl)
         {
-            var result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>(_settings.BackendApiURL+"product");
+            var result = categoryUrl == null ?
+                await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>(_settings.BackendApiURL + "Product") :
+                await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>(_settings.BackendApiURL + "Product/Category/" + categoryUrl);
+
             if (result != null && result.Data != null)
                 Products = result.Data;
+
+            ProductChanged.Invoke();
         }
     }
 }

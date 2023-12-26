@@ -24,7 +24,22 @@
             {
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="@category.Url">
-                        <span class="bi bi-plus-square-dotted h4" aria-hidden="true"></span>@category.Name
+                        @switch (category.Url)
+                        {
+                            case "books":
+                                <span class="bi bi-book-half h4" aria-hidden="true"></span>
+                                break;
+                            case "movies":
+                                <span class="bi bi-film h4" aria-hidden="true"></span>
+                                break;
+                            case "video-games":
+                                <span class="bi bi-controller h4" aria-hidden="true"></span>
+                                break;
+                            default:
+                                <span class="bi bi-slash-square h4" aria-hidden="true"></span>
+                                break;
+                        }
+                        @category.Name
                     </NavLink>
                 </div>
             }
