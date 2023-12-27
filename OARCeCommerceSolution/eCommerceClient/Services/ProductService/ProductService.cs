@@ -17,6 +17,7 @@ namespace eCommerceClient.Services.ProductService
 
 
         public List<Product> Products { get; set; } = new List<Product>();
+        public string Message { get; set; } = "Loading products...";
 
         public event Action ProductChanged;
 
@@ -26,10 +27,10 @@ namespace eCommerceClient.Services.ProductService
             return result;
         }
 
-        public async Task GetProductsAsync(string categoryUrl)
+        public async Task GetProductsAsync(string? categoryUrl = null)
         {
             var result = categoryUrl == null ?
-                await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>(_settings.BackendApiURL + "Product") :
+                await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>(_settings.BackendApiURL + "Product/Featured") :
                 await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>(_settings.BackendApiURL + "Product/Category/" + categoryUrl);
 
             if (result != null && result.Data != null)
@@ -37,5 +38,23 @@ namespace eCommerceClient.Services.ProductService
 
             ProductChanged.Invoke();
         }
+
+        public async Task SearchProductsAsync(string searchText)
+        {
+            var result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>(_settings.BackendApiURL + "Product/Search/" + searchText);
+            if(result != null && result.Data != null) 
+                Products = result.Data;
+            if (Products.Count == 0)
+                Message = "No products found.";
+            ProductChanged?.Invoke();
+        }
+
+        public async Task<List<string>> GetProductSearchSuggestionsAsync(string searchText)
+        {
+            var result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<string>>>(_settings.BackendApiURL + "Product/SearchSuggestions/" + searchText);
+            return result.Data;
+        }
+
+        
     }
 }

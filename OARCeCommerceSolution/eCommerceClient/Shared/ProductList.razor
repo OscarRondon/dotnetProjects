@@ -3,7 +3,7 @@
 
 @if (_productService.Products == null)
 {
-    <p><em>Loading...</em></p>
+    <p><em>@_productService.Message</em></p>
 }
 else
 {
@@ -31,7 +31,7 @@ else
     }
     else
     {
-        <p><em>No products listed...</em></p>
+        <p><em>No products find</em></p>
     }
 }
 

@@ -37,5 +37,29 @@ namespace eCommerceServer.Controllers
             var result = await _productService.GetProductsByCategoryAsync(categoryUrl);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("Search/{searchText}")]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<Product>>>> SearchProductsAsync(string searchText)
+        {
+            var result = await _productService.SearchProductsAsync(searchText);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("SearchSuggestions/{searchText}")]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<Product>>>> GetProdctsSearchSuggestionsAsync(string searchText)
+        {
+            var result = await _productService.GetProdctsSearchSuggestionsAsync(searchText);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("Featured")]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<Product>>>> GetFeaturedProductsAsync()
+        {
+            var result = await _productService.GetFeaturedProductsAsync();
+            return Ok(result);
+        }
     }
 }

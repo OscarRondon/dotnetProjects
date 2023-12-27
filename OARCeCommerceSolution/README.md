@@ -74,11 +74,15 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Get product by category (client)
-	*	Introducing products variants (shared)
-	*	Add a Composite primary key and more seeding
-	*	Add product variants migration
-	*	Include Product Variants & Tupes in the product service (server)
-	*	Display the Price in the product list component (client)
-	*	Display the Price in the product details component (client)
+	*	Add Select box for product variants
+	*	Add Search Product (server)
+	*	Add product search suggestions (server)
+	*	Add search method (client)
+	*	Implement search via URL in index.razor component (client)
+	*	Add Search Component
+	*	Use custom layout
+	*	Add Home Button
+	*	Addinf Featured property to products
+	*	Load Featured Products
+	*	Add component for Featured Products
 ]
