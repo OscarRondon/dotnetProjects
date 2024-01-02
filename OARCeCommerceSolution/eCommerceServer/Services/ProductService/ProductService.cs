@@ -48,10 +48,25 @@ namespace eCommerceServer.Services.ProductService
             return response;
         }
 
-        public async Task<ServiceResponse<List<Product>>> SearchProductsAsync(string searchText)
+        public async Task<ServiceResponse<ProductSearchResult>> SearchProductsAsync(string searchText, int page)
         {
+
+            var pageResults = 2f;
             List<Product> products = await FindProductBySearchString(searchText);
-            var response = new ServiceResponse<List<Product>>() { Data = products };
+            var pageCount = Math.Ceiling(products.Count / pageResults);
+
+            products = await FindProductBySearchString(searchText, (page - 1) * (int)pageResults, (int)pageResults);
+
+            var response = new ServiceResponse<ProductSearchResult>()
+            {
+                Data = new ProductSearchResult
+                {
+                    CurrentPage = page,
+                    Pages = (int)pageCount,
+                    Products = products
+                }
+            };
+
             return response;
         }
 
@@ -65,7 +80,7 @@ namespace eCommerceServer.Services.ProductService
                 if (product.Title.Contains(searchText, StringComparison.OrdinalIgnoreCase))
                     result.Add(product.Title);
 
-                if(!string.IsNullOrEmpty(product.Description))
+                if (!string.IsNullOrEmpty(product.Description))
                 {
                     var punctuation = product.Description.Where(char.IsPunctuation)
                         .Distinct().ToArray();
@@ -84,11 +99,13 @@ namespace eCommerceServer.Services.ProductService
             return response;
         }
 
-        private async Task<List<Product>> FindProductBySearchString(string searchText)
+        private async Task<List<Product>> FindProductBySearchString(string searchText, int skip = 0, int take = 10)
         {
             return await _context.Products.Where(p => p.Title.ToLower().Contains(searchText.ToLower()) || p.Description.ToLower().Contains(searchText.ToLower()))
                 .Include(pv => pv.Variants)
                 .ThenInclude(pt => pt.ProductType)
+                .Skip(skip)
+                .Take(take)
                 .ToListAsync();
         }
 

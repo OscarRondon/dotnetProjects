@@ -74,15 +74,8 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Add Select box for product variants
-	*	Add Search Product (server)
-	*	Add product search suggestions (server)
-	*	Add search method (client)
-	*	Implement search via URL in index.razor component (client)
-	*	Add Search Component
-	*	Use custom layout
-	*	Add Home Button
-	*	Addinf Featured property to products
-	*	Load Featured Products
-	*	Add component for Featured Products
+	*	Introducing pagination & data transfer objetcs [DTO's]
+	*	Implement product search pagination (server)
+	*	Implement product search pagination (client)
+	*	Add Pagination to the components
 ]

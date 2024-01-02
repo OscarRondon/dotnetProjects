@@ -19,6 +19,10 @@ namespace eCommerceClient.Services.ProductService
         public List<Product> Products { get; set; } = new List<Product>();
         public string Message { get; set; } = "Loading products...";
 
+        public int CurrentPage { get; set; } = 1;
+        public int PageCount { get; set; } = 0;
+        public string LastSearchText {  get; set; } = string.Empty;
+
         public event Action ProductChanged;
 
         public async Task<ServiceResponse<Product>> GetProductAsync(int Id)
@@ -36,14 +40,25 @@ namespace eCommerceClient.Services.ProductService
             if (result != null && result.Data != null)
                 Products = result.Data;
 
+            CurrentPage = 1;
+            PageCount = 0;
+
+            if (Products.Count == 0)
+                Message = "No products found.";
+
             ProductChanged.Invoke();
         }
 
-        public async Task SearchProductsAsync(string searchText)
+        public async Task SearchProductsAsync(string searchText, int page)
         {
-            var result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>(_settings.BackendApiURL + "Product/Search/" + searchText);
-            if(result != null && result.Data != null) 
-                Products = result.Data;
+            LastSearchText = searchText;
+            var result = await _httpClient.GetFromJsonAsync<ServiceResponse<ProductSearchResult>>(_settings.BackendApiURL + $"Product/Search/{searchText}/{page}");
+            if(result != null && result.Data != null)
+            {
+                Products = result.Data.Products;
+                CurrentPage = result.Data.CurrentPage;
+                PageCount = result.Data.Pages;
+            }
             if (Products.Count == 0)
                 Message = "No products found.";
             ProductChanged?.Invoke();
