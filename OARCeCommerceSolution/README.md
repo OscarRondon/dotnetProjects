@@ -60,6 +60,10 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 		builder.Configuration.Bind(settings);
 		builder.Services.AddSingleton(settings);
 ```
+### Nuget Packages
+```
+	- Blazored.LocalStorage
+```
 
 ## Testing [14]
 
@@ -74,8 +78,11 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Introducing pagination & data transfer objetcs [DTO's]
-	*	Implement product search pagination (server)
-	*	Implement product search pagination (client)
-	*	Add Pagination to the components
+	*	Introducing the cart with the Local Storage (client)
+	*	Create the Cart counter (client)
+	*	Add CartItem class (shared)
+	*	Add CartService (client)
+	*	Implement "Add to  Cart" functionality
+	*	Show number of cart items
+	*	Turn cart items into products (server)
 ]

@@ -3,6 +3,7 @@ global using eCommerceShared;
 global using eCommerceServer.Data;
 global using eCommerceServer.Services.ProductService;
 global using eCommerceServer.Services.CategoryService;
+global using eCommerceServer.Services.CartService;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +36,7 @@ builder.Services.AddCors(options =>
 // Customs services
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICartService, CartService>();
 
 var app = builder.Build();
 

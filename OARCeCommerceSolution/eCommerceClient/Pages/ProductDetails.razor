@@ -1,5 +1,6 @@
 ﻿@page "/product/{id:int}"
-@inject IProductService productService
+@inject IProductService _productService
+@inject ICartService _cartService
 
 <h3>ProductDetails</h3>
 
@@ -36,7 +37,9 @@ else
                 }
                 <h4 class="price">$ @GetSelectedVariant().Price</h4>
             }
-
+            <button class="btn btn-primary" @onclick="AddToCart">
+                <i class="bi bi-cart me-2"></i> Add to Cart
+            </button>
         </div>
     </div>
 }
@@ -52,7 +55,7 @@ else
     protected override async Task OnParametersSetAsync()
     {
         Message = "Loading.Product Detail..";
-        var result = await productService.GetProductAsync(Id);
+        var result = await _productService.GetProductAsync(Id);
         if (result.Data != null)
         {
 
@@ -70,5 +73,17 @@ else
     {
         var variant = product.Variants.FirstOrDefault(v => v.ProductTypeId == currentTypeId);
         return variant;
+    }
+
+    private async Task AddToCart()
+    {
+        var productVariant = GetSelectedVariant();
+        var cartItem = new CartItem
+        {
+            ProductId = productVariant.ProductId,
+            ProductTypeId = productVariant.ProductTypeId
+        };
+
+        await _cartService.AddToCartAsync(cartItem);
     }
 }
