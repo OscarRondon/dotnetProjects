@@ -6,5 +6,6 @@
         public Task AddToCartAsync(CartItem carItem);
         public Task<List<CartItem>> GetCartItemsAsync();
         public Task RemoveFromCartAsync(CartItem carItem);
+        public Task<List<CartProductReponse>> GetCartProductsAsync();
     }
 }

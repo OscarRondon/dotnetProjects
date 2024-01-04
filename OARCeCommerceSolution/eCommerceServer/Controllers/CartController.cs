@@ -14,7 +14,7 @@ namespace eCommerceServer.Controllers
             _cartService = cartService;
         }
 
-        [HttpPost("products")]
+        [HttpPost("Products")]
         public async Task<ActionResult<ServiceResponse<List<CartProductReponse>>>> GetCartProductsAsync(List<CartItem> cartItems)
         {
             var result = await _cartService.GetCartProductsAsync(cartItems);

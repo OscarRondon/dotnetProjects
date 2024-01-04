@@ -78,11 +78,5 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Introducing the cart with the Local Storage (client)
-	*	Create the Cart counter (client)
-	*	Add CartItem class (shared)
-	*	Add CartService (client)
-	*	Implement "Add to  Cart" functionality
-	*	Show number of cart items
-	*	Turn cart items into products (server)
+	*	Get Cart products (client)
 ]
