@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eCommerceShared
 {
-    public class CartProductReponse
+    public class CartProductResponse
     {
         public int ProductId { get; set; }
         public string Tittle { get; set; } = string.Empty;
@@ -14,5 +14,6 @@ namespace eCommerceShared
         public string ProductType { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
         public decimal Price { get; set; } = 0m;
+        public int Quantity { get; set; }
     }
 }

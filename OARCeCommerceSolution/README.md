@@ -78,5 +78,10 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Get Cart products (client)
+	*	Implement the cart page (client)
+	*	Remove an item from the cart (client)
+	*	Add the Quantity to Cart Model (shared)
+	*	Modify CartService (client)
+	*	Add option to update the Quantity (client)
+	*	Add imput field to Update the Quantity
 ]

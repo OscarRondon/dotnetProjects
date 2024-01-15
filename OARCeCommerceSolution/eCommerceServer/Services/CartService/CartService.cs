@@ -10,11 +10,11 @@ namespace eCommerceServer.Services.CartService
             _context = context;
         }
 
-        public async Task<ServiceResponse<List<CartProductReponse>>> GetCartProductsAsync(List<CartItem> cartItems)
+        public async Task<ServiceResponse<List<CartProductResponse>>> GetCartProductsAsync(List<CartItem> cartItems)
         {
-            var result = new ServiceResponse<List<CartProductReponse>>
+            var result = new ServiceResponse<List<CartProductResponse>>
             {
-                Data = new List<CartProductReponse>()
+                Data = new List<CartProductResponse>()
             };
 
             foreach (var item in cartItems) 
@@ -30,7 +30,7 @@ namespace eCommerceServer.Services.CartService
                 if (productVariant == null)
                     continue;
 
-                var cartProductResponse = new CartProductReponse
+                var cartProductResponse = new CartProductResponse
                 {
                     ProductId = product.Id,
                     Tittle = product.Title,
@@ -38,6 +38,7 @@ namespace eCommerceServer.Services.CartService
                     Price = productVariant.Price,
                     ProductTypeId = productVariant.ProductTypeId,
                     ProductType = productVariant.ProductType.Name,
+                    Quantity = item.Quantity,
                     
                 };
 

@@ -11,7 +11,7 @@ namespace eCommerceClient.Services.CartService
         private readonly HttpClient _httpClient;
         private readonly ClientAppSettings _settings;
 
-        public CartService(ILocalStorageService localStorage, HttpClient httpClient, ClientAppSettings settings) 
+        public CartService(ILocalStorageService localStorage, HttpClient httpClient, ClientAppSettings settings)
         {
             _localStorage = localStorage;
             _httpClient = httpClient;
@@ -27,7 +27,15 @@ namespace eCommerceClient.Services.CartService
             {
                 cart = new List<CartItem>();
             }
-            cart.Add(carItem);
+            var sameItem = cart.Find(item => item.ProductId == carItem.ProductId && item.ProductTypeId == carItem.ProductTypeId);
+            if (sameItem == null)
+            {
+                cart.Add(carItem);
+            }
+            else
+            {
+                sameItem.Quantity += carItem.Quantity;
+            }
             await _localStorage.SetItemAsync("cart", cart);
             OnChange?.Invoke();
         }
@@ -42,17 +50,37 @@ namespace eCommerceClient.Services.CartService
             return cart;
         }
 
-        public async Task<List<CartProductReponse>> GetCartProductsAsync()
+        public async Task<List<CartProductResponse>> GetCartProductsAsync()
         {
             var carItems = await _localStorage.GetItemAsync<List<CartItem>>("cart");
             var response = await _httpClient.PostAsJsonAsync(_settings.BackendApiURL + "Cart/Products", carItems);
-            var carProducts = await response.Content.ReadFromJsonAsync<List<CartProductReponse>>();
-            return carProducts;
+            var carProducts = await response.Content.ReadFromJsonAsync<ServiceResponse<List<CartProductResponse>>>();
+            return carProducts.Data;
         }
 
-        public Task RemoveFromCartAsync(CartItem carItem)
+        public async Task RemoveFromCartAsync(int productId, int productTypeId)
         {
-            throw new NotImplementedException();
+            var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
+            if (cart == null) return;
+            var cartItem = cart.Where(item => item.ProductId == productId && item.ProductTypeId == productTypeId).FirstOrDefault();
+            if (cartItem != null)
+            {
+                cart.Remove(cartItem);
+                await _localStorage.SetItemAsync("cart", cart);
+            }
+            OnChange?.Invoke();
+        }
+
+        public async Task UpdateQuantityAsync(CartProductResponse product)
+        {
+            var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
+            if (cart == null) return;
+            var cartItem = cart.Find(item => item.ProductId == product.ProductId && item.ProductTypeId == product.ProductTypeId);
+            if (cartItem != null)
+            {
+                cartItem.Quantity = product.Quantity;
+                await _localStorage.SetItemAsync("cart", cart);
+            }
         }
     }
 }
