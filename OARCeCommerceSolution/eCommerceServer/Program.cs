@@ -4,6 +4,7 @@ global using eCommerceServer.Data;
 global using eCommerceServer.Services.ProductService;
 global using eCommerceServer.Services.CategoryService;
 global using eCommerceServer.Services.CartService;
+global using eCommerceServer.Services.AuthService;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,6 +38,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+
 
 var app = builder.Build();
 

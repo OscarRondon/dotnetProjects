@@ -35,9 +35,6 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 ### Instructions
 ```
 	- On Program.cs > builder.Services.AddDbContext (server)
-	- On Program.cs > builder.Services.AddIdentity<IdentityUser,  IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
-	- On Program.cs > app.UseAuthentication();
-	- Right click on project > Add > New Scaffolded Item > Identity (choose the options of the presented form)
 	- Install or update Entity framework command line tools
 		- run in Nuget Manager Console: dotnet ef
 		- run in Nuget Manager Console: dotnet tool uninstall --global dotnet-ef
@@ -78,10 +75,13 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Implement the cart page (client)
-	*	Remove an item from the cart (client)
-	*	Add the Quantity to Cart Model (shared)
-	*	Modify CartService (client)
-	*	Add option to update the Quantity (client)
-	*	Add imput field to Update the Quantity
+	*	Add the UserRegister model (shared)
+	*	Create the user Registration Page [Edit form no validations] (client)
+	*	Add User Registration Page (client)
+	*	Add User menu button
+	*	Add Data Annotations for validations
+	*	Add Validations to the registration form
+	*	Add a User model for the DB
+	*	Add an Authentication Service on the server
+	*	Check if user already exist
 ]
