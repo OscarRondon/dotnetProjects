@@ -75,13 +75,9 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Add the UserRegister model (shared)
-	*	Create the user Registration Page [Edit form no validations] (client)
-	*	Add User Registration Page (client)
-	*	Add User menu button
-	*	Add Data Annotations for validations
-	*	Add Validations to the registration form
-	*	Add a User model for the DB
-	*	Add an Authentication Service on the server
-	*	Check if user already exist
+	*	Implement user registration (server)
+	*	Add AuthController (server)
+	*	Add AuthService (client)
+	*	Implement the registration (client)
+	*	Call reistration service from registration page (client)
 ]

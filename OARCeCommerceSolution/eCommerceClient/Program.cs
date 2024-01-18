@@ -3,6 +3,7 @@ global using eCommerceClient.Settings;
 global using eCommerceClient.Services.ProductService;
 global using eCommerceClient.Services.CategoryService;
 global using eCommerceClient.Services.CartService;
+global using eCommerceClient.Services.AuthService;
 using eCommerceClient;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -23,5 +24,6 @@ builder.Services.AddSingleton(settings);
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 await builder.Build().RunAsync();
