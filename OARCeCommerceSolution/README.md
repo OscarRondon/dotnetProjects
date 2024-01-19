@@ -60,6 +60,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 ### Nuget Packages
 ```
 	- Blazored.LocalStorage
+	- Microsoft.AspNetCore.Components.Authorization
 ```
 
 ## Testing [14]
@@ -75,9 +76,19 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Implement user registration (server)
-	*	Add AuthController (server)
-	*	Add AuthService (client)
-	*	Implement the registration (client)
-	*	Call reistration service from registration page (client)
+	*	Display a Success Message after registration
+	*	Add User login Model (shared)
+	*	Add the Login Page (client)
+	*	Prepare the Login (server)
+	*	Verify User & Password (server)
+	*	Create the JSON Web Token
+	*	Implement Login (client)
+	*	Implement a Custom Authentication state provider
+	*	Expose the Authentication State
 ]
+
+
+## Todos
+
+- Jwt Refresh token for session expiration control and security
+- Role base authorization

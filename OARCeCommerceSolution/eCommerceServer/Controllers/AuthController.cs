@@ -29,5 +29,18 @@ namespace eCommerceServer.Controllers
 
             return Created("", response);
         }
+
+        [HttpPost("Login")]
+        public async Task<ActionResult<ServiceResponse<string>>> LoginAsync(UserLogin request)
+        {
+            var response = await _authService.LoginAsync(request.Email, request.Password);
+
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+
+            return Ok(response);
+        }
     }
 }

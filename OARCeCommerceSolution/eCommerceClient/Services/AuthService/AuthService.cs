@@ -19,5 +19,11 @@ namespace eCommerceClient.Services.AuthService
             var result = await _httpClient.PostAsJsonAsync(_settings.BackendApiURL + "Auth/Register", request);
             return await result.Content.ReadFromJsonAsync<ServiceResponse<int>>();
         }
+
+        public async Task<ServiceResponse<string>> LoginAsync(UserLogin request)
+        {
+            var result = await _httpClient.PostAsJsonAsync(_settings.BackendApiURL + "Auth/Login", request);
+            return await result.Content.ReadFromJsonAsync<ServiceResponse<string>>();
+        }
     }
 }

@@ -29,23 +29,31 @@
         </label>
     </div>
     <button type="submit" class="btn btn-primary">Register</button>
-    <div class="text-danger">
-     <span>@errorMessage</span>
+    <div class="@messageCssClass">
+        <span>@message</span>
     </div>
 </EditForm>
 
 @code {
     UserRegister user = new UserRegister();
 
-    string errorMessage = string.Empty;
+    string message = string.Empty;
+    string messageCssClass = string.Empty;
 
     private async Task HandleReistration()
     {
         //Console.WriteLine($"Register user with the email: {user.Email}");
         var result = await _authService.RegisterAsync(user);
+        message = result.Message;
+
         if (!result.Success)
-            errorMessage = result.Message;
+        {
+
+            messageCssClass = "text-danger";
+        }
         else
-            errorMessage = string.Empty;
+        {
+            messageCssClass = "text-success";
+        }
     }
 }

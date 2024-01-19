@@ -1,4 +1,7 @@
 ﻿
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Security.Cryptography;
 
 namespace eCommerceServer.Services.AuthService
@@ -6,11 +9,14 @@ namespace eCommerceServer.Services.AuthService
     public class AuthService : IAuthService
     {
         private readonly DataContext _context;
+        private readonly IConfiguration _configuration;
 
-        public AuthService(DataContext context) 
+        public AuthService(DataContext context, IConfiguration configuration) 
         {
             _context = context;
+            _configuration = configuration;
         }
+
         public async Task<ServiceResponse<int>> RegisterAsync(User user, string password)
         {
             if(await UserExistAsync(user.Email))
@@ -31,7 +37,7 @@ namespace eCommerceServer.Services.AuthService
             return new ServiceResponse<int>
             {
                 Success = true,
-                Message = "User created",
+                Message = "Registration succesfully",
                 Data = user.Id
             };
         }
@@ -43,6 +49,36 @@ namespace eCommerceServer.Services.AuthService
             return false;
         }
 
+        public async Task<ServiceResponse<string>> LoginAsync(string email, string password)
+        {
+            var response = new ServiceResponse<string>();
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email.ToLower() == email.ToLower());
+
+            if (user == null)
+            {
+                response.Success = false;
+                response.Message = "User not found";
+            }
+            else 
+            { 
+                if(!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt)) 
+                {
+                    response.Success = false;
+                    response.Message = "Incorrect password";
+                }
+                else 
+                {
+                    response.Success = true;
+                    response.Message = "Login Successfull";
+                    response.Data = CreateToken(user);
+
+                }
+            }
+
+            return response;
+        }
+
         private void CreatePasswordHash(string password, out byte[] passwprdHash, out byte[] passwordSalt)
         {
             using (var hmac = new HMACSHA512())
@@ -50,6 +86,45 @@ namespace eCommerceServer.Services.AuthService
                 passwordSalt = hmac.Key;
                 passwprdHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
+        }
+
+        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+        {
+            using (var hmac = new HMACSHA512(passwordSalt))
+            {
+                var computeHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                return computeHash.SequenceEqual(passwordHash);
+            }
+        }
+
+        private string CreateToken(User user) 
+        {
+            List<Claim> claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Email)
+            };
+
+            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(GetToken()));
+
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var token = new JwtSecurityToken(
+                claims: claims,
+                expires: DateTime.UtcNow.AddMinutes(1440),
+                signingCredentials: credentials
+                );
+
+            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+
+            return jwt;
+        }
+
+        private string GetToken()
+        {
+            // Get values from .env file
+            string token = _configuration.GetSection("Token").Value;
+            return token;
         }
     }
 }
