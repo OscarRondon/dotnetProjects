@@ -59,8 +59,9 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 ```
 ### Nuget Packages
 ```
-	- Blazored.LocalStorage
+	- Blazored.LocalStorage (Package to work with local storage)
 	- Microsoft.AspNetCore.Components.Authorization
+	- Microsoft.AspNetCore.WebUtilities
 ```
 
 ## Testing [14]
@@ -76,7 +77,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	
+	*	Add a return Url to the login
 ]
 
 
