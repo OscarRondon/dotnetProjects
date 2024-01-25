@@ -77,7 +77,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Add a return Url to the login
+	*
 ]
 
 
