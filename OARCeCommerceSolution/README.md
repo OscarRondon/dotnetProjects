@@ -77,7 +77,9 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*
+	*	Create Logout routine
+	*	Create a User Profile
+	*	Use the [Authorize] attribute (client)
 ]
 
 
