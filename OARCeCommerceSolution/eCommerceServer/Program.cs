@@ -5,6 +5,9 @@ global using eCommerceServer.Services.ProductService;
 global using eCommerceServer.Services.CategoryService;
 global using eCommerceServer.Services.CartService;
 global using eCommerceServer.Services.AuthService;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -39,6 +42,16 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(GetToken(builder.Configuration))),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
 
 
 var app = builder.Build();
@@ -54,6 +67,7 @@ app.UseCors("AllowOrigin");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
@@ -83,4 +97,11 @@ static string[] GetCORS(ConfigurationManager Configuration)
     // Get values from .env file
     string[] cors = Configuration.GetSection("CORS:AllowOrigin").Get<string[]>().Length > 0 ? Configuration.GetSection("CORS:AllowOrigin").Get<string[]>() : ["*"];
     return cors;
+}
+
+static string GetToken(ConfigurationManager Configuration)
+{
+    // Get values from .env file
+    string token = Configuration.GetSection("Token").Value;
+    return token;
 }

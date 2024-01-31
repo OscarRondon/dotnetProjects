@@ -11,7 +11,7 @@ namespace eCommerceServer.Services.AuthService
         private readonly DataContext _context;
         private readonly IConfiguration _configuration;
 
-        public AuthService(DataContext context, IConfiguration configuration) 
+        public AuthService(DataContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
@@ -19,10 +19,10 @@ namespace eCommerceServer.Services.AuthService
 
         public async Task<ServiceResponse<int>> RegisterAsync(User user, string password)
         {
-            if(await UserExistAsync(user.Email))
+            if (await UserExistAsync(user.Email))
             {
-                return new ServiceResponse<int> 
-                { 
+                return new ServiceResponse<int>
+                {
                     Success = false,
                     Message = "User already exist"
                 };
@@ -44,8 +44,8 @@ namespace eCommerceServer.Services.AuthService
 
         public async Task<bool> UserExistAsync(string email)
         {
-            if(await _context.Users.AnyAsync(u => u.Email.ToLower() == email.ToLower()))
-            return true;
+            if (await _context.Users.AnyAsync(u => u.Email.ToLower() == email.ToLower()))
+                return true;
             return false;
         }
 
@@ -60,14 +60,14 @@ namespace eCommerceServer.Services.AuthService
                 response.Success = false;
                 response.Message = "User not found";
             }
-            else 
-            { 
-                if(!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt)) 
+            else
+            {
+                if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
                 {
                     response.Success = false;
                     response.Message = "Incorrect password";
                 }
-                else 
+                else
                 {
                     response.Success = true;
                     response.Message = "Login Successfull";
@@ -77,6 +77,31 @@ namespace eCommerceServer.Services.AuthService
             }
 
             return response;
+        }
+
+        public async Task<ServiceResponse<bool>> ChangePasswordAsync(int userId, string newPassword)
+        {
+            var response = new ServiceResponse<bool>();
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null)
+            {
+                response.Success = false;
+                response.Message = "User not found";
+                response.Data = false;
+            }
+            else
+            {
+                CreatePasswordHash(newPassword, out byte[] passwordHash, out byte[] passwordSalt);
+                user.PasswordHash = passwordHash;
+                user.PasswordSalt = passwordSalt;
+                await _context.SaveChangesAsync();
+                response.Success = true;
+                response.Message = "Password updated successfully";
+                response.Data = true;
+            }
+
+            return response;
+
         }
 
         private void CreatePasswordHash(string password, out byte[] passwprdHash, out byte[] passwordSalt)
@@ -97,7 +122,7 @@ namespace eCommerceServer.Services.AuthService
             }
         }
 
-        private string CreateToken(User user) 
+        private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim>
             {
@@ -126,5 +151,6 @@ namespace eCommerceServer.Services.AuthService
             string token = _configuration.GetSection("Token").Value;
             return token;
         }
+
     }
 }

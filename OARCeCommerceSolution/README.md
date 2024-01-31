@@ -31,6 +31,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 	- Microsoft.EntityFrameworkCore
 	- Microsoft.EntityFrameworkCore.Design
 	- Microsoft.EntityFrameworkCore.SqlServer
+	- Microsoft.AspNetCore.Authentication.JwtBearer
 ```
 ### Instructions
 ```
@@ -77,9 +78,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Create Logout routine
-	*	Create a User Profile
-	*	Use the [Authorize] attribute (client)
+	*	
 ]
 
 
