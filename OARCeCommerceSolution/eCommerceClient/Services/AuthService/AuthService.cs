@@ -25,5 +25,11 @@ namespace eCommerceClient.Services.AuthService
             var result = await _httpClient.PostAsJsonAsync(_settings.BackendApiURL + "Auth/Login", request);
             return await result.Content.ReadFromJsonAsync<ServiceResponse<string>>();
         }
+
+        public async Task<ServiceResponse<bool>> ChangePasswordAsync(UserChangePassword request)
+        {
+            var result = await _httpClient.PostAsJsonAsync(_settings.BackendApiURL + "Auth/Change-Password", request.Password);
+            return await result.Content.ReadFromJsonAsync<ServiceResponse<bool>>();
+        }
     }
 }

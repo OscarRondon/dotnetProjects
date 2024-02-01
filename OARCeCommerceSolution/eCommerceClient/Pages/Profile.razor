@@ -1,13 +1,57 @@
 ﻿@page "/Profile"
+@inject IAuthService _authService
 @attribute [Authorize]
 
 
 <AuthorizeView>
 
-<h3>Hi! @context.User.Identity.Name</h3>
+    <h3>Hi! @context.User.Identity.Name</h3>
 
 </AuthorizeView>
 
+<h5>Change Password</h5>
+
+<EditForm Model="request" OnValidSubmit="ChangePassword">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="mb-3">
+        <label for="password">
+            Password
+            <InputText class="form-control" id="password" @bind-Value="@request.Password" type="password"></InputText>
+            <ValidationMessage For="@(() => request.Password)" />
+        </label>
+    </div>
+    <div class="mb-3">
+        <label for="ConfirmPassword">
+            Confirm Password
+            <InputText class="form-control" id="ConfirmPassword" @bind-Value="@request.ConfirmPassword" type="password"></InputText>
+            <ValidationMessage For="@(() => request.ConfirmPassword)" />
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Accept</button>
+    <div class="@messageCssClass">
+        <span>@Message</span>
+    </div>
+</EditForm>
+
 @code {
+    UserChangePassword request = new UserChangePassword();
+    string Message = string.Empty;
+    string messageCssClass = string.Empty;
+
+    private async Task ChangePassword()
+    {
+        var result = await _authService.ChangePasswordAsync(request);
+        Message = result.Message;
+
+        if (!result.Success)
+        {
+
+            messageCssClass = "text-danger";
+        }
+        else
+        {
+            messageCssClass = "text-success";
+        }
+    }
 
 }
