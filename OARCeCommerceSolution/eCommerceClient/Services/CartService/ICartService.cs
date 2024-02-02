@@ -8,5 +8,6 @@
         public Task RemoveFromCartAsync(int productId, int productTypeId);
         public Task<List<CartProductResponse>> GetCartProductsAsync();
         public Task UpdateQuantityAsync(CartProductResponse product);
+        public Task StoreCartItemsAsync(bool emptyLocalCart);
     }
 }

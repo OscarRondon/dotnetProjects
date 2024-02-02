@@ -10,18 +10,34 @@ namespace eCommerceClient.Services.CartService
         private readonly ILocalStorageService _localStorage;
         private readonly HttpClient _httpClient;
         private readonly ClientAppSettings _settings;
+        private readonly AuthenticationStateProvider _authStateProvider;
 
-        public CartService(ILocalStorageService localStorage, HttpClient httpClient, ClientAppSettings settings)
+        public CartService(
+            ILocalStorageService localStorage,
+            HttpClient httpClient,
+            ClientAppSettings settings,
+            AuthenticationStateProvider authStateProvider
+            )
         {
             _localStorage = localStorage;
             _httpClient = httpClient;
             _settings = settings;
+            _authStateProvider = authStateProvider;
         }
 
         public event Action OnChange;
 
         public async Task AddToCartAsync(CartItem carItem)
         {
+            if((await _authStateProvider.GetAuthenticationStateAsync()).User.Identity.IsAuthenticated)
+            {
+
+            }
+            else
+            {
+
+            }
+
             var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
             if (cart == null)
             {
@@ -69,6 +85,20 @@ namespace eCommerceClient.Services.CartService
                 await _localStorage.SetItemAsync("cart", cart);
             }
             OnChange?.Invoke();
+        }
+
+        public async Task StoreCartItemsAsync(bool emptyLocalCart = false)
+        {
+            var localCart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
+            
+            if(localCart == null) return;
+
+            var response = await _httpClient.PostAsJsonAsync(_settings.BackendApiURL + "Cart", localCart);
+
+            if (emptyLocalCart) 
+            {
+                await _localStorage.RemoveItemAsync("cart");
+            }
         }
 
         public async Task UpdateQuantityAsync(CartProductResponse product)
