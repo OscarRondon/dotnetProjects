@@ -9,5 +9,6 @@
         public Task<List<CartProductResponse>> GetCartProductsAsync();
         public Task UpdateQuantityAsync(CartProductResponse product);
         public Task StoreCartItemsAsync(bool emptyLocalCart);
+        public Task GetCartItemsCountAsync();
     }
 }

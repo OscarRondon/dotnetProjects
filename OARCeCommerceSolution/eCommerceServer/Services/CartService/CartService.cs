@@ -64,5 +64,17 @@ namespace eCommerceServer.Services.CartService
             return await GetCartProductsAsync(await _context.CarItems.Where(ci => ci.UserId == GetUserId() /*userId*/).ToListAsync());
 
         }
+
+        public async Task<ServiceResponse<int>> GetCartItemsCountAsync()
+        {
+            int count = (await _context.CarItems.Where(ci => ci.UserId == GetUserId()).ToListAsync()).Count();
+            return new ServiceResponse<int>
+            {
+                Success = true,
+                Message = string.Empty,
+                Data = count
+            };
+
+        }
     }
 }

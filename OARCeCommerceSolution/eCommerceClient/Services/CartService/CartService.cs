@@ -27,9 +27,14 @@ namespace eCommerceClient.Services.CartService
 
         public event Action OnChange;
 
+        public async Task<bool> IsUserAuthenticated()
+        {
+            return (await _authStateProvider.GetAuthenticationStateAsync()).User.Identity.IsAuthenticated;
+        }
+
         public async Task AddToCartAsync(CartItem carItem)
         {
-            if((await _authStateProvider.GetAuthenticationStateAsync()).User.Identity.IsAuthenticated)
+            if (await IsUserAuthenticated())
             {
 
             }
@@ -53,11 +58,12 @@ namespace eCommerceClient.Services.CartService
                 sameItem.Quantity += carItem.Quantity;
             }
             await _localStorage.SetItemAsync("cart", cart);
-            OnChange?.Invoke();
+            GetCartItemsCountAsync();
         }
 
         public async Task<List<CartItem>> GetCartItemsAsync()
         {
+            GetCartItemsCountAsync();
             var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
             if (cart == null)
             {
@@ -83,8 +89,8 @@ namespace eCommerceClient.Services.CartService
             {
                 cart.Remove(cartItem);
                 await _localStorage.SetItemAsync("cart", cart);
+                GetCartItemsCountAsync();
             }
-            OnChange?.Invoke();
         }
 
         public async Task StoreCartItemsAsync(bool emptyLocalCart = false)
@@ -111,6 +117,26 @@ namespace eCommerceClient.Services.CartService
                 cartItem.Quantity = product.Quantity;
                 await _localStorage.SetItemAsync("cart", cart);
             }
+        }
+
+        public async Task GetCartItemsCountAsync()
+        {
+            int result = 0;
+            if (await IsUserAuthenticated())
+            {
+                var response = await _httpClient.GetFromJsonAsync<ServiceResponse<int>>(_settings.BackendApiURL + "Cart/CartItems-Count");
+                result = response.Data;
+            }
+            else
+            {
+                var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
+                if (cart != null)
+                {
+                    result = cart.Count;
+                }
+            }
+            await _localStorage.SetItemAsync<int>("carItemsCount", result);
+            OnChange?.Invoke();
         }
     }
 }

@@ -18,8 +18,8 @@
 
     private int GetCartItemsCount()
     {
-        var cart = _localStorage.GetItem<List<CartItem>>("cart");
-        return cart != null ? cart.Count : 0;
+        var carItemsCount = _localStorage.GetItem<int>("carItemsCount");
+        return carItemsCount;
     }
 
     public void Dispose()
