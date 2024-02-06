@@ -37,6 +37,13 @@ namespace eCommerceServer.Controllers
             return await _cartService.GetCartItemsCountAsync();
         }
 
+        [HttpGet]
+        public async Task<ActionResult<ServiceResponse<List<CartProductResponse>>>> GetDBCartProductsAsync()
+        {
+            var result = await _cartService.GetDBCartProductsAsync();
+            return Ok(result);
+        }
+
 
     }
 }

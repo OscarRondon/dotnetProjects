@@ -61,23 +61,38 @@ namespace eCommerceClient.Services.CartService
             GetCartItemsCountAsync();
         }
 
-        public async Task<List<CartItem>> GetCartItemsAsync()
-        {
-            GetCartItemsCountAsync();
-            var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
-            if (cart == null)
-            {
-                cart = new List<CartItem>();
-            }
-            return cart;
-        }
+        //public async Task<List<CartItem>> GetCartItemsAsync()
+        //{
+        //    GetCartItemsCountAsync();
+        //    var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
+        //    if (cart == null)
+        //    {
+        //        cart = new List<CartItem>();
+        //    }
+        //    return cart;
+        //}
 
         public async Task<List<CartProductResponse>> GetCartProductsAsync()
         {
-            var carItems = await _localStorage.GetItemAsync<List<CartItem>>("cart");
-            var response = await _httpClient.PostAsJsonAsync(_settings.BackendApiURL + "Cart/Products", carItems);
-            var carProducts = await response.Content.ReadFromJsonAsync<ServiceResponse<List<CartProductResponse>>>();
-            return carProducts.Data;
+
+            if (await IsUserAuthenticated())
+            {
+                var response = await _httpClient.GetFromJsonAsync<ServiceResponse<List<CartProductResponse>>>(_settings.BackendApiURL + "Cart");
+                return response.Data;
+            }
+            else 
+            {
+                var carItems = await _localStorage.GetItemAsync<List<CartItem>>("cart");
+                if(carItems == null)
+                {
+                    return new List<CartProductResponse>();
+                }
+                var response = await _httpClient.PostAsJsonAsync(_settings.BackendApiURL + "Cart/Products", carItems);
+                var carProducts = await response.Content.ReadFromJsonAsync<ServiceResponse<List<CartProductResponse>>>();
+                return carProducts.Data;
+            }
+            
+            
         }
 
         public async Task RemoveFromCartAsync(int productId, int productTypeId)

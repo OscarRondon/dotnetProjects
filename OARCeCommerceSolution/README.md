@@ -78,9 +78,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Get the number of the cart items (server)
-	*	Add a method to validate if the current user is authenticated (client)
-	*	Get the number of the cart items (client)
+	*	
 ]
 
 
