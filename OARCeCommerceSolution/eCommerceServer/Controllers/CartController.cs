@@ -31,6 +31,20 @@ namespace eCommerceServer.Controllers
             return Ok(result);
         }
 
+        [HttpPost("Add")]
+        public async Task<ActionResult<ServiceResponse<bool>>> AddToCartAsync(CartItem cartItems)
+        {
+            var result = await _cartService.AddToCartAsync(cartItems);
+            return Ok(result);
+        }
+
+        [HttpPut("Update-Quantity")]
+        public async Task<ActionResult<ServiceResponse<bool>>> UpdateQuantityAsync(CartItem cartItems)
+        {
+            var result = await _cartService.UpdateQuantityAsync(cartItems);
+            return Ok(result);
+        }
+
         [HttpGet("CartItems-Count")]
         public async Task<ActionResult<ServiceResponse<int>>> GetCartItemsCountAsync()
         {
