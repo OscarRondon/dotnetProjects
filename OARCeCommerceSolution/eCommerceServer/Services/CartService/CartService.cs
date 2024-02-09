@@ -115,5 +115,20 @@ namespace eCommerceServer.Services.CartService
             }
 
         }
+
+        public async Task<ServiceResponse<bool>> RemoveItemFromCartAsync(int productId, int productTypeId)
+        {
+            var dbCartItem = await _context.CarItems.FirstOrDefaultAsync(ci => ci.UserId == GetUserId() && ci.ProductId == productId && ci.ProductTypeId == productTypeId);
+            if (dbCartItem != null)
+            {
+                _context.CarItems.Remove(dbCartItem);
+                await _context.SaveChangesAsync();
+                return new ServiceResponse<bool> { Success = true, Message = "Item removed", Data = true };
+            }
+            else
+            {
+                return new ServiceResponse<bool> { Success = true, Message = "Cart Item not found", Data = false };
+            }
+        }
     }
 }

@@ -5,9 +5,9 @@ global using eCommerceServer.Services.ProductService;
 global using eCommerceServer.Services.CategoryService;
 global using eCommerceServer.Services.CartService;
 global using eCommerceServer.Services.AuthService;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using eCommerceServer.Services.OrderService;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.Extensions.Configuration;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,6 +42,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters

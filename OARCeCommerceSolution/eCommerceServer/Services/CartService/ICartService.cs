@@ -8,5 +8,6 @@
         public Task<ServiceResponse<List<CartProductResponse>>> GetDBCartProductsAsync();
         public Task<ServiceResponse<bool>> AddToCartAsync(CartItem cartItem);
         public Task<ServiceResponse<bool>> UpdateQuantityAsync(CartItem cartItem);
+        public Task<ServiceResponse<bool>> RemoveItemFromCartAsync(int productId, int productTypeId);
     }
 }

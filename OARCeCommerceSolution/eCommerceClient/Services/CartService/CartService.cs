@@ -80,10 +80,10 @@ namespace eCommerceClient.Services.CartService
                 var response = await _httpClient.GetFromJsonAsync<ServiceResponse<List<CartProductResponse>>>(_settings.BackendApiURL + "Cart");
                 return response.Data;
             }
-            else 
+            else
             {
                 var carItems = await _localStorage.GetItemAsync<List<CartItem>>("cart");
-                if(carItems == null)
+                if (carItems == null)
                 {
                     return new List<CartProductResponse>();
                 }
@@ -91,32 +91,38 @@ namespace eCommerceClient.Services.CartService
                 var carProducts = await response.Content.ReadFromJsonAsync<ServiceResponse<List<CartProductResponse>>>();
                 return carProducts.Data;
             }
-            
-            
+
+
         }
 
         public async Task RemoveFromCartAsync(int productId, int productTypeId)
         {
-            var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
-            if (cart == null) return;
-            var cartItem = cart.Where(item => item.ProductId == productId && item.ProductTypeId == productTypeId).FirstOrDefault();
-            if (cartItem != null)
+            if (await IsUserAuthenticated())
             {
-                cart.Remove(cartItem);
-                await _localStorage.SetItemAsync("cart", cart);
-                GetCartItemsCountAsync();
+                await _httpClient.DeleteAsync(_settings.BackendApiURL + "Cart/" + $"{productId}/{productTypeId}");
+            }
+            else
+            {
+                var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
+                if (cart == null) return;
+                var cartItem = cart.Where(item => item.ProductId == productId && item.ProductTypeId == productTypeId).FirstOrDefault();
+                if (cartItem != null)
+                {
+                    cart.Remove(cartItem);
+                    await _localStorage.SetItemAsync("cart", cart);
+                }
             }
         }
 
         public async Task StoreCartItemsAsync(bool emptyLocalCart = false)
         {
             var localCart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
-            
-            if(localCart == null) return;
+
+            if (localCart == null) return;
 
             var response = await _httpClient.PostAsJsonAsync(_settings.BackendApiURL + "Cart", localCart);
 
-            if (emptyLocalCart) 
+            if (emptyLocalCart)
             {
                 await _localStorage.RemoveItemAsync("cart");
             }
@@ -134,7 +140,7 @@ namespace eCommerceClient.Services.CartService
                 };
                 await _httpClient.PutAsJsonAsync(_settings.BackendApiURL + "Cart/Update-Quantity", request);
             }
-            else 
+            else
             {
                 var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
                 if (cart == null) return;
@@ -145,7 +151,7 @@ namespace eCommerceClient.Services.CartService
                     await _localStorage.SetItemAsync("cart", cart);
                 }
             }
-                
+
         }
 
         public async Task GetCartItemsCountAsync()

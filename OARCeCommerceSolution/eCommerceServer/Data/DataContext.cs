@@ -18,6 +18,9 @@ namespace eCommerceServer.Data
             modelBuilder.Entity<ProductVariant>()
                 .HasKey(p => new { p.ProductId, p.ProductTypeId });
 
+            modelBuilder.Entity<OrderItem>()
+                .HasKey(o => new { o.OrderId, o.ProductId, o.ProductTypeId });
+
             modelBuilder.Entity<ProductType>().HasData(DataSeed.ProductTypes);
             modelBuilder.Entity<Product>().HasData(DataSeed.Products);
             modelBuilder.Entity<Category>().HasData(DataSeed.Categories);
@@ -30,6 +33,8 @@ namespace eCommerceServer.Data
         public DbSet<ProductVariant> ProductVariants { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<CartItem> CarItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
     }
 }
