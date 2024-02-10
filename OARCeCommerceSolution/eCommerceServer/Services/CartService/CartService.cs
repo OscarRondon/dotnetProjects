@@ -1,20 +1,25 @@
-﻿
-using System.Security.Claims;
+﻿//using System.Security.Claims;
 
 namespace eCommerceServer.Services.CartService
 {
     public class CartService : ICartService
     {
         private readonly DataContext _context;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IAuthService _authService;
 
-        public CartService(DataContext context, IHttpContextAccessor httpContextAccessor)
+        //private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public CartService(DataContext context, 
+            /*IHttpContextAccessor httpContextAccessor*/
+            IAuthService authService)
         {
             _context = context;
-            _httpContextAccessor = httpContextAccessor;
+            _authService = authService;
+            //_httpContextAccessor = httpContextAccessor;
         }
 
-        private int GetUserId() => int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+        //was move to the AuthService
+        //private int GetUserId() => int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
 
         public async Task<ServiceResponse<List<CartProductResponse>>> GetCartProductsAsync(List<CartItem> cartItems)
         {
@@ -57,7 +62,7 @@ namespace eCommerceServer.Services.CartService
         public async Task<ServiceResponse<List<CartProductResponse>>> StoreCartItemsAsync(List<CartItem> cartItems/*, int userId*/)
         {
 
-            cartItems.ForEach(ci => ci.UserId = GetUserId() /*userId*/);
+            cartItems.ForEach(ci => ci.UserId = _authService.GetUserId() /*userId*/);
             await _context.CarItems.AddRangeAsync(cartItems);
             await _context.SaveChangesAsync();
 
@@ -67,7 +72,7 @@ namespace eCommerceServer.Services.CartService
 
         public async Task<ServiceResponse<int>> GetCartItemsCountAsync()
         {
-            int count = (await _context.CarItems.Where(ci => ci.UserId == GetUserId()).ToListAsync()).Count();
+            int count = (await _context.CarItems.Where(ci => ci.UserId == _authService.GetUserId()).ToListAsync()).Count();
             return new ServiceResponse<int>
             {
                 Success = true,
@@ -79,12 +84,12 @@ namespace eCommerceServer.Services.CartService
 
         public async Task<ServiceResponse<List<CartProductResponse>>> GetDBCartProductsAsync()
         {
-            return await GetCartProductsAsync(await _context.CarItems.Where(ci => ci.UserId == GetUserId()).ToListAsync());
+            return await GetCartProductsAsync(await _context.CarItems.Where(ci => ci.UserId == _authService.GetUserId()).ToListAsync());
         }
 
         public async Task<ServiceResponse<bool>> AddToCartAsync(CartItem cartItem)
         {
-            cartItem.UserId = GetUserId();
+            cartItem.UserId = _authService.GetUserId();
             var sameItem = await _context.CarItems.FirstOrDefaultAsync(ci => ci.UserId == cartItem.UserId && ci.ProductId == cartItem.ProductId && ci.ProductTypeId == cartItem.ProductTypeId);
             if (sameItem != null)
             {
@@ -101,7 +106,7 @@ namespace eCommerceServer.Services.CartService
 
         public async Task<ServiceResponse<bool>> UpdateQuantityAsync(CartItem cartItem)
         {
-            cartItem.UserId = GetUserId();
+            cartItem.UserId = _authService.GetUserId();
             var dbCartItem = await _context.CarItems.FirstOrDefaultAsync(ci => ci.UserId == cartItem.UserId && ci.ProductId == cartItem.ProductId && ci.ProductTypeId == cartItem.ProductTypeId);
             if (dbCartItem != null)
             {
@@ -118,7 +123,7 @@ namespace eCommerceServer.Services.CartService
 
         public async Task<ServiceResponse<bool>> RemoveItemFromCartAsync(int productId, int productTypeId)
         {
-            var dbCartItem = await _context.CarItems.FirstOrDefaultAsync(ci => ci.UserId == GetUserId() && ci.ProductId == productId && ci.ProductTypeId == productTypeId);
+            var dbCartItem = await _context.CarItems.FirstOrDefaultAsync(ci => ci.UserId == _authService.GetUserId() && ci.ProductId == productId && ci.ProductTypeId == productTypeId);
             if (dbCartItem != null)
             {
                 _context.CarItems.Remove(dbCartItem);

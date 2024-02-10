@@ -7,18 +7,55 @@ namespace eCommerceServer.Services.OrderService
     {
         private readonly DataContext _context;
         private readonly ICartService _cartService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IAuthService _authService;
 
-        private int GetUserId() => int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+        //private readonly IHttpContextAccessor _httpContextAccessor;
+
+        //was move to the AuthService
+        //private int GetUserId() => int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
 
         public OrderService(
             DataContext context,
             ICartService cartService,
-            IHttpContextAccessor httpContextAccessor) 
+            /*IHttpContextAccessor httpContextAccessor*/
+            IAuthService authService) 
         {
             _context = context;
             _cartService = cartService;
-            _httpContextAccessor = httpContextAccessor;
+            _authService = authService;
+            //_httpContextAccessor = httpContextAccessor;
+        }
+
+        public async Task<ServiceResponse<List<OrderOverviewResponse>>> GetOrdersAsync()
+        {
+            var response = new ServiceResponse<List<OrderOverviewResponse>>
+            {
+                Success = true,
+                Message = string.Empty
+            };
+
+            var orders = await _context.Orders
+                .Include(o => o.OrderItems)
+                .ThenInclude(oi => oi.Product)
+                .Where(o => o.UserId == _authService.GetUserId())
+                .OrderByDescending(o => o.OrderDate)
+                .ToListAsync();
+
+            var orderResponse = new List<OrderOverviewResponse>();
+            orders.ForEach(o => orderResponse.Add(new OrderOverviewResponse
+            {
+                Id = o.Id,
+                OrderDate = o.OrderDate,
+                Product = o.OrderItems.Count > 1 ?
+                $"{o.OrderItems.First().Product.Title} and {o.OrderItems.Count -1} more Items..":
+                $"{o.OrderItems.First().Product.Title}",
+                ProductImageUrl = o.OrderItems.First().Product.ImageUrl,
+                TotalPrice = o.TotalPrice,
+
+            }));
+
+            response.Data = orderResponse;
+            return response;
         }
 
         public async Task<ServiceResponse<bool>> PlaceOrderAsync()
@@ -53,12 +90,13 @@ namespace eCommerceServer.Services.OrderService
 
             var order = new Order
             {
-                UserId = GetUserId(),
+                UserId = _authService.GetUserId(),
                 OrderItems = orderItems,
                 TotalPrice = totalPrice
             };
 
             _context.Add(order);
+            _context.RemoveRange(_context.CarItems.Where(ci => ci.UserId == _authService.GetUserId()));
             await _context.SaveChangesAsync();
 
             response.Success = true;

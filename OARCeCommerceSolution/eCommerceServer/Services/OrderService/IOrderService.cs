@@ -3,5 +3,6 @@
     public interface IOrderService
     {
         public Task<ServiceResponse<bool>> PlaceOrderAsync();
+        public Task<ServiceResponse<List<OrderOverviewResponse>>> GetOrdersAsync();
     }
 }

@@ -10,11 +10,17 @@ namespace eCommerceServer.Services.AuthService
     {
         private readonly DataContext _context;
         private readonly IConfiguration _configuration;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AuthService(DataContext context, IConfiguration configuration)
+        public AuthService(
+            DataContext context, 
+            IConfiguration configuration,
+            IHttpContextAccessor httpContextAccessor
+            )
         {
             _context = context;
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<ServiceResponse<int>> RegisterAsync(User user, string password)
@@ -151,6 +157,8 @@ namespace eCommerceServer.Services.AuthService
             string token = _configuration.GetSection("Token").Value;
             return token;
         }
+        public int GetUserId() => int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+
 
     }
 }

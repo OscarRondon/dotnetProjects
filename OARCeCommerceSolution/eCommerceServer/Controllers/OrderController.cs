@@ -20,5 +20,12 @@ namespace eCommerceServer.Controllers
             var result = await _orderService.PlaceOrderAsync();
             return Ok(result);
         }
+
+        [HttpGet]
+        public async Task<ActionResult<ServiceResponse<List<OrderOverviewResponse>>>> GetOrdersAsync()
+        {
+            var result = await _orderService.GetOrdersAsync();
+            return Ok(result);
+        }
     }
 }
