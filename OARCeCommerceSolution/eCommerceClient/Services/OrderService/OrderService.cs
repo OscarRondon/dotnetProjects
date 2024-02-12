@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using System.Net.Http.Json;
 
 namespace eCommerceClient.Services.OrderService
 {
@@ -36,5 +37,10 @@ namespace eCommerceClient.Services.OrderService
             }
         }
 
+        public async Task<List<OrderOverviewResponse>> GetOrderOverviewAsync()
+        {
+            var response = await _httpClient.GetFromJsonAsync<ServiceResponse<List<OrderOverviewResponse>>>(_settings.BackendApiURL + "Order");
+            return response.Data;
+        }
     }
 }

@@ -21,12 +21,10 @@
         <AuthorizeView>
             <Authorized>
                 <a href="Profile" class="dropdown-item">Profile</a>
-                @*
-                    <hr />
-
-                       <a href="orders" class="dropdown-item">Orders</a>
-                    <hr />
-                    <AdminMenu />*@
+                <hr />
+                <a href="Orders" class="dropdown-item">Orders</a>
+                <hr />
+                @*<AdminMenu />*@
                 <button class="dropdown-item" @onclick="Logout">Logout</button>
             </Authorized>
             <NotAuthorized>
