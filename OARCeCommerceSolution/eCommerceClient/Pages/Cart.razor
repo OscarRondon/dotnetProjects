@@ -1,6 +1,7 @@
 ﻿@page "/Cart"
 @inject ICartService _cartService
 @inject IOrderService _orderService
+@inject NavigationManager _navigationManager
 
 <PageTitle>Shopping Cart</PageTitle>
 <h3>Shopping Cart</h3>
@@ -9,10 +10,10 @@
 {
     <span>@message</span>
 }
-else if (orderPlaced)
+@*else if (orderPlaced)
 {
     <span>Thank you for your order! You can checj your orders <a href="Orders">here</a></span>
-}
+}*@
 else
 {
     <div>
@@ -52,11 +53,11 @@ else
 @code {
     List<CartProductResponse> cartProducts = null;
     string message = "Loading cart..";
-    bool orderPlaced = false;
+    //bool orderPlaced = false;
 
     protected override async Task OnInitializedAsync()
     {
-        orderPlaced = false;
+        //orderPlaced = false;
         await LoadCart();
     }
 
@@ -93,8 +94,13 @@ else
 
     private async Task PlaceOrder()
     {
-        await _orderService.PlaceOrderAsync();
-        await _cartService.GetCartItemsCountAsync();
-        orderPlaced = true;
+        //This section was for testing the checkout and it's replaced by Stripe checkout
+        //await _orderService.PlaceOrderAsync();
+        //await _cartService.GetCartItemsCountAsync();
+        //orderPlaced = true;
+
+        //Stripe Checkout
+        string url = await _orderService.PlaceOrderURLReturnAsync();
+        _navigationManager.NavigateTo(url);
     }
 }

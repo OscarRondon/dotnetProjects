@@ -27,5 +27,12 @@ namespace eCommerceServer.Controllers
             var result = await _orderService.GetOrdersAsync();
             return Ok(result);
         }
+
+        [HttpGet("{orderId:int}")]
+        public async Task<ActionResult<ServiceResponse<OrderDetailsResponse>>> GetOrderDetailsAsync(int orderId)
+        {
+            var result = await _orderService.GetOrderDetailsAsync(orderId);
+            return Ok(result);
+        }
     }
 }

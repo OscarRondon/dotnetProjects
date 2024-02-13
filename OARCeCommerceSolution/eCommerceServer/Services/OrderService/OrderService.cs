@@ -26,6 +26,46 @@ namespace eCommerceServer.Services.OrderService
             //_httpContextAccessor = httpContextAccessor;
         }
 
+        public async Task<ServiceResponse<OrderDetailsResponse>> GetOrderDetailsAsync(int orderId)
+        {
+            var response = new ServiceResponse<OrderDetailsResponse>();
+            var orders = await _context.Orders
+                .Include(o => o.OrderItems).ThenInclude(oi => oi.Product)
+                .Include(o => o.OrderItems).ThenInclude(oi => oi.ProductType)
+                .Where(o => o.UserId == _authService.GetUserId() && o.Id == orderId)
+                .OrderByDescending(o => o.OrderDate)
+                .FirstOrDefaultAsync();
+            if(orders == null)
+            {
+                response.Success = false;
+                response.Message = "Order not found.";
+                return response;
+            }
+
+            var orderDetailsResponse = new OrderDetailsResponse
+            {
+                OrderDate = orders.OrderDate,
+                TotalPrice = orders.TotalPrice,
+                Products = new List<OrderDetailsProductResponse>()
+            };
+
+            orders.OrderItems.ForEach(oi => orderDetailsResponse.Products.Add(new OrderDetailsProductResponse
+            {
+                ProductId = oi.ProductId,
+                Title = oi.Product.Title,
+                ImageUrl = oi.Product.ImageUrl,
+                ProductType = oi.ProductType.Name,
+                Quantity = oi.Quantity,
+                TotalPrice = oi.TotalPrice
+            }));
+
+            response.Success = true;
+            response.Message = string.Empty;
+            response.Data = orderDetailsResponse;
+            return response;
+
+        }
+
         public async Task<ServiceResponse<List<OrderOverviewResponse>>> GetOrdersAsync()
         {
             var response = new ServiceResponse<List<OrderOverviewResponse>>

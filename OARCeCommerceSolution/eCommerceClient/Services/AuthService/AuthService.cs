@@ -7,12 +7,20 @@ namespace eCommerceClient.Services.AuthService
     {
         private readonly ClientAppSettings _settings;
         private readonly HttpClient _httpClient;
+        private readonly AuthenticationStateProvider _authStateProvider;
 
-        public AuthService(ClientAppSettings settings, HttpClient httpClient)
+        public AuthService(
+            ClientAppSettings settings, 
+            HttpClient httpClient,
+            AuthenticationStateProvider authStateProvider
+            )
         {
             _settings = settings;
             _httpClient = httpClient;
+            _authStateProvider = authStateProvider;
         }
+
+        public async Task<bool> IsUserAuthenticated() => (await _authStateProvider.GetAuthenticationStateAsync()).User.Identity.IsAuthenticated;
 
         public async Task<ServiceResponse<int>> RegisterAsync(UserRegister request)
         {

@@ -32,6 +32,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 	- Microsoft.EntityFrameworkCore.Design
 	- Microsoft.EntityFrameworkCore.SqlServer
 	- Microsoft.AspNetCore.Authentication.JwtBearer
+	- Stripe.net
 ```
 ### Instructions
 ```
@@ -78,7 +79,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Implement recieving orders (client)
+	*	
 ]
 
 
