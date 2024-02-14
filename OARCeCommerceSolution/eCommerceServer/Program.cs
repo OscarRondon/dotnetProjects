@@ -7,6 +7,7 @@ global using eCommerceServer.Services.CartService;
 global using eCommerceServer.Services.AuthService;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using eCommerceServer.Services.OrderService;
+global using eCommerceServer.Services.PaymentService;
 using Microsoft.IdentityModel.Tokens;
 
 
@@ -43,6 +44,7 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
@@ -104,6 +106,6 @@ static string[] GetCORS(ConfigurationManager Configuration)
 static string GetToken(ConfigurationManager Configuration)
 {
     // Get values from .env file
-    string token = Configuration.GetSection("Token").Value;
+    string token = Configuration.GetSection("AuthToken").Value;
     return token;
 }

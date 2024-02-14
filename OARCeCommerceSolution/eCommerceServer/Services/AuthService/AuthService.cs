@@ -154,10 +154,11 @@ namespace eCommerceServer.Services.AuthService
         private string GetToken()
         {
             // Get values from .env file
-            string token = _configuration.GetSection("Token").Value;
+            string token = _configuration.GetSection("AuthToken").Value;
             return token;
         }
         public int GetUserId() => int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+        public string GetUserEmail() => _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Name);
 
 
     }
