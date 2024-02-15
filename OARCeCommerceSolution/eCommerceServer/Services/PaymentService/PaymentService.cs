@@ -17,12 +17,13 @@ namespace eCommerceServer.Services.PaymentService
             IConfiguration configuration
             ) 
         {
-            StripeConfiguration.ApiKey = GetStripeSecretKey();
             _cartService = cartService;
             _authService = authService;
             _orderService = orderService;
             _configuration = configuration;
+            StripeConfiguration.ApiKey = GetStripeSecretKey();
         }
+
         public async Task<Session> CreateCheckoutSession()
         {
             var products = (await _cartService.GetDBCartProductsAsync()).Data;
@@ -59,10 +60,49 @@ namespace eCommerceServer.Services.PaymentService
             Session session = service.Create(options);
             return session;
         }
+
+        public async Task<ServiceResponse<bool>> FullfillOrderAsync(HttpRequest request)
+        {
+            var json = await new StreamReader(request.Body).ReadToEndAsync();
+            try
+            { 
+                var stripeEvent = EventUtility.ConstructEvent(json, request.Headers["Stripe-Signature"], GetStripeWebhookKey());
+                if (stripeEvent.Type == Events.CheckoutSessionCompleted) 
+                {
+                    var session = stripeEvent.Data.Object as Session;
+                    var user = await _authService.GetUserByEmailAsync(session.CustomerEmail);
+                    await _orderService.PlaceOrderAsync(user.Id);
+                }
+            }
+            catch (Exception ex) 
+            {
+                return new ServiceResponse<bool>
+                { 
+                    Success = false,
+                    Message = ex.Message,
+                    Data = false
+                };
+            }
+
+            return new ServiceResponse<bool>
+            {
+                Success = true,
+                Message = "Order Placed succesfully",
+                Data = true
+            };
+        }
+
         private string GetStripeSecretKey()
         {
             // Get values from .env file
             string token = _configuration.GetSection("Stripe:SecretKey").Value;
+            return token;
+        }
+
+        private string GetStripeWebhookKey()
+        {
+            // Get values from .env file
+            string token = _configuration.GetSection("Stripe:WebhookKey").Value;
             return token;
         }
 
@@ -79,5 +119,7 @@ namespace eCommerceServer.Services.PaymentService
             string token = _configuration.GetSection("Stripe:CancelUrl").Value;
             return token;
         }
+
+        
     }
 }

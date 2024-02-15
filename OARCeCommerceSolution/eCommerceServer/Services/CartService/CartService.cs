@@ -82,9 +82,10 @@ namespace eCommerceServer.Services.CartService
 
         }
 
-        public async Task<ServiceResponse<List<CartProductResponse>>> GetDBCartProductsAsync()
+        public async Task<ServiceResponse<List<CartProductResponse>>> GetDBCartProductsAsync(int? userId = null)
         {
-            return await GetCartProductsAsync(await _context.CarItems.Where(ci => ci.UserId == _authService.GetUserId()).ToListAsync());
+            userId = userId == null ? _authService.GetUserId() : userId;
+            return await GetCartProductsAsync(await _context.CarItems.Where(ci => ci.UserId == userId).ToListAsync());
         }
 
         public async Task<ServiceResponse<bool>> AddToCartAsync(CartItem cartItem)

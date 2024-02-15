@@ -8,5 +8,6 @@
         public Task<ServiceResponse<bool>> ChangePasswordAsync(int userId,  string newPassword);
         public int GetUserId();
         public string GetUserEmail();
+        public Task<User> GetUserByEmailAsync(string email);
     }
 }

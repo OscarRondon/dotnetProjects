@@ -14,12 +14,13 @@ namespace eCommerceServer.Controllers
             _orderService = orderService;
         }
 
-        [HttpPost("Add")]
-        public async Task<ActionResult<ServiceResponse<bool>>> PlaceOrderAsync()
-        {
-            var result = await _orderService.PlaceOrderAsync();
-            return Ok(result);
-        }
+        //Method replaceed for PaymentController FullfillOrderAsync
+        //[HttpPost("Add")]
+        //public async Task<ActionResult<ServiceResponse<bool>>> PlaceOrderAsync()
+        //{
+        //    var result = await _orderService.PlaceOrderAsync();
+        //    return Ok(result);
+        //}
 
         [HttpGet]
         public async Task<ActionResult<ServiceResponse<List<OrderOverviewResponse>>>> GetOrdersAsync()

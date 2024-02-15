@@ -98,15 +98,17 @@ namespace eCommerceServer.Services.OrderService
             return response;
         }
 
-        public async Task<ServiceResponse<bool>> PlaceOrderAsync()
+        public async Task<ServiceResponse<bool>> PlaceOrderAsync(int? userId = null)
         {
+            userId = userId == null ? _authService.GetUserId() : userId;
+
             var response = new ServiceResponse<bool>
             {
                 Success = false,
                 Message = "Error placing the order",
                 Data = false
             };
-            var products = (await _cartService.GetDBCartProductsAsync()).Data;
+            var products = (await _cartService.GetDBCartProductsAsync(userId)).Data;
             if(products == null) 
             {
                 response.Message = "No orders valiable to place";
@@ -130,13 +132,13 @@ namespace eCommerceServer.Services.OrderService
 
             var order = new Order
             {
-                UserId = _authService.GetUserId(),
+                UserId = (int) userId,
                 OrderItems = orderItems,
                 TotalPrice = totalPrice
             };
 
             _context.Add(order);
-            _context.RemoveRange(_context.CarItems.Where(ci => ci.UserId == _authService.GetUserId()));
+            _context.RemoveRange(_context.CarItems.Where(ci => ci.UserId == userId));
             await _context.SaveChangesAsync();
 
             response.Success = true;
