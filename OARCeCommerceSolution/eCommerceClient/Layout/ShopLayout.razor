@@ -1,9 +1,14 @@
 ﻿@inherits LayoutComponentBase
+@implements IDisposable
+@inject ILocalStorageService _localStorage
+@inject IAuthService _authService
+@inject AuthenticationStateProvider _authenticationStateProvider
+
 <div class="page">
     <main>
         <div class="mt-2 top-row px-2">
             <HomeButton />
-            <Search/>
+            <Search />
             <UserButton />
             <CartCounter />
         </div>
@@ -17,3 +22,21 @@
         </article>
     </main>
 </div>
+
+@code
+{
+    protected override async Task OnInitializedAsync()
+    {
+        if ((await _authService.IsUserAuthenticated()) || string.IsNullOrEmpty(await _localStorage.GetItemAsStringAsync("authToken")))
+        {
+            await _localStorage.RemoveItemAsync("authToken");
+            await _authenticationStateProvider.GetAuthenticationStateAsync();
+        }
+    }
+
+    public async void Dispose()
+    {
+        await _localStorage.RemoveItemAsync("authToken");
+        await _authenticationStateProvider.GetAuthenticationStateAsync();
+    }
+}
