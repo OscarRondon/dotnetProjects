@@ -1,6 +1,7 @@
 ﻿@page "/Cart"
 @inject ICartService _cartService
 @inject IOrderService _orderService
+@inject IAuthService _authService
 @inject NavigationManager _navigationManager
 
 <PageTitle>Shopping Cart</PageTitle>
@@ -16,37 +17,44 @@
 }*@
 else
 {
-    <div>
-        @foreach (var product in cartProducts)
-        {
-            <div class="container">
-                <div class="image-wrapper">
-                    <img src="@product.ImageUrl" class="image" alt="@product.Tittle" title="@product.Tittle" />
-                </div>
-                <div class="name>">
-                    <h5><a href="/Product/@product.ProductId">@product.Tittle</a></h5>
-                    <span>@product.ProductType</span>
-                    <input type="number" value="@product.Quantity"
-                           @onchange="@((ChangeEventArgs e) => UpdateQuantity(e, product))"
-                           class="form-control input-quantity"
-                           min="1" />
-                    <button class="btn-delete" @onclick="@(() => RemoveItemFromCart(product.ProductId, product.ProductTypeId))">
-                        <i class="bi bi-trash3-fill h6"></i>
-                    </button>
-                </div>
-                <div class="cart-product-price">
-                    $@(product.Price*product.Quantity)
-                </div>
+<div>
+    @foreach (var product in cartProducts)
+    {
+        <div class="container">
+            <div class="image-wrapper">
+                <img src="@product.ImageUrl" class="image" alt="@product.Tittle" title="@product.Tittle" />
             </div>
-        }
-        <div class="cart-product-price">
-            Total (@cartProducts.Count): $@cartProducts.Sum(p => p.Price * p.Quantity)
+            <div class="name>">
+                <h5><a href="/Product/@product.ProductId">@product.Tittle</a></h5>
+                <span>@product.ProductType</span>
+                <input type="number" value="@product.Quantity"
+                       @onchange="@((ChangeEventArgs e) => UpdateQuantity(e, product))"
+                       class="form-control input-quantity"
+                       min="1" />
+                <button class="btn-delete" @onclick="@(() => RemoveItemFromCart(product.ProductId, product.ProductTypeId))">
+                    <i class="bi bi-trash3-fill h6"></i>
+                </button>
+            </div>
+            <div class="cart-product-price">
+                $@(product.Price*product.Quantity)
+            </div>
         </div>
-        <hr />
-        <button class="btn btn-primary float-end mt-3" @onclick="PlaceOrder">
-            Placer Order <i class="bi bi-receipt h4 ms-3 mt-2 mb-2"></i>
-        </button>
+    }
+    <div class="cart-product-price">
+        Total (@cartProducts.Count): $@cartProducts.Sum(p => p.Price * p.Quantity)
     </div>
+    @if (isAuthenticated)
+    {
+        <div>
+            <h5>Delivery Address</h5>
+            <AddressForm />
+        </div>
+    }
+    <hr />
+    <button class="btn btn-primary float-end mt-3" @onclick="PlaceOrder">
+        Placer Order <i class="bi bi-receipt h4 ms-3 mt-2 mb-2"></i>
+    </button>
+</div>
 
 }
 
@@ -54,10 +62,12 @@ else
     List<CartProductResponse> cartProducts = null;
     string message = "Loading cart..";
     //bool orderPlaced = false;
+    bool isAuthenticated = false;
 
     protected override async Task OnInitializedAsync()
     {
         //orderPlaced = false;
+        isAuthenticated = await _authService.IsUserAuthenticated();
         await LoadCart();
     }
 
