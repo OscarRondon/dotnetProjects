@@ -86,4 +86,3 @@ OARCeCommerceSolution
 ## Todos
 
 - Jwt Refresh token for session expiration control and security
-- Role base authorization
