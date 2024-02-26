@@ -52,7 +52,7 @@ namespace eCommerceServer.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("Admin"), Authorize(Roles = "Admin")]
+        [HttpDelete("Admin/{Id:int}"), Authorize(Roles = "Admin")]
         public async Task<ActionResult<ServiceResponse<IEnumerable<Category>>>> DeleteCategoryAsync(int Id)
         {
             var result = await _categoryService.DeleteCategoryAsync(Id);
