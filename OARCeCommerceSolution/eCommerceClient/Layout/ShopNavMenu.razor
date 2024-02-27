@@ -1,4 +1,5 @@
 ﻿@inject ICategoryService _categoryService
+@implements IDisposable
 
 <div class="top-row ps-3 navbar navbar-dark navbar-toggler-wrapper">
     <div class="container-fluid">
@@ -23,21 +24,7 @@
             {
                 <div class="nav-item px-2">
                     <NavLink class="nav-link" href="@("Category/" + category.Url)">
-                        @switch (category.Url)
-                        {
-                            case "books":
-                                <span class="bi bi-book-half h4" aria-hidden="true"></span>
-                                break;
-                            case "movies":
-                                <span class="bi bi-film h4" aria-hidden="true"></span>
-                                break;
-                            case "video-games":
-                                <span class="bi bi-controller h4" aria-hidden="true"></span>
-                                break;
-                            default:
-                                <span class="bi bi-slash-square h4" aria-hidden="true"></span>
-                                break;
-                        }
+                        <span class="@(category.IconStyle) h4 icon-height" aria-hidden="true"></span>
                         @category.Name
                     </NavLink>
                 </div>
@@ -59,5 +46,11 @@
     protected override async Task OnInitializedAsync()
     {
         await _categoryService.GetCategoriesAsync();
+        _categoryService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        _categoryService.OnChange -= StateHasChanged;
     }
 }

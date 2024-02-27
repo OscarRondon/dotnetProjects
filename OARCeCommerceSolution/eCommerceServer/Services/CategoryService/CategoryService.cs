@@ -63,8 +63,9 @@ namespace eCommerceServer.Services.CategoryService
             }
             dbCategory.Name = category.Name;
             dbCategory.Url = category.Url;
+            dbCategory.IconStyle = category.IconStyle;
             dbCategory.Visible = category.Visible;
-            dbCategory.Deleted = category.Deleted;
+            dbCategory.Deleted = false;
             
             await _context.SaveChangesAsync();
             return await GetAdminCategoriesAsync();

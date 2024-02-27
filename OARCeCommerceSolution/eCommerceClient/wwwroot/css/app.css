@@ -116,3 +116,7 @@ code {
 .price {
     color: forestgreen;
 }
+
+.icon-height {
+    height: 1px
+}

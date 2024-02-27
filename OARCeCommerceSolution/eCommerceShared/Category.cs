@@ -15,6 +15,9 @@ namespace eCommerceShared
 
         public string Url { get; set; } = string.Empty;
         public bool Visible { get; set; } = true;
+        
+        public string IconStyle { get; set; } = string.Empty;
+
         public bool Deleted { get; set; } = false;
         [NotMapped]
         public bool Editing { get; set; } = false;
