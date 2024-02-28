@@ -35,7 +35,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-cloud-upload-fill h5"></i>
                     </button>
-                    <button class="btn btn-primary" @onclick="CancelEditing">
+                    <button class="btn btn-primary ms-1" @onclick="CancelEditing">
                         <i class="bi bi-x-circle-fill h5"></i>
                     </button>
                 </div>
@@ -58,17 +58,19 @@
                 <span>@(category.Visible ? "✔️" : "")</span>
             </div>
             <div class="col">
-                <button class="btn btn-primary" @onclick="(() => EditCategory(category))">
-                    @if (category.Deleted)
-                    {
+                @if (category.Deleted)
+                {
+                    <button class="btn btn-primary" @onclick="(() => ActivateCategory(category))">
                         <i class="bi bi-plus-square-fill h5"></i>
-                    }
-                    else
-                    {
+                    </button>
+                }
+                else
+                {
+                    <button class="btn btn-primary" @onclick="(() => EditCategory(category))">
                         <i class="bi bi-pencil-fill h5"></i>
-                    }
-                </button>
-                <button type="button" class="btn btn-primary" @onclick="(() => DeleteCategory(category.Id))">
+                    </button>
+                }
+                <button type="button" class="btn btn-primary ms-2" @onclick="(() => DeleteCategory(category.Id))">
                     <i class="bi bi-trash3-fill h5"></i>
                 </button>
             </div>
@@ -117,6 +119,11 @@
     {
         editingCategory = new Category();
         await _categoryService.GetAdminCategoriesAsync();
+    }
+
+    private async Task ActivateCategory(Category category)
+    {
+        await _categoryService.UpdateCategoryAsync(category);
     }
 
     private async Task DeleteCategory(int id)

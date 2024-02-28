@@ -79,10 +79,9 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Implement the admin page for categories (client)
-	*	Add IconStyle to category (shared, server, client)
-	*	Re-render menu after change cateries (client)
-
+	*	Load the ProductTypes from the server for admin (server)
+	*	Add ProductTypeService Implementation (client)
+	*	Create the ProductType Admin page (client)
 ]
 
 

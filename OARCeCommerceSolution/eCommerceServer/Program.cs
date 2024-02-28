@@ -2,6 +2,7 @@ global using Microsoft.EntityFrameworkCore;
 global using eCommerceShared;
 global using eCommerceServer.Data;
 global using eCommerceServer.Services.ProductService;
+global using eCommerceServer.Services.ProductTypeService;
 global using eCommerceServer.Services.CategoryService;
 global using eCommerceServer.Services.CartService;
 global using eCommerceServer.Services.AuthService;
@@ -41,6 +42,7 @@ builder.Services.AddCors(options =>
 });
 // Customs services
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IAuthService, AuthService>();

@@ -1,6 +1,7 @@
 global using eCommerceShared;
 global using eCommerceClient.Settings;
 global using eCommerceClient.Services.ProductService;
+global using eCommerceClient.Services.ProductTypeService;
 global using eCommerceClient.Services.CategoryService;
 global using eCommerceClient.Services.CartService;
 global using eCommerceClient.Services.AuthService;
@@ -25,6 +26,7 @@ builder.Configuration.Bind(settings);
 builder.Services.AddSingleton(settings);
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
