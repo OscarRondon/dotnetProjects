@@ -79,9 +79,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Load the ProductTypes from the server for admin (server)
-	*	Add ProductTypeService Implementation (client)
-	*	Create the ProductType Admin page (client)
+	*	
 ]
 
 
