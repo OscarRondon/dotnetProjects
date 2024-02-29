@@ -22,5 +22,20 @@ namespace eCommerceServer.Controllers
             var response = await _productTypeService.GetProductTypesAsync();
             return Ok(response);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<ServiceResponse<List<ProductType>>>> GetProductTypesAsync(ProductType productType)
+        {
+            var response = await _productTypeService.AddProductTypesAsync(productType);
+            return Ok(response);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<ServiceResponse<List<ProductType>>>> UpdateProductTypesAsync(ProductType productType)
+        {
+            var response = await _productTypeService.UpdateProductTypesAsync(productType);
+            return Ok(response);
+        }
+
     }
 }

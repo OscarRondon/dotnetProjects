@@ -18,7 +18,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-cloud-upload-fill h5"></i>
                     </button>
-                    <button class="btn btn-primary ms-1" @onclick="CancelEditing">
+                    <button class="btn btn-danger ms-1" @onclick="CancelEditing">
                         <i class="bi bi-x-circle-fill h5"></i>
                     </button>
                 </div>
@@ -66,21 +66,21 @@
 
     private void CreateNewProductType()
     {
-        //editingProductType = _productTypeService.CreateNewProductType();
+        editingProductType = _productTypeService.CreateNewProductType();
     }
 
     private async Task UpdateProductType()
     {
-        //if (editingProductType.IsNew)
-        //    await _productTypeService.AddProductType(editingProductType);
-        //else
-        //    await _productTypeService.UpdateProductType(editingProductType);
-        //editingProductType = new ProductType();
+        if (editingProductType.IsNew)
+            await _productTypeService.AddProductTypesAsync(editingProductType);
+        else
+            await _productTypeService.UpdateProductTypesAsync(editingProductType);
+        editingProductType = new ProductType();
     }
 
     private async Task CancelEditing()
     {
-        //editingProductType = new ProductType();
+        editingProductType = new ProductType();
         await _productTypeService.GetProductTypesAsync();
     }
 }
