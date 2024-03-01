@@ -14,9 +14,9 @@ namespace eCommerceServer.Services.ProductService
         {
             var response = new ServiceResponse<Product>();
             var product = await _context.Products
-                .Include(pv => pv.Variants)
+                .Include(pv => pv.Variants.Where(pv => pv.Visble && !pv.Deleted))
                 .ThenInclude(pt => pt.ProductType)
-                .FirstOrDefaultAsync(p => p.Id == Id);
+                .FirstOrDefaultAsync(p => p.Id == Id && p.Visble && !p.Deleted);
             if (product == null)
             {
                 response.Success = false;
@@ -31,7 +31,8 @@ namespace eCommerceServer.Services.ProductService
         public async Task<ServiceResponse<List<Product>>> GetProductsAsync()
         {
             var products = await _context.Products
-                .Include(pv => pv.Variants)
+                .Where(p => p.Visble && !p.Deleted)
+                .Include(pv => pv.Variants.Where(pv => pv.Visble && !pv.Deleted))
                 .ThenInclude(pt => pt.ProductType)
                 .ToListAsync();
             var response = new ServiceResponse<List<Product>>() { Data = products };
@@ -40,8 +41,8 @@ namespace eCommerceServer.Services.ProductService
 
         public async Task<ServiceResponse<List<Product>>> GetProductsByCategoryAsync(string categoryUrl)
         {
-            var products = await _context.Products.Where(p => p.Category.Url.ToLower().Equals(categoryUrl.ToLower()))
-                .Include(pv => pv.Variants)
+            var products = await _context.Products.Where(p => p.Category.Url.ToLower().Equals(categoryUrl.ToLower()) && p.Visble && !p.Deleted)
+                .Include(pv => pv.Variants.Where(pv => pv.Visble && !pv.Deleted))
                 .ThenInclude(pt => pt.ProductType)
                 .ToListAsync();
             var response = new ServiceResponse<List<Product>>() { Data = products };
@@ -101,8 +102,8 @@ namespace eCommerceServer.Services.ProductService
 
         private async Task<List<Product>> FindProductBySearchString(string searchText, int skip = 0, int take = 10)
         {
-            return await _context.Products.Where(p => p.Title.ToLower().Contains(searchText.ToLower()) || p.Description.ToLower().Contains(searchText.ToLower()))
-                .Include(pv => pv.Variants)
+            return await _context.Products.Where(p => p.Title.ToLower().Contains(searchText.ToLower()) || p.Description.ToLower().Contains(searchText.ToLower()) && p.Visble && !p.Deleted)
+                .Include(pv => pv.Variants.Where(pv => pv.Visble && !pv.Deleted))
                 .ThenInclude(pt => pt.ProductType)
                 .Skip(skip)
                 .Take(take)
@@ -112,8 +113,19 @@ namespace eCommerceServer.Services.ProductService
         public async Task<ServiceResponse<List<Product>>> GetFeaturedProductsAsync()
         {
             var products = await _context.Products
-                .Where(p => p.Featured == true)
-                .Include(pv => pv.Variants)
+                .Where(p => p.Featured && p.Visble && !p.Deleted)
+                .Include(pv => pv.Variants.Where(pv => pv.Visble && !pv.Deleted))
+                .ThenInclude(pt => pt.ProductType)
+                .ToListAsync();
+            var response = new ServiceResponse<List<Product>>() { Data = products };
+            return response;
+        }
+
+        public async Task<ServiceResponse<List<Product>>> GetAdminProductsAsync()
+        {
+            var products = await _context.Products
+                .Where(p => !p.Deleted)
+                .Include(pv => pv.Variants.Where(pv => !pv.Deleted))
                 .ThenInclude(pt => pt.ProductType)
                 .ToListAsync();
             var response = new ServiceResponse<List<Product>>() { Data = products };

@@ -17,8 +17,8 @@ namespace eCommerceClient.Services.ProductService
 
 
         public List<Product> Products { get; set; } = new List<Product>();
+        public List<Product> AdminProducts { get; set; } = new List<Product>();
         public string Message { get; set; } = "Loading products...";
-
         public int CurrentPage { get; set; } = 1;
         public int PageCount { get; set; } = 0;
         public string LastSearchText {  get; set; } = string.Empty;
@@ -70,6 +70,18 @@ namespace eCommerceClient.Services.ProductService
             return result.Data;
         }
 
-        
+        public async Task GetAdminProductsAsync()
+        {
+            var result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>(_settings.BackendApiURL + "Product/Admin");
+
+            if (result != null && result.Data != null)
+                AdminProducts = result.Data;
+
+            CurrentPage = 1;
+            PageCount = 0;
+
+            if (AdminProducts.Count == 0)
+                Message = "No products found.";
+        }
     }
 }

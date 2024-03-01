@@ -9,5 +9,6 @@
         public Task<ServiceResponse<ProductSearchResult>> SearchProductsAsync(string searchText, int page);
         public Task<ServiceResponse<List<string>>> GetProdctsSearchSuggestionsAsync(string searchText);
         public Task<ServiceResponse<List<Product>>> GetFeaturedProductsAsync();
+        public Task<ServiceResponse<List<Product>>> GetAdminProductsAsync();
     }
 }
