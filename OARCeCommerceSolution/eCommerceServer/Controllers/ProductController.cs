@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace eCommerceServer.Controllers
 {
@@ -20,6 +21,27 @@ namespace eCommerceServer.Controllers
         public async Task<ActionResult<ServiceResponse<IEnumerable<Product>>>> GetProductsAsync()
         {
             var result = await _productService.GetProductsAsync();
+            return Ok(result);
+        }
+
+        [HttpPost, Authorize(Roles = "Admin")]
+        public async Task<ActionResult<ServiceResponse<Product>>> CreateProductAsync(Product product)
+        {
+            var result = await _productService.CreateProductAsync(product);
+            return Ok(result);
+        }
+
+        [HttpPut, Authorize(Roles = "Admin")]
+        public async Task<ActionResult<ServiceResponse<Product>>> UpdateProductAsync(Product product)
+        {
+            var result = await _productService.UpdateProductAsync(product);
+            return Ok(result);
+        }
+
+        [HttpDelete("{Id:int}"), Authorize(Roles = "Admin")]
+        public async Task<ActionResult<ServiceResponse<bool>>> DeleteProductAsync(int Id)
+        {
+            var result =  await _productService.DeleteProductAsync(Id);
             return Ok(result);
         }
 

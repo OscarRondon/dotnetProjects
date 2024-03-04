@@ -83,5 +83,22 @@ namespace eCommerceClient.Services.ProductService
             if (AdminProducts.Count == 0)
                 Message = "No products found.";
         }
+
+        public async Task<Product> CreateProductAsync(Product product)
+        {
+            var result = await _httpClient.PostAsJsonAsync(_settings.BackendApiURL + "Product/", product);
+            return (await result.Content.ReadFromJsonAsync<ServiceResponse<Product>>()).Data;
+        }
+
+        public async Task<Product> UpdateProductAsync(Product product)
+        {
+            var result = await _httpClient.PutAsJsonAsync(_settings.BackendApiURL + "Product/", product);
+            return (await result.Content.ReadFromJsonAsync<ServiceResponse<Product>>()).Data;
+        }
+
+        public async Task DeleteProductAsync(Product product)
+        {
+            var result = await _httpClient.DeleteAsync(_settings.BackendApiURL + "Product/" + product.Id);
+        }
     }
 }

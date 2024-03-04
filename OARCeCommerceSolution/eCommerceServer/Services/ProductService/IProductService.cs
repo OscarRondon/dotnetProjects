@@ -10,5 +10,8 @@
         public Task<ServiceResponse<List<string>>> GetProdctsSearchSuggestionsAsync(string searchText);
         public Task<ServiceResponse<List<Product>>> GetFeaturedProductsAsync();
         public Task<ServiceResponse<List<Product>>> GetAdminProductsAsync();
+        public Task<ServiceResponse<Product>> CreateProductAsync(Product product);
+        public Task<ServiceResponse<Product>> UpdateProductAsync(Product product);
+        public Task<ServiceResponse<bool>> DeleteProductAsync(int Id);
     }
 }
