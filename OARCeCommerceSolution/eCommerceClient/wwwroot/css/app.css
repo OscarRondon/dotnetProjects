@@ -120,3 +120,7 @@ code {
 .icon-height {
     height: 1px
 }
+
+.text-area-h-150 {
+    height: 150px;
+}

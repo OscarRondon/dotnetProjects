@@ -24,3 +24,8 @@
 .col-visible {
     text-align: center;
 }
+
+.text-area-h-100 {
+    height: 100px;
+}
+
