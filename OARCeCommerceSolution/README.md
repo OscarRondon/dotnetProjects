@@ -86,3 +86,4 @@ OARCeCommerceSolution
 ## Todos
 
 - session expiration control and security
+- Adjust auto logout when app close
