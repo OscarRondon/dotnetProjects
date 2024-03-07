@@ -209,13 +209,13 @@ else
 
     async void DeleteProduct()
     {
-        //bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm",
-        //    $"Do you really want to delete '{product.Title}'?");
-        //if (confirmed)
-        //{
-        //    await _productService.DeleteProductAsync(product);
-        //    _navigationManager.NavigateTo("admin/products");
-        //}
+        bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm",
+            $"Do you really want to delete '{product.Title}'?");
+        if (confirmed)
+        {
+            await _productService.DeleteProductAsync(product);
+            _navigationManager.NavigateTo("admin/products");
+        }
     }
 
     async Task OnFileChange(InputFileChangeEventArgs e)
