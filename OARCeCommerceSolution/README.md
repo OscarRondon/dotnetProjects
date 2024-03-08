@@ -79,7 +79,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Implement Deleting a Product on EditProductPage (client)
+	*	
 ]
 
 
