@@ -174,7 +174,10 @@ namespace eCommerceServer.Services.ProductService
 
         public async Task<ServiceResponse<Product>> UpdateProductAsync(Product product)
         {
-            var dbProduct = await _context.Products.FindAsync(product.Id);
+            var dbProduct = await _context.Products
+                .Include(p => p.Images)
+                .FirstOrDefaultAsync(p => p.Id == product.Id);
+
             if (dbProduct != null)
             {
                 dbProduct.Title = product.Title;
@@ -184,8 +187,12 @@ namespace eCommerceServer.Services.ProductService
                 dbProduct.Category = product.Category;
                 dbProduct.Featured = product.Featured;
                 dbProduct.Visible = product.Visible;
-                dbProduct.Images = product.Images;
                 dbProduct.Deleted = false;
+
+                var productImages = dbProduct.Images;
+                _context.Images.RemoveRange(productImages);
+
+                dbProduct.Images = product.Images;
 
                 foreach (var variant in product.Variants)
                 {

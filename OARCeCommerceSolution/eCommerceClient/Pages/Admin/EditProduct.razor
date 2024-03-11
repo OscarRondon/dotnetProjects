@@ -42,6 +42,9 @@ else
                 foreach (var image in product.Images)
                 {
                     <img src="@image.Data" />
+                    <button type="button" @onclick="(()=>RemoveImage(image.Id))">
+                        <i class="bi bi-trash3-fill h5"></i>
+                    </button>
                     @*<MudCard Class="ma-2">
                             <MudCardContent>
                                 <MudImage Src="@image.Data" />
@@ -235,10 +238,10 @@ else
 
     void RemoveImage(int id)
     {
-        //var image = product.Images.FirstOrDefault(i => i.Id == id);
-        //if (image != null)
-        //{
-        //    product.Images.Remove(image);
-        //}
+        var image = product.Images.FirstOrDefault(i => i.Id == id);
+        if (image != null)
+        {
+            product.Images.Remove(image);
+        }
     }
 }
