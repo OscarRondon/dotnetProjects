@@ -64,6 +64,8 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 	- Blazored.LocalStorage (Package to work with local storage)
 	- Microsoft.AspNetCore.Components.Authorization
 	- Microsoft.AspNetCore.WebUtilities
+	- MudBlazor
+	- MudBlazor.ThemeManager
 ```
 
 ## Testing [14]

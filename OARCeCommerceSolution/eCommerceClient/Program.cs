@@ -8,6 +8,7 @@ global using eCommerceClient.Services.AuthService;
 global using Microsoft.AspNetCore.Components.Authorization;
 global using eCommerceClient.Services.OrderService;
 global using eCommerceClient.Services.AddressService;
+global using MudBlazor.Services;
 using eCommerceClient;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -19,6 +20,7 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddMudServices();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 var settings = new ClientAppSettings();
@@ -36,5 +38,6 @@ builder.Services.AddScoped<IAddressService, AddressService>();
 builder.Services.AddOptions();
 builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
+
 
 await builder.Build().RunAsync();

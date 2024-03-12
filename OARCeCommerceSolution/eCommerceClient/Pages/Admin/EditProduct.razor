@@ -41,22 +41,23 @@ else
             {
                 foreach (var image in product.Images)
                 {
-                    <img src="@image.Data" />
-                    <button type="button" @onclick="(()=>RemoveImage(image.Id))">
-                        <i class="bi bi-trash3-fill h5"></i>
-                    </button>
-                    @*<MudCard Class="ma-2">
-                            <MudCardContent>
-                                <MudImage Src="@image.Data" />
-                            </MudCardContent>
-                            <MudCardActions Style="justify-content: center;">
-                                <MudButton Variant="Variant.Filled"
-                                           Color="Color.Error"
-                                           OnClick="@(() => RemoveImage(image.Id))">
-                                    Remove
-                                </MudButton>
-                            </MudCardActions>
-                        </MudCard>*@
+                    @*<img src="@image.Data" />
+                        <button type="button" @onclick="(()=>RemoveImage(image.Id))">
+                            <i class="bi bi-trash3-fill h5"></i>
+                        </button>*@
+                    <MudCard Class="ma-2" Style="display:flex; flex-direction: column; justify-content:space-between">
+                        <MudCardContent>
+                            <MudImage Src="@image.Data" />
+                        </MudCardContent>
+                        
+                        <MudCardActions Class="mb-3" Style="justify-content: center;">
+                            <MudButton Variant="Variant.Filled"
+                                       Color="Color.Error"
+                                       OnClick="@(() => RemoveImage(image.Id))">
+                                <i class="bi bi-trash3-fill h6" style="margin: 0"></i>
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
 
                 }
             }
