@@ -30,7 +30,9 @@ namespace eCommerceServer.Services.CartService
 
             foreach (var item in cartItems)
             {
-                var product = _context.Products.Where(p => p.Id == item.ProductId).FirstOrDefault();
+                var product = _context.Products
+                    .Include(p => p.Images)
+                    .Where(p => p.Id == item.ProductId).FirstOrDefault();
                 if (product == null)
                     continue;
 
@@ -50,6 +52,7 @@ namespace eCommerceServer.Services.CartService
                     ProductTypeId = productVariant.ProductTypeId,
                     ProductType = productVariant.ProductType.Name,
                     Quantity = item.Quantity,
+                    Images = product.Images
 
                 };
 

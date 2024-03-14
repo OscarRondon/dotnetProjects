@@ -1,7 +1,7 @@
 ﻿﻿.container {
     display: flex;
     flex-direction: row;
-    overflow-x: auto;
+    overflow-x:unset;
     justify-content: center;
 }
 
@@ -23,7 +23,8 @@ img {
     padding: 10px;
     border: 1px solid lightgray;
     border-radius: 10px;
-    max-width: 200px;
+    min-width: 250px;
+    max-width: 250px;
 }
 
 @media (max-width: 1023.98px) {

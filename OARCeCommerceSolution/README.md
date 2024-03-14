@@ -81,7 +81,7 @@ This is an eCommerce ASP.NET Blazor Web Assembly app
 
 OARCeCommerceSolution
 [
-	*	Show Image Carousel on the product details page (client)
+	*	
 ]
 
 

@@ -12,10 +12,21 @@ else
         <ul class="list-unstyled">
             @foreach (var product in _productService.Products)
             {
-                <li class="media my-3">
+                <li class="media my-2">
                     <div class="media-img-wrapper me-2">
                         <a href="/product/@product.Id">
-                            <img class="media-img" src="@product.ImageUrl" alt="@product.Title" />
+                            @if (!string.IsNullOrEmpty(product.ImageUrl))
+                            {
+                                <img class="media-img" src="@product.ImageUrl" alt="@product.Title" />
+                            }
+                            else
+                            {
+                                if (product.Images != null && product.Images.Count > 0)
+                                {
+                                    <img class="media-img" src="@product.Images[0].Data" alt="@product.Title" />
+
+                                }
+                            }
                         </a>
                     </div>
                     <div class="media-body">
@@ -28,9 +39,9 @@ else
                 </li>
             }
         </ul>
-        for (var i = 1; i <=_productService.PageCount; i++)
+        for (var i = 1; i <= _productService.PageCount; i++)
         {
-            <a class="btn 
+            <a class="btn
                @(i == _productService.CurrentPage ? "btn-info" : "btn-outline-info")
                page-selection"
                href="/Search/@_productService.LastSearchText/@i">@i</a>

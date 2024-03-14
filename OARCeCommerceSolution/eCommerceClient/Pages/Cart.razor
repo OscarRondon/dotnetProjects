@@ -12,49 +12,59 @@
     <span>@message</span>
 }
 @*else if (orderPlaced)
-{
-    <span>Thank you for your order! You can checj your orders <a href="Orders">here</a></span>
-}*@
+    {
+        <span>Thank you for your order! You can checj your orders <a href="Orders">here</a></span>
+    }*@
 else
 {
-<div>
-    @foreach (var product in cartProducts)
-    {
-        <div class="container">
-            <div class="image-wrapper">
-                <img src="@product.ImageUrl" class="image" alt="@product.Tittle" title="@product.Tittle" />
+    <div>
+        @foreach (var product in cartProducts)
+        {
+            <div class="container">
+                <div class="image-wrapper">
+                    @if (!string.IsNullOrEmpty(product.ImageUrl))
+                    {
+                        <img src="@product.ImageUrl" class="image" alt="@product.Tittle" title="@product.Tittle" />
+                    }
+                    else
+                    {
+                        if (product.Images != null && product.Images.Count > 0)
+                        {
+                            <img src="@product.Images[0].Data" class="image" alt="@product.Tittle" title="@product.Tittle" />
+                        }
+                    }
+                </div>
+                <div class="name>">
+                    <h5><a href="/Product/@product.ProductId">@product.Tittle</a></h5>
+                    <span>@product.ProductType</span>
+                    <input type="number" value="@product.Quantity"
+                           @onchange="@((ChangeEventArgs e) => UpdateQuantity(e, product))"
+                           class="form-control input-quantity"
+                           min="1" />
+                    <button class="btn-delete" @onclick="@(() => RemoveItemFromCart(product.ProductId, product.ProductTypeId))">
+                        <i class="bi bi-trash3-fill h6"></i>
+                    </button>
+                </div>
+                <div class="cart-product-price">
+                    $@(product.Price*product.Quantity)
+                </div>
             </div>
-            <div class="name>">
-                <h5><a href="/Product/@product.ProductId">@product.Tittle</a></h5>
-                <span>@product.ProductType</span>
-                <input type="number" value="@product.Quantity"
-                       @onchange="@((ChangeEventArgs e) => UpdateQuantity(e, product))"
-                       class="form-control input-quantity"
-                       min="1" />
-                <button class="btn-delete" @onclick="@(() => RemoveItemFromCart(product.ProductId, product.ProductTypeId))">
-                    <i class="bi bi-trash3-fill h6"></i>
-                </button>
-            </div>
-            <div class="cart-product-price">
-                $@(product.Price*product.Quantity)
-            </div>
+        }
+        <div class="cart-product-price">
+            Total (@cartProducts.Count): $@cartProducts.Sum(p => p.Price * p.Quantity)
         </div>
-    }
-    <div class="cart-product-price">
-        Total (@cartProducts.Count): $@cartProducts.Sum(p => p.Price * p.Quantity)
+        @if (isAuthenticated)
+        {
+            <div>
+                <h5>Delivery Address</h5>
+                <AddressForm />
+            </div>
+        }
+        <hr />
+        <button class="btn btn-primary float-end mt-3" @onclick="PlaceOrder">
+            Placer Order <i class="bi bi-receipt h4 ms-3 mt-2 mb-2"></i>
+        </button>
     </div>
-    @if (isAuthenticated)
-    {
-        <div>
-            <h5>Delivery Address</h5>
-            <AddressForm />
-        </div>
-    }
-    <hr />
-    <button class="btn btn-primary float-end mt-3" @onclick="PlaceOrder">
-        Placer Order <i class="bi bi-receipt h4 ms-3 mt-2 mb-2"></i>
-    </button>
-</div>
 
 }
 
