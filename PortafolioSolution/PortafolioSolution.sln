@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34707.107
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortafolioClient", "PortafolioClient\PortafolioClient.csproj", "{BB1F33F2-CAD8-4388-AFEC-5BE6ACAE3FD0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB1F33F2-CAD8-4388-AFEC-5BE6ACAE3FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB1F33F2-CAD8-4388-AFEC-5BE6ACAE3FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB1F33F2-CAD8-4388-AFEC-5BE6ACAE3FD0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BB1F33F2-CAD8-4388-AFEC-5BE6ACAE3FD0}.Debug|x64.Build.0 = Debug|Any CPU
+		{BB1F33F2-CAD8-4388-AFEC-5BE6ACAE3FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB1F33F2-CAD8-4388-AFEC-5BE6ACAE3FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB1F33F2-CAD8-4388-AFEC-5BE6ACAE3FD0}.Release|x64.ActiveCfg = Release|Any CPU
+		{BB1F33F2-CAD8-4388-AFEC-5BE6ACAE3FD0}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {143AF19A-E697-4B7E-BCB7-2EBB42400358}
+	EndGlobalSection
+EndGlobal
