@@ -16,7 +16,7 @@ License: https://bootstrapmade.com/license/
 	- Databases: N/A
 ```
 
-## Client side App (eCommerceClient)
+## Client side App (PortafolioClient)
 
 ### Configuration
 ```
@@ -39,7 +39,9 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Project Init
+	*	Add Navar
+	*	Css for Nav-var Image
+	*	Css for Nav-var H1
 ]
 
 
