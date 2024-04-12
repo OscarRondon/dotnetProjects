@@ -39,9 +39,8 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add Navar
-	*	Css for Nav-var Image
-	*	Css for Nav-var H1
+	*	Nav-bar Icons
+	*	Nav-bar Icons css functionality
 ]
 
 
