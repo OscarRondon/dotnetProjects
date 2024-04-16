@@ -39,8 +39,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Nav-bar Icons
-	*	Nav-bar Icons css functionality
+	*	CSS Adjustments
 ]
 
 
