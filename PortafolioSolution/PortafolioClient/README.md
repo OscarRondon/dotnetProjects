@@ -39,7 +39,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	CSS Adjustments
+	*	HTML semantics Adjustments on NavMenu component
 ]
 
 
