@@ -39,7 +39,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Social media icons class adjustments
+	*	Add Hero Section
 ]
 
 
