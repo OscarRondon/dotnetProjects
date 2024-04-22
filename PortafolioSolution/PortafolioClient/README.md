@@ -39,7 +39,8 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add Hero Section
+	*	Blazor Typewriter revision
+	*	Adjustmen on Hero section index
 ]
 
 

@@ -9,7 +9,7 @@
     <main>
         <section class="top-row px-4">
             <!-- ======= Mobile nav toggle button ======= -->
-            <i class="bi bi-list mobile-nav-toggle @hideMobileNavToogleBtn"></i>
+            <i class="bi bi-list mobile-nav-toggle @hideMobileNavToogleBtn" @onclick="MobileNavToggleButtonHandler"></i>
         </section>
 
         <section>
@@ -21,5 +21,10 @@
 @code{
 
     public string hideMobileNavToogleBtn = "";// "d-xl-none";
+
+    public void MobileNavToggleButtonHandler()
+    {
+        Console.WriteLine("si");
+    }
 
 }
