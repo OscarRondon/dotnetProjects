@@ -44,11 +44,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Blazor Typewriter revision
-	*	Add Typewriter project
-	*	Adjustmen on Hero section
-	*	Add Typewriter effect
+	*	Chanche blink efect into the component
 ]
-
 
 ## Todos
