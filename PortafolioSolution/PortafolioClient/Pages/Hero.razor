@@ -1,10 +1,24 @@
-﻿<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+﻿@using BlazorTypewriter;
+
+<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="hero-container" data-aos="fade-in">
         <h1>Oscar Rondon</h1>
-        <p><span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer">Fullstack developer</span></p>
+        <p><span><Typewriter Builder="@typewriter" /><span class="blinking-cursor ms-2">|</span></span></p>
     </div>
 </section>
 
 @code {
-
+    
+    TypewriterBuilder typewriter = new TypewriterBuilder(defaultCharacterPause: 3)
+        .TypeString(".Net Fullstack Developer", 100)
+        .Pause(2000)
+        .DeleteAll(50)
+        .TypeString("SAP Business One Developer", 100)
+        .Pause(2000)
+        .DeleteAll(50)
+        .TypeString("SAP Business One Consultant", 100)
+        .Pause(2000)
+        .DeleteAll(50)
+        .Pause(1000)
+        .Loop();
 }

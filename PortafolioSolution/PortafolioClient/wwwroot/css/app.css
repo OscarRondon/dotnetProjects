@@ -1,1 +1,62 @@
 @import url('bootstrap-icons/font/bootstrap-icons.css');
+
+/*
+    -------------------------------------------------------------------------
+    Blinkin cursor
+    -------------------------------------------------------------------------
+*/
+.blinking-cursor {
+    font-weight: 500;
+    font-size: 18px;
+    color: white;
+    -webkit-animation: 2s blink step-end infinite;
+    -moz-animation: 2s blink step-end infinite;
+    -ms-animation: 2s blink step-end infinite;
+    -o-animation: 2s blink step-end infinite;
+    animation: 2s blink step-end infinite;
+}
+
+@keyframes blink {
+    from, to{
+        color: transparent;
+    }
+    50% {
+        color: #149ddd;
+    }
+}
+
+@-moz-keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: #149ddd;
+    }
+}
+
+@-webkit-keyframes blink {
+    from, to{
+        color: transparent;
+    }
+    50% {
+        color: #149ddd;
+    }
+}
+
+@-ms-keyframes blink {
+    from, to{
+        color: transparent;
+    }
+    50% {
+        color: #149ddd;
+    }
+}
+
+@-o-keyframes blink {
+    from, to{
+        color: transparent;
+    }
+    50% {
+        color: #149ddd;
+    }
+}

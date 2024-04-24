@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.34707.107
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortafolioClient", "PortafolioClient\PortafolioClient.csproj", "{BB1F33F2-CAD8-4388-AFEC-5BE6ACAE3FD0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTypewriter", "BlazorTypewriter\BlazorTypewriter.csproj", "{194A1C40-44AB-49C9-9866-C1892388D9A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,14 @@ Global
 		{BB1F33F2-CAD8-4388-AFEC-5BE6ACAE3FD0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BB1F33F2-CAD8-4388-AFEC-5BE6ACAE3FD0}.Release|x64.ActiveCfg = Release|Any CPU
 		{BB1F33F2-CAD8-4388-AFEC-5BE6ACAE3FD0}.Release|x64.Build.0 = Release|Any CPU
+		{194A1C40-44AB-49C9-9866-C1892388D9A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{194A1C40-44AB-49C9-9866-C1892388D9A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{194A1C40-44AB-49C9-9866-C1892388D9A7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{194A1C40-44AB-49C9-9866-C1892388D9A7}.Debug|x64.Build.0 = Debug|Any CPU
+		{194A1C40-44AB-49C9-9866-C1892388D9A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{194A1C40-44AB-49C9-9866-C1892388D9A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{194A1C40-44AB-49C9-9866-C1892388D9A7}.Release|x64.ActiveCfg = Release|Any CPU
+		{194A1C40-44AB-49C9-9866-C1892388D9A7}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

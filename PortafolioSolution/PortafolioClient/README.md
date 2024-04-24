@@ -37,10 +37,17 @@ License: https://bootstrapmade.com/license/
 	- MudBlazor.ThemeManager
 ```
 
+### 3rd party projects
+```
+	- BlazorTypewriter (https://github.com/ormesam/blazor-typewriter)
+```
+
 PortafolioSolution
 [
 	*	Blazor Typewriter revision
-	*	Adjustmen on Hero section index
+	*	Add Typewriter project
+	*	Adjustmen on Hero section
+	*	Add Typewriter effect
 ]
 
 

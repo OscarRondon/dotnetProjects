@@ -21,4 +21,8 @@
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorTypewriter\BlazorTypewriter.csproj" />
+  </ItemGroup>
+
 </Project>
