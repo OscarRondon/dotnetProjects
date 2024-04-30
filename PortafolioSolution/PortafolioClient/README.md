@@ -44,7 +44,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Chanche blink efect into the component
+	*	Add about component
 ]
 
 ## Todos
