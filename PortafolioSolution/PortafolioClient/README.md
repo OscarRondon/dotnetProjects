@@ -44,7 +44,10 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add about component
+	*	Adjust hero section css
+	*	Add compunter engineer under the name
+	*	Add About css
+	*	Adjust About general section
 ]
 
 ## Todos
