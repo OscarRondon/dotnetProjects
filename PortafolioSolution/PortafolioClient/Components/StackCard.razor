@@ -1,0 +1,19 @@
+﻿<section>
+    <img class="" alt=@ImgAlt ref=@ImgRef />
+    <h2>@CardTitle</h2>
+</section>
+
+@code {
+
+    [Parameter]
+    public string ImgAlt { get; set; } = "";
+
+    [Parameter]
+    public string ImgRef { get; set; } = "";
+
+    [Parameter]
+    public string CardCode { get; set; } = "0";
+
+    [Parameter]
+    public string CardTitle { get; set; } = "Oscar";
+}
