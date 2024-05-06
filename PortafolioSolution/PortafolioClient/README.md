@@ -44,7 +44,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add StackCard component
+	*	
 ]
 
 ## Todos
