@@ -44,7 +44,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	
+	*	Tech Stack css for grid on About.razor.css
 ]
 
 ## Todos
