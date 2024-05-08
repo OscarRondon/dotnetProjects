@@ -44,7 +44,8 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Tech Stack css for grid on About.razor.css
+	*	Tech Stack css as flex for About page Tech Stack section
+	*	Stack card css (footer position, size, shadow)
 ]
 
 ## Todos
