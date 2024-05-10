@@ -44,8 +44,8 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Tech Stack css as flex for About page Tech Stack section
-	*	Stack card css (footer position, size, shadow)
+	*	Adjust StackCard text footer
+	*	Adjust StackCard order
 ]
 
 ## Todos
