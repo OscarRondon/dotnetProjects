@@ -1,5 +1,5 @@
 ﻿<section class="StackCard">
-    <img class="" alt=@ImgAlt ref=@ImgRef />
+    <img class="img-fluid" alt=@ImgAlt src=@ImgSrc />
     <footer>@CardTitle</footer>
 </section>
 
@@ -9,7 +9,7 @@
     public string ImgAlt { get; set; } = "";
 
     [Parameter]
-    public string ImgRef { get; set; } = "";
+    public string ImgSrc { get; set; } = "/img/profile-img.jpg";
 
     [Parameter]
     public string CardCode { get; set; } = "0";

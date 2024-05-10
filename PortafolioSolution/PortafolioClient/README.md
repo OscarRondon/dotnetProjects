@@ -44,8 +44,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Adjust StackCard text footer
-	*	Adjust StackCard order
+	*	StackCard Css done
 ]
 
 ## Todos
