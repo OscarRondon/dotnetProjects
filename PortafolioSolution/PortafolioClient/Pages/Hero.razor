@@ -13,17 +13,21 @@
 </section>
 
 @code {
-    
+
     TypewriterBuilder typewriter = new TypewriterBuilder(defaultCharacterPause: 3)
         .TypeString(".Net Fullstack Developer", 100)
-        .Pause(2000)
+        .Pause(1000)
+        .DeleteAll(50)
+        .TypeString("Reactjs developer", 100)
+        .Pause(1000)
         .DeleteAll(50)
         .TypeString("SAP Business One Developer", 100)
-        .Pause(2000)
+        .Pause(1000)
         .DeleteAll(50)
         .TypeString("SAP Business One Consultant", 100)
-        .Pause(2000)
+        .Pause(1000)
         .DeleteAll(50)
+        .Pause(1000)
         .Pause(1000)
         .Loop();
 }
