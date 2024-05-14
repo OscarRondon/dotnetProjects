@@ -45,6 +45,7 @@ License: https://bootstrapmade.com/license/
 PortafolioSolution
 [
 	*	Add TechStack Logos
+	*	Adjust StackCard CSS
 ]
 
 ## Todos

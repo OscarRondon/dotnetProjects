@@ -1,5 +1,6 @@
 ﻿.StackCard {
-    position: relative;
+    display: flex;
+    flex-direction: column;
     height: 160px;
     width: 140px;
     border-radius: 5px;
@@ -7,20 +8,24 @@
     margin: 10px;
     align-items: center;
     justify-content: center;
+    transition: transform .5s;
 }
 
+    .StackCard:hover {
+        transform: scale(1.3);
+        background: white;
+    }
+
     .StackCard img {
-        position: absolute;
-        top: 15px;
-        left:15px;
-        width: 110px;
-        height: 120px;
+        justify-self:flex-start;
+        width: 85%;
+        height: 73%;
         border-radius: 5px;
+        margin-bottom: 10%;
     }
 
     .StackCard footer {
-        position: absolute;
-        bottom: 5px;
+        justify-self: flex-end;
         font-size: small;
         text-align: center;
         font-style: italic;
