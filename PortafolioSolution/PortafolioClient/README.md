@@ -44,8 +44,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add TechStack Logos
-	*	Adjust StackCard CSS
+	*	Add TechStack Logos for bootstrap and Tailwind
 ]
 
 ## Todos
