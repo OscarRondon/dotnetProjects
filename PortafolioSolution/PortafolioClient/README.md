@@ -44,7 +44,8 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add TechStack Logos for bootstrap and Tailwind
+	*	Add Resume Component
+	*	Modify NavMenu to put portfolio before the resume
 ]
 
 ## Todos
