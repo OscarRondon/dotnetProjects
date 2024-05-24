@@ -44,8 +44,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add Resume Component
-	*	Modify NavMenu to put portfolio before the resume
+	*	Add Resume css
 ]
 
 ## Todos
