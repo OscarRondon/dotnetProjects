@@ -44,7 +44,9 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add Resume css
+	*	Working on resume section (Sumary, Education, Certifications)
+	*	Add Crystal report to skills section
+	*	Adjust Navbar chache Portfolio for proyects
 ]
 
 ## Todos
