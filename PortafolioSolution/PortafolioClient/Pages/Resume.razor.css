@@ -56,7 +56,9 @@
         border: 2px solid #1f5297;
     }
 
-    .moreLink{
-        margin-left: 3px;
-        font-size: medium;
-    }
+.moreLink {
+    text-decoration: none;
+    color: #0000EE;
+    margin-left: 3px;
+    font-size: medium;
+}
