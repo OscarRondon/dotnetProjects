@@ -27,3 +27,7 @@
     .section-title p {
         margin-bottom: 0;
     }
+
+.section-title-pt {
+    padding-top: 3.5rem;
+}

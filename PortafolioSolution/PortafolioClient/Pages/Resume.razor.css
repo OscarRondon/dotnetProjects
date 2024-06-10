@@ -1,4 +1,9 @@
-﻿.resume .resume-title {
+﻿
+.section-bg {
+    background: #f5f8fd;
+}
+
+.resume .resume-title {
     font-size: 26px;
     font-weight: 700;
     margin-top: 20px;

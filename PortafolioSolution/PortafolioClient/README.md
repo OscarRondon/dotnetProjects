@@ -44,8 +44,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Fix Section_Tittle styles add styles in app.css
-	*	Add Project Component
+	*	Fix Section_Tittle position
 ]
 
 ## Todos
