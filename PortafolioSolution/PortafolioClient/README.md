@@ -30,8 +30,6 @@ License: https://bootstrapmade.com/license/
 ```
 ### Nuget Packages
 ```
-	- Blazored.LocalStorage (Package to work with local storage)
-	- Microsoft.AspNetCore.Components.Authorization
 	- Microsoft.AspNetCore.WebUtilities
 	- MudBlazor
 	- MudBlazor.ThemeManager
@@ -44,7 +42,8 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Fix Section_Tittle position
+	*	Add Mudblazor components to the proyect
+	*	Add Carousel for Projects
 ]
 
 ## Todos
