@@ -1,4 +1,6 @@
-﻿<section id="projects" class="portfolio section-bg">
+﻿@inject IJSRuntime JsRuntime;
+
+<section id="projects" class="portfolio section-bg">
     <div class="container">
 
         <div class="section-title section-title-pt">
@@ -8,37 +10,42 @@
 
     </div>
 
-    <div>
-        <MudCarousel Class="mud-width-full" @ref="_carousel" ItemsSource="@_source" @bind-SelectedIndex="selectedIndex" Style="height:200px;" ShowArrows="@_arrows" ShowBullets="@_bullets" EnableSwipeGesture="@_enableSwipeGesture" AutoCycle="@_autocycle">
-            <ItemTemplate>
-                <div class="d-flex flex-column flex-column justify-center" style="height:100%">
-                    <MudIcon Class="mx-auto" Icon="@Icons.Custom.Brands.MudBlazor" Size="@Size.Large" />
-                    <MudText Align="@Align.Center" Class="mx-auto">@context</MudText>
-                </div>
-            </ItemTemplate>
-        </MudCarousel>
-        <MudSelect @bind-Value="selectedIndex" Label="@($"Selected Item (index: {selectedIndex})")">
-            @{
-                int index = 0;
-                foreach (var item in _source)
-                {
-                    <MudSelectItem Value="@index">@item</MudSelectItem>
-
-                    index++;
-                }
-            }
-        </MudSelect>
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/CSS-Logo.png" class="d-block" style="width:250px; height:250px" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="img/Bootstrap-Logo.png"  class="d-block" style="width:250px; height:250px" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="img/CrystalReport-Logo.png"  class="d-block" style="width:250px; height:250px" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 
 </section>
 
 @code {
-    private MudCarousel<string> _carousel;
-    private bool _arrows = true;
-    private bool _bullets = true;
-    private bool _enableSwipeGesture = true;
-    private bool _autocycle = true;
-    private IList<string> _source = new List<string>() { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-    private int selectedIndex = 2;
+
+    private string carouselName = "carouselExample"; // NOTE: the ID of the carousel
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            object[] args = { carouselName };
+            await JsRuntime.InvokeAsync<object>("startCarousel", args); // NOTE: call JavaScript function with the ID of the carousel
+            firstRender = false;
+        }
+    }
 
 }
