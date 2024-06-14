@@ -42,8 +42,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Remove Mudblazor components to the proyect
-	*	Add bootstrap Carousel for Projects
+	*	Styling projects carousel
 ]
 
 ## Todos
