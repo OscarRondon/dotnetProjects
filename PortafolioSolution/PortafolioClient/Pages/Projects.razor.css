@@ -3,13 +3,5 @@
 }
 
 .carousel .carousel-item {
-    height: 400px;
-}
-
-.carousel-item img {
-    position: absolute;
-    object-fit: cover;
-    top: 0;
-    left: 0;
-    min-height: 200px;
+    height: 70vh;
 }
