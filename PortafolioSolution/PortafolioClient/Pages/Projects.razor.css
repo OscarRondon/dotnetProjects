@@ -1,7 +1,21 @@
-﻿.carousel {
+﻿.carousel-custom {
     width: 90%;
+    height: 70vh;
+    background: #f5f8fd;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 5px rgba(212,210,212,1);
 }
 
-.carousel .carousel-item {
-    height: 70vh;
+.carousel-inner-custom {
+    width: 80%;
+    height: 100%;
+}
+
+.carousel-item-content{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 80%;
+    margin-top: 10px;
+
 }
