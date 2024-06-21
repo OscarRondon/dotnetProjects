@@ -42,7 +42,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Styling projects carousel
+	*	Working on Project card
 ]
 
 ## Todos
