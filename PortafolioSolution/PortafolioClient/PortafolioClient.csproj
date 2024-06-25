@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BlazorTypewriter\BlazorTypewriter.csproj" />
+    <ProjectReference Include="..\PortfolioShared\PortfolioShared.csproj" />
   </ItemGroup>
 
 </Project>

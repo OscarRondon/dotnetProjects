@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortafolioClient", "Portafo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTypewriter", "BlazorTypewriter\BlazorTypewriter.csproj", "{194A1C40-44AB-49C9-9866-C1892388D9A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioShared", "PortfolioShared\PortfolioShared.csproj", "{409483AC-37CA-4FB0-AAEF-7A71DB69ACBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{194A1C40-44AB-49C9-9866-C1892388D9A7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{194A1C40-44AB-49C9-9866-C1892388D9A7}.Release|x64.ActiveCfg = Release|Any CPU
 		{194A1C40-44AB-49C9-9866-C1892388D9A7}.Release|x64.Build.0 = Release|Any CPU
+		{409483AC-37CA-4FB0-AAEF-7A71DB69ACBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{409483AC-37CA-4FB0-AAEF-7A71DB69ACBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{409483AC-37CA-4FB0-AAEF-7A71DB69ACBB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{409483AC-37CA-4FB0-AAEF-7A71DB69ACBB}.Debug|x64.Build.0 = Debug|Any CPU
+		{409483AC-37CA-4FB0-AAEF-7A71DB69ACBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{409483AC-37CA-4FB0-AAEF-7A71DB69ACBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{409483AC-37CA-4FB0-AAEF-7A71DB69ACBB}.Release|x64.ActiveCfg = Release|Any CPU
+		{409483AC-37CA-4FB0-AAEF-7A71DB69ACBB}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

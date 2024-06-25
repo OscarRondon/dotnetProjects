@@ -1,3 +1,4 @@
+global using PortfolioShared;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using PortafolioClient;

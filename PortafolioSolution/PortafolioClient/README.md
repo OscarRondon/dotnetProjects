@@ -43,6 +43,9 @@ License: https://bootstrapmade.com/license/
 PortafolioSolution
 [
 	*	Working on Project card
+	*	Add Shared library project
+	*	Add classes to ProtfolioShared (Project.cs, Tech.cs)
+	*	Add ProjectCardComponent
 ]
 
 ## Todos
