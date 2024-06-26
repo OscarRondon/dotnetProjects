@@ -1,5 +1,15 @@
-﻿<h3>ProjectCard</h3>
+﻿<section class="w-75 border border-2 border-warning d-flex">
+    <img src=@project.ImageUrl class="d-block" style="width:250px; height:250px" alt="...">
+    <div>
+
+    </div>
+    <div class="">
+        <h5>@project.Title</h5>
+        <p>@project.Description</p>
+    </div>
+</section>
 
 @code {
-
+    [Parameter]
+    public Project project { get; set; }
 }
