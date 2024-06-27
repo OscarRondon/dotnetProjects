@@ -44,7 +44,6 @@ PortafolioSolution
 [
 	*	Working on Project card
 	*	Working on ProjectCardComponent
-	*	Add Project card CSS
 ]
 
 ## Todos
