@@ -42,8 +42,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Working on Project card
-	*	Working on ProjectCardComponent
+	*	Working on ProjectCardComponent css
 ]
 
 ## Todos
