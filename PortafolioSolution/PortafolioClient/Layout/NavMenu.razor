@@ -54,6 +54,11 @@
                 </a>
             </li>
             <li>
+                <a href="#techstack" class="nav-link scrollto  @(activeMenuOption == "TechStack"? "active" : "")" @onclick="@(() => ToogleActiveMenuOption("TechStack"))">
+                    <i class="bi bi-boxes"></i><span>Tech Stack</span>
+                </a>
+            </li>
+            <li>
                 <a href="#projects" class="nav-link scrollto  @(activeMenuOption == "Projects"? "active" : "")" @onclick="@(() => ToogleActiveMenuOption("Projects"))">
                     <i class="bi bi-terminal"></i><span>Projects</span>
                 </a>

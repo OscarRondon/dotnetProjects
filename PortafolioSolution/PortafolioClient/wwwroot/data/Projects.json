@@ -1,0 +1,26 @@
+{
+  {
+    "Id": "P0001",
+    "ImagesUrls": [ "1.jpg", "2.jpg", "3.jpg" ],
+    "Title": "SAP B1 Integration",
+    "Description": "integration solution for SAP Business One and Command Solution, The solution is composed of a WCF service application developed on Microsoft.Net Framework using C#, SAP Business One Service Layer ApiRest and console applications developed on Microsoft.Net Framework using C#, the console application are controlled and triggered by s Windows tasks schedules. With this application was possible send the Quotations created and approved on SAP business one to Command solution and start the manufacturing process. Also with this solution, the credit score history of the clients are available in Command to decide if a quotation order can be executed before a collecting process",
+    "Technologies": {
+      {
+        "Id": "MSNetF",
+        "Name": ".Net Framework",
+        "ImageUrl": "/img/NetFramework-Logo.png"
+      },
+      {
+        "Id": "CSharp",
+        "Name": "C#",
+        "ImageUrl": "/img/CSharp-Logo.png"
+      }
+      {
+        "Id": "SB1SL",
+        "Name": "SAP Business One SL",
+        "ImageUrl": "/img/SAPB1SL-Logo.png"
+      }
+    },
+    "GitHub": "https://github.com/OscarRondon/Hormigones-Transex"
+  }
+}

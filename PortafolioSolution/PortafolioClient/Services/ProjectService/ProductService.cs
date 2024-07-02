@@ -17,7 +17,7 @@ namespace PortafolioClient.Services.ProjectService
 
         public async Task GetProjectsAsync()
         {
-            var data  = await _httpClient.GetFromJsonAsync<ServiceResponse<Project>>("");
+            Projects  = await _httpClient.GetFromJsonAsync<List<Project>>("");
         }
     }
 }

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortafolioClient", "Portafo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTypewriter", "BlazorTypewriter\BlazorTypewriter.csproj", "{194A1C40-44AB-49C9-9866-C1892388D9A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioShared", "PortfolioShared\PortfolioShared.csproj", "{409483AC-37CA-4FB0-AAEF-7A71DB69ACBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortfolioShared", "PortfolioShared\PortfolioShared.csproj", "{409483AC-37CA-4FB0-AAEF-7A71DB69ACBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

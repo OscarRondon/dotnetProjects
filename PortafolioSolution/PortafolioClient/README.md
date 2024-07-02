@@ -42,9 +42,10 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Create Project Service
-	*	Add Share ServiceResponse
+	*	Split About section in to section About and TechStack section
+	*	Add TypeScript Logo to TechStack section
 	*	Working on project service
+	*	Working on Project list json file
 ]
 
 ## Todos
