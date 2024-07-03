@@ -42,10 +42,10 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Split About section in to section About and TechStack section
-	*	Add TypeScript Logo to TechStack section
-	*	Working on project service
-	*	Working on Project list json file
+	*	Add skills to TechStack section
+	*	Working on Project list JSON file
+	*	Add GitHub link to project card
+	*	NavMenu set github link
 ]
 
 ## Todos

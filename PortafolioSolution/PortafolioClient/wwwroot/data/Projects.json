@@ -1,9 +1,9 @@
 {
   {
     "Id": "P0001",
-    "ImagesUrls": [ "1.jpg", "2.jpg", "3.jpg" ],
+    "ImagesUrls": [ "/img/HTML-Logo.png", "/img/CSS-Logo.png", "/img/JavaScript-Logo.png" ],
     "Title": "SAP B1 Integration",
-    "Description": "integration solution for SAP Business One and Command Solution, The solution is composed of a WCF service application developed on Microsoft.Net Framework using C#, SAP Business One Service Layer ApiRest and console applications developed on Microsoft.Net Framework using C#, the console application are controlled and triggered by s Windows tasks schedules. With this application was possible send the Quotations created and approved on SAP business one to Command solution and start the manufacturing process. Also with this solution, the credit score history of the clients are available in Command to decide if a quotation order can be executed before a collecting process",
+    "Description": "integration solution for SAP Business One and Command Solution, The solution is composed of a WCF service application developed on Microsoft.Net Framework using C#, SAP Business One Service Layer ApiRest and console applications developed on Microsoft.Net Framework using C#, the console application are controlled and triggered by s Windows tasks schedules. With this application was possible send the Quotations created and approved on SAP business one to Command solution and start the manufacturing process. Also with this solution, the credit score history of the clients are available in Command to decide if a quotation order can be executed before a collecting process.",
     "Technologies": {
       {
         "Id": "MSNetF",
@@ -14,7 +14,7 @@
         "Id": "CSharp",
         "Name": "C#",
         "ImageUrl": "/img/CSharp-Logo.png"
-      }
+      },
       {
         "Id": "SB1SL",
         "Name": "SAP Business One SL",
@@ -22,5 +22,59 @@
       }
     },
     "GitHub": "https://github.com/OscarRondon/Hormigones-Transex"
+  },
+  {
+    "Id": "P0002",
+    "ImagesUrls": [ "/img/TypeScript-Logo.png", "/img/Bootstrap-Logo.png" ],
+    "Title": "eComerce Tickets sales",
+    "Description": "Project developed in ASP.Net Core MVC, C#, Entity Framework, Identity, Authorization, xUnit testing (Moq and in memory DB) and MS SQL Server deployed on Azure cloud platform. The purpose of this application is to implement all processes and workflows related to an e-commerce operation, where it’s possible to manage users, movies, cinemas, actors, shopping cart, invoicing, and PayPal integration.",
+    "Technologies": {
+      {
+        "Id": "HTML",
+        "Name": "HTML",
+        "ImageUrl": "/img/HTML-Logo.png"
+      },
+      {
+        "Id": "CSS",
+        "Name": "CSS",
+        "ImageUrl": "/img/CSS-Logo.png"
+      },
+      {
+        "Id": "BootStrap",
+        "Name": "BootStrap",
+        "ImageUrl": "/img/Bootstrap-Logo.png"
+      },
+      {
+        "Id": "NetCore",
+        "Name": ".Net Core",
+        "ImageUrl": "/img/NetCore-Logo.png"
+      },
+      {
+        "Id": "ASPNetCoreMVC",
+        "Name": "ASP .Net Core MVC",
+        "ImageUrl": "/img/NetMVC-Logo.png"
+      },
+      {
+        "Id": "CSharp",
+        "Name": "C#",
+        "ImageUrl": "/img/CSharp-Logo.png"
+      },
+      {
+        "Id": "EF",
+        "Name": "Entity Framework",
+        "ImageUrl": "/img/EF-logo.png"
+      },
+      {
+        "Id": "MSSQLServer",
+        "Name": "MS SQL Server",
+        "ImageUrl": "/img/MSSqlServer-Logo.png"
+      },
+      {
+        "Id": "AZURE",
+        "Name": "AZURE",
+        "ImageUrl": "/img/Azure-Logo.png"
+      }
+    },
+    "GitHub": "https://github.com/OscarRondon/dotnetProjects/tree/main/eCommerceTicketsSolution"
   }
 }
