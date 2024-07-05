@@ -1,5 +1,9 @@
 @import url('bootstrap-icons/font/bootstrap-icons.css');
 
+.section-bg {
+    background: #f5f8fd;
+}
+
 .section-title {
     padding-bottom: 30px;
 }
