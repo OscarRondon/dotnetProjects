@@ -4,20 +4,20 @@ using System.Runtime;
 
 namespace PortafolioClient.Services.ProjectService
 {
-    public class ProductService : IProductService
+    public class ProjectService : IProjectService
     {
         private readonly HttpClient _httpClient;
 
         public List<Project> Projects { get; set; } = new List<Project>();
 
-        public ProductService(HttpClient httpClient) 
+        public ProjectService(HttpClient httpClient) 
         {
             _httpClient = httpClient;
         }
 
         public async Task GetProjectsAsync()
         {
-            Projects  = await _httpClient.GetFromJsonAsync<List<Project>>("");
+            Projects  = await _httpClient.GetFromJsonAsync<List<Project>>("data/projectsData.json");
         }
     }
 }

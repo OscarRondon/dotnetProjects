@@ -1,6 +1,15 @@
-﻿<section id="projects">
-    <div class="container">
+﻿@inject IProjectService _projectService
 
+<section id="projects">
+    <div class="container">
+        @if (_projectService.Projects != null && _projectService.Projects.Count > 0)
+        {
+            <p>si cargó!!!</p>
+        }
+        else
+        {
+            <p>No cargo nada @_projectService.Projects.Count</p>
+        }
         <div class="section-title">
             <h2>Projects</h2>
             <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
@@ -18,7 +27,7 @@
             <div class="carousel-inner carousel-inner-custom">
                 <div class="carousel-item w-100 h-100 active">
                     <div class="carousel-item-content">
-                        <ProjectCard project="@oProject" />
+                        <ProjectCard project="@_projectService.Projects[0]" />
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                         <h5>First slide label</h5>
@@ -54,12 +63,8 @@
 
 @code {
 
-        public Project oProject = new Project
-        {
-            ImageUrls = ["img/Bootstrap-Logo.png"],
-            Title = "Project #1",
-            Description = "This is the best project ever!!"
-        };
-
-
+    protected override async Task OnInitializedAsync()
+    {
+        await _projectService.GetProjectsAsync();
+    }
 }

@@ -42,10 +42,8 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add skills to TechStack section
 	*	Working on Project list JSON file
-	*	Add GitHub link to project card
-	*	NavMenu set github link
+	*	Working on read and load json file
 ]
 
 ## Todos

@@ -1,6 +1,6 @@
 ﻿namespace PortafolioClient.Services.ProjectService
 {
-    public interface IProductService
+    public interface IProjectService
     {
         public List<Project> Projects { get; set; }
 
