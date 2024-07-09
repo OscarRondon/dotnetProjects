@@ -8,7 +8,7 @@ namespace PortafolioClient.Services.ProjectService
     {
         private readonly HttpClient _httpClient;
 
-        public List<Project> Projects { get; set; } = new List<Project>();
+        public List<Project>? Projects { get; set; } = new List<Project>();
 
         public ProjectService(HttpClient httpClient) 
         {

@@ -1,33 +1,9 @@
 [
   {
     "Id": "P0001",
-    "ImagesUrls": [ "/img/HTML-Logo.png", "/img/CSS-Logo.png", "/img/JavaScript-Logo.png" ],
-    "Title": "SAP B1 Integration",
-    "Description": "integration solution for SAP Business One and Command Solution, The solution is composed of a WCF service application developed on Microsoft.Net Framework using C#, SAP Business One Service Layer ApiRest and console applications developed on Microsoft.Net Framework using C#, the console application are controlled and triggered by s Windows tasks schedules. With this application was possible send the Quotations created and approved on SAP business one to Command solution and start the manufacturing process. Also with this solution, the credit score history of the clients are available in Command to decide if a quotation order can be executed before a collecting process.",
-    "Technologies": [
-      {
-        "Id": "MSNetF",
-        "Name": ".Net Framework",
-        "ImageUrl": "/img/NetFramework-Logo.png"
-      },
-      {
-        "Id": "CSharp",
-        "Name": "C#",
-        "ImageUrl": "/img/CSharp-Logo.png"
-      },
-      {
-        "Id": "SB1SL",
-        "Name": "SAP Business One SL",
-        "ImageUrl": "/img/SAPB1SL-Logo.png"
-      }
-    ],
-    "GitHub": "https://github.com/OscarRondon/Hormigones-Transex"
-  },
-  {
-    "Id": "P0002",
     "ImagesUrls": [ "/img/TypeScript-Logo.png", "/img/Bootstrap-Logo.png" ],
     "Title": "eComerce Tickets sales",
-    "Description": "Project developed in ASP.Net Core MVC, C#, Entity Framework, Identity, Authorization, xUnit testing (Moq and in memory DB) and MS SQL Server deployed on Azure cloud platform. The purpose of this application is to implement all processes and workflows related to an e-commerce operation, where it’s possible to manage users, movies, cinemas, actors, shopping cart, invoicing, and PayPal integration.",
+    "Description": "Project developed in ASP.Net Core MVC, C#, Entity Framework, Identity, Authorization, xUnit testing (Moq and in memory DB) and MS SQL Server deployed on Azure cloud platform. The purpose of this application was to implement all processes and workflows related to an e-commerce, where it’s possible to manage users, movies, cinemas, actors, shopping cart, invoicing, and PayPal integration.",
     "Technologies": [
       {
         "Id": "HTML",
@@ -38,6 +14,11 @@
         "Id": "CSS",
         "Name": "CSS",
         "ImageUrl": "/img/CSS-Logo.png"
+      },
+      {
+        "Id": "JS",
+        "Name": "JavaScript",
+        "ImageUrl": "/img/JavaScript-Logo.png"
       },
       {
         "Id": "BootStrap",
@@ -76,5 +57,29 @@
       }
     ],
     "GitHub": "https://github.com/OscarRondon/dotnetProjects/tree/main/eCommerceTicketsSolution"
+  },
+  {
+    "Id": "P0002",
+    "ImagesUrls": [ "/img/HTML-Logo.png", "/img/CSS-Logo.png", "/img/JavaScript-Logo.png" ],
+    "Title": "SAP B1 Integration",
+    "Description": "This is an integration solution for SAP Business One and Command Solution, it has a WCF service application developed on Microsoft.Net Framework with C# and SAP Business One Service Layer ApiRest. It also has a console application developed on Microsoft.Net Framework with C#. The console application are controlled and triggered by windows tasks schedules. With this application was possible send the Quotations created and approved on SAP business one to Command for the start of the manufacturing process. Also with this solution, the credit score history of the clients are available in Command to decide if a quotation order can be executed before a collecting process.",
+    "Technologies": [
+      {
+        "Id": "MSNetF",
+        "Name": ".Net Framework",
+        "ImageUrl": "/img/NetFramework-Logo.png"
+      },
+      {
+        "Id": "CSharp",
+        "Name": "C#",
+        "ImageUrl": "/img/CSharp-Logo.png"
+      },
+      {
+        "Id": "SB1SL",
+        "Name": "SAP Business One SL",
+        "ImageUrl": "/img/SAPB1SL-Logo.png"
+      }
+    ],
+    "GitHub": "https://github.com/OscarRondon/Hormigones-Transex"
   }
 ]

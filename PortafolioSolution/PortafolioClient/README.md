@@ -42,8 +42,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Working on Project list JSON file
-	*	Working on read and load json file
+	*	Working on ProjectCard
 ]
 
 ## Todos
