@@ -43,6 +43,7 @@ License: https://bootstrapmade.com/license/
 PortafolioSolution
 [
 	*	Working on ProjectCard
+	*	Working on Project list
 ]
 
 ## Todos

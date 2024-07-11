@@ -1,19 +1,19 @@
-﻿<section class="position-relative w-100 p-3 border border-2 border-warning">
-    <a href=@project.GitHub class="github-icon p-0"><i class="bi bi-github"></i></a>
-    <div id="ProjectImages" class="d-flex justify-content-center gap-3 mb-1 p-2 border border-2 border-primary">
+﻿<section class="projectCard position-relative rounded w-100 p-3">
+    <a class="github-icon ms-2 p-0" href=@project.GitHub target="_blank"><i class="bi bi-github"></i></a>
+    <div id="ProjectImages" class="d-flex justify-content-center gap-3 mb-1 p-2">
         @foreach (string imgurl in project.ImagesUrls)
         {
             <img class="d-block rounded projectImages " src=@imgurl>
         }
     </div>
-    <div id="Stack" class="d-flex justify-content-center gap-2 mb-1 p-2 border border-2 border-primary">
+    <div id="Stack" class="d-flex justify-content-center gap-2 mb-1 p-2">
         @foreach (Tech oTech in project.Technologies)
         {
             <img class="d-block rounded techImages" src=@oTech.ImageUrl alt=@oTech.Name >
         }
     </div>
-    <div id="Brief" class="d-flex justify-content-center align-items-center  border border-2 border-primary">
-        <p class="brief border border-2 border-primary">@project.Description</p>
+    <div id="Brief">
+        <p class="brief">@(project.Description.Length > 550? project.Description.Substring(0, project.Description.Substring(0, 550).LastIndexOf(" ")) + "..." : project.Description)</p>
     </div>
 </section>
 
