@@ -1,8 +1,8 @@
 [
   {
     "Id": "P0001",
-    "ImagesUrls": [ "/img/TypeScript-Logo.png", "/img/Bootstrap-Logo.png" ],
-    "Title": "eComerce Tickets sales",
+    "ImagesUrls": [ "/img/projects/eTickets1.png", "/img/projects/eTickets2.png", "/img/projects/eTickets3.png" ],
+    "Title": "Tickets sales eComerce",
     "Description": "Project developed in ASP.Net Core MVC, C#, Entity Framework, Identity, Authorization, xUnit testing (Moq and in memory DB) and MS SQL Server deployed on Azure cloud platform. The purpose of this application was to implement all processes and workflows related to an e-commerce, where it’s possible to manage users, movies, cinemas, actors, shopping cart, invoicing, and PayPal integration.",
     "Technologies": [
       {
@@ -61,7 +61,7 @@
   {
     "Id": "P0002",
     "ImagesUrls": [ "/img/HTML-Logo.png", "/img/CSS-Logo.png", "/img/JavaScript-Logo.png" ],
-    "Title": "SAP B1 Integration",
+    "Title": "SAP B1 Integration and Command Systems",
     "Description": "This is an integration solution for SAP Business One and Command Solution, it has a WCF service application developed on Microsoft.Net Framework with C# and SAP Business One Service Layer ApiRest. It also has a console application developed on Microsoft.Net Framework with C#. The console application are controlled and triggered by windows tasks schedules. With this application was possible send the Quotations created and approved on SAP business one to Command for the start of the manufacturing process. Also with this solution, the credit score history of the clients are available in Command to decide if a quotation order can be executed before a collecting process.",
     "Technologies": [
       {
