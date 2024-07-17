@@ -1,6 +1,84 @@
 [
   {
     "Id": "P0001",
+    "ImagesUrls": [ "/img/projects/OARCEcomerce1.png", "/img/projects/OARCEcomerce2.png", "/img/projects/OARCEcomerce3.png" ],
+    "Title": "Blazor eComerce",
+    "Description": "Project developed in ASP.Net, C# Core Blazor Web Assembly, WRB API, Entity Framework, JWT, Authorization,  and MS SQL Server. The purpose of this application was to implement all processes and workflows related to an e-commerce, where it’s possible to manage users, products, categories, shopping cart, invoicing, and Stripe integration.",
+    "Technologies": [
+      {
+        "Id": "HTML",
+        "Name": "HTML",
+        "ImageUrl": "/img/HTML-Logo.png"
+      },
+      {
+        "Id": "CSS",
+        "Name": "CSS",
+        "ImageUrl": "/img/CSS-Logo.png"
+      },
+      {
+        "Id": "JS",
+        "Name": "JavaScript",
+        "ImageUrl": "/img/JavaScript-Logo.png"
+      },
+      {
+        "Id": "BootStrap",
+        "Name": "BootStrap",
+        "ImageUrl": "/img/Bootstrap-Logo.png"
+      },
+      {
+        "Id": "NetCore",
+        "Name": ".Net Core",
+        "ImageUrl": "/img/NetCore-Logo.png"
+      },
+      {
+        "Id": "Blazor",
+        "Name": "Blazor",
+        "ImageUrl": "/img/Blazor-Logo.png"
+      },
+      {
+        "Id": "CSharp",
+        "Name": "C#",
+        "ImageUrl": "/img/CSharp-Logo.png"
+      },
+      {
+        "Id": "EF",
+        "Name": "Entity Framework",
+        "ImageUrl": "/img/EF-logo.png"
+      },
+      {
+        "Id": "MSSQLServer",
+        "Name": "MS SQL Server",
+        "ImageUrl": "/img/MSSqlServer-Logo.png"
+      }
+    ],
+    "GitHub": "https://github.com/OscarRondon/dotnetProjects/tree/main/OARCeCommerceSolution"
+  },
+  {
+    "Id": "P0002",
+    "ImagesUrls": [ "/img/projects/IB1Command1.png", "/img/projects/IB1Command2.png", "/img/projects/IB1Command3.png" ],
+    "Title": "SAP B1 Integration and Command Systems",
+    "Description": "This is an integration solution for SAP Business One and Command Solution, it has a WCF service application developed on Microsoft.Net Framework with C# and SAP Business One Service Layer ApiRest. It also has a console application developed on Microsoft.Net Framework with C#. The console application are controlled and triggered by windows tasks schedules. With this application was possible send the Quotations created and approved on SAP business one to Command for the start of the manufacturing process. Also with this solution, the credit score history of the clients are available in Command to decide if a quotation order can be executed before a collecting process.",
+    "Technologies": [
+      {
+        "Id": "MSNetF",
+        "Name": ".Net Framework",
+        "ImageUrl": "/img/NetFramework-Logo.png"
+      },
+      {
+        "Id": "CSharp",
+        "Name": "C#",
+        "ImageUrl": "/img/CSharp-Logo.png"
+      },
+      {
+        "Id": "SB1SL",
+        "Name": "SAP Business One SL",
+        "ImageUrl": "/img/SAPB1SL-Logo.png"
+      }
+    ],
+    "GitHub": "https://github.com/OscarRondon/Hormigones-Transex"
+  },
+  {
+    "Id": "P0003",
     "ImagesUrls": [ "/img/projects/eTickets1.png", "/img/projects/eTickets2.png", "/img/projects/eTickets3.png" ],
     "Title": "Tickets sales eComerce",
     "Description": "Project developed in ASP.Net Core MVC, C#, Entity Framework, Identity, Authorization, xUnit testing (Moq and in memory DB) and MS SQL Server deployed on Azure cloud platform. The purpose of this application was to implement all processes and workflows related to an e-commerce, where it’s possible to manage users, movies, cinemas, actors, shopping cart, invoicing, and PayPal integration.",
@@ -57,29 +135,5 @@
       }
     ],
     "GitHub": "https://github.com/OscarRondon/dotnetProjects/tree/main/eCommerceTicketsSolution"
-  },
-  {
-    "Id": "P0002",
-    "ImagesUrls": [ "/img/projects/IB1Command1.png", "/img/projects/IB1Command2.png", "/img/projects/IB1Command3.png" ],
-    "Title": "SAP B1 Integration and Command Systems",
-    "Description": "This is an integration solution for SAP Business One and Command Solution, it has a WCF service application developed on Microsoft.Net Framework with C# and SAP Business One Service Layer ApiRest. It also has a console application developed on Microsoft.Net Framework with C#. The console application are controlled and triggered by windows tasks schedules. With this application was possible send the Quotations created and approved on SAP business one to Command for the start of the manufacturing process. Also with this solution, the credit score history of the clients are available in Command to decide if a quotation order can be executed before a collecting process.",
-    "Technologies": [
-      {
-        "Id": "MSNetF",
-        "Name": ".Net Framework",
-        "ImageUrl": "/img/NetFramework-Logo.png"
-      },
-      {
-        "Id": "CSharp",
-        "Name": "C#",
-        "ImageUrl": "/img/CSharp-Logo.png"
-      },
-      {
-        "Id": "SB1SL",
-        "Name": "SAP Business One SL",
-        "ImageUrl": "/img/SAPB1SL-Logo.png"
-      }
-    ],
-    "GitHub": "https://github.com/OscarRondon/Hormigones-Transex"
   }
 ]

@@ -42,8 +42,8 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Working on ProjectCard
-	*	Working on Project list
+	*	Add new project
+	*	Adjust ProjectCard css
 ]
 
 ## Todos
