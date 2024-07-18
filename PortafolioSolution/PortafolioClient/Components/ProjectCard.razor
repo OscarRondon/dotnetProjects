@@ -9,11 +9,11 @@
     <div id="Stack" class="d-flex justify-content-center gap-2 mb-1 p-2">
         @foreach (Tech oTech in project.Technologies)
         {
-            <img class="d-block rounded techImages" src=@oTech.ImageUrl alt=@oTech.Name >
+            <img class="d-block rounded techImages" src=@oTech.ImageUrl alt=@oTech.Name>
         }
     </div>
     <div id="Brief">
-        <p class="brief">@(project.Description.Length > 550? project.Description.Substring(0, project.Description.Substring(0, 550).LastIndexOf(" ")) + "..." : project.Description)</p>
+        <p class="brief">@project.Description</p>
     </div>
 </section>
 

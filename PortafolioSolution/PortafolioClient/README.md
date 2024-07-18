@@ -42,8 +42,9 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add new project
+	*	Add new projects
 	*	Adjust ProjectCard css
+	*	Adjust Navbar css
 ]
 
 ## Todos

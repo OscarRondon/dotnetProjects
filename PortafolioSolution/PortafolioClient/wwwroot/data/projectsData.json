@@ -55,6 +55,40 @@
   },
   {
     "Id": "P0002",
+    "ImagesUrls": [ "/img/projects/Fines1.png", "/img/projects/Fines2.png", "/img/projects/Fines3.png" ],
+    "Title": "Fine management Addon (SAP Business One)",
+    "Description": "Extension (Addon) for SAP Business One developed in Microsoft.Net Framework using C#, SAP Business One SDK and SAP/HANA database. The purpose of this addon consists of managing the fine process related to global agreements, inside SAP B1. The fine process was managed on excel worksheet what causes difficult access to the data between the executives in charge, human error, and outdated data. This addons improves the team efficiency and allows the data to be available and updated, decreasing the time needed to course a fine and get the payments.",
+    "Technologies": [
+      {
+        "Id": "MSNetF",
+        "Name": ".Net Framework",
+        "ImageUrl": "/img/NetFramework-Logo.png"
+      },
+      {
+        "Id": "CSharp",
+        "Name": "C#",
+        "ImageUrl": "/img/CSharp-Logo.png"
+      },
+      {
+        "Id": "SB1",
+        "Name": "SAP Business One",
+        "ImageUrl": "/img/SAPB1-Logo.png"
+      },
+      {
+        "Id": "SB1SDK",
+        "Name": "SAP Business One SDK",
+        "ImageUrl": "/img/SAPB1SDK-Logo.png"
+      },
+      {
+        "Id": "SAPHANA",
+        "Name": "SAP HANA",
+        "ImageUrl": "/img/SAPHANA-Logo.png"
+      }
+    ],
+    "GitHub": "https://github.com/OscarRondon/Multas"
+  },
+  {
+    "Id": "P0003",
     "ImagesUrls": [ "/img/projects/IB1Command1.png", "/img/projects/IB1Command2.png", "/img/projects/IB1Command3.png" ],
     "Title": "SAP B1 Integration and Command Systems",
     "Description": "This is an integration solution for SAP Business One and Command Solution, it has a WCF service application developed on Microsoft.Net Framework with C# and SAP Business One Service Layer ApiRest. It also has a console application developed on Microsoft.Net Framework with C#. The console application are controlled and triggered by windows tasks schedules. With this application was possible send the Quotations created and approved on SAP business one to Command for the start of the manufacturing process. Also with this solution, the credit score history of the clients are available in Command to decide if a quotation order can be executed before a collecting process.",
@@ -78,7 +112,7 @@
     "GitHub": "https://github.com/OscarRondon/Hormigones-Transex"
   },
   {
-    "Id": "P0003",
+    "Id": "P0004",
     "ImagesUrls": [ "/img/projects/eTickets1.png", "/img/projects/eTickets2.png", "/img/projects/eTickets3.png" ],
     "Title": "Tickets sales eComerce",
     "Description": "Project developed in ASP.Net Core MVC, C#, Entity Framework, Identity, Authorization, xUnit testing (Moq and in memory DB) and MS SQL Server deployed on Azure cloud platform. The purpose of this application was to implement all processes and workflows related to an e-commerce, where it’s possible to manage users, movies, cinemas, actors, shopping cart, invoicing, and PayPal integration.",
@@ -135,5 +169,39 @@
       }
     ],
     "GitHub": "https://github.com/OscarRondon/dotnetProjects/tree/main/eCommerceTicketsSolution"
+  },
+  {
+    "Id": "P0005",
+    "ImagesUrls": [ "/img/projects/B64Decoder1.png", "/img/projects/B64Decoder2.png", "/img/projects/B64Decoder3.png" ],
+    "Title": "Base 64 decoder",
+    "Description": "Project developed in React and TypeScript as a tool for an easy way to create and codify passwords.",
+    "Technologies": [
+      {
+        "Id": "HTML",
+        "Name": "HTML",
+        "ImageUrl": "/img/HTML-Logo.png"
+      },
+      {
+        "Id": "CSS",
+        "Name": "CSS",
+        "ImageUrl": "/img/CSS-Logo.png"
+      },
+      {
+        "Id": "JS",
+        "Name": "JavaScript",
+        "ImageUrl": "/img/JavaScript-Logo.png"
+      },
+      {
+        "Id": "React",
+        "Name": "ReactJs",
+        "ImageUrl": "/img/React-Logo.png"
+      },
+      {
+        "Id": "TS",
+        "Name": "TypeScript",
+        "ImageUrl": "/img/TypeScript-Logo.png"
+      }
+    ],
+    "GitHub": "https://github.com/OscarRondon/base64decoder"
   }
 ]
