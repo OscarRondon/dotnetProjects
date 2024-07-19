@@ -67,7 +67,7 @@ main {
     }
 }
 
-header {
+.header-custom {
     position: fixed;
     top: 0;
     left: 0;
@@ -111,3 +111,8 @@ header {
         left: 0;
     }
 
+@media (max-width: 1367px) {
+    .header-custom {
+        display: none;
+    }
+}

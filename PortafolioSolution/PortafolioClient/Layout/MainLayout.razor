@@ -2,7 +2,7 @@
 <div class="page">
 
 
-    <header>
+    <header class="header-custom @hideMobileNavToogleBtn">
         <NavMenu />
     </header>
 
@@ -24,7 +24,14 @@
 
     public void MobileNavToggleButtonHandler()
     {
-        Console.WriteLine("si");
+        if (hideMobileNavToogleBtn == "")
+        {
+            hideMobileNavToogleBtn = "d-none";
+        }
+        else
+        {
+            hideMobileNavToogleBtn = "";
+        }
     }
 
 }
