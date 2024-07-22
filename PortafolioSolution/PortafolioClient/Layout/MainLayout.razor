@@ -2,16 +2,12 @@
 <div class="page">
 
 
-    <header class="header-custom @hideMobileNavToogleBtn">
+    <header class="header-custom @showHideMenu">
         <NavMenu />
     </header>
 
     <main>
-        <section class="top-row px-4">
-            <!-- ======= Mobile nav toggle button ======= -->
-            <i class="bi bi-list mobile-nav-toggle @hideMobileNavToogleBtn" @onclick="MobileNavToggleButtonHandler"></i>
-        </section>
-
+        <i class="@toggleBtnIcon d-xl-none mobile-nav-toggle" @onclick="MobileNavToggleButtonHandler"></i>
         <section>
             @Body
         </section>
@@ -20,18 +16,22 @@
 
 @code{
 
-    public string hideMobileNavToogleBtn = "";// "d-xl-none";
+    public string showHideMenu = "d-none d-xl-block";
+    public string toggleBtnIcon = "bi bi-list";
 
     public void MobileNavToggleButtonHandler()
     {
-        if (hideMobileNavToogleBtn == "")
+        if (showHideMenu == "d-none d-xl-block")
         {
-            hideMobileNavToogleBtn = "d-none";
+            showHideMenu = "";
+            toggleBtnIcon = "bi bi-x-lg";
         }
         else
         {
-            hideMobileNavToogleBtn = "";
+            showHideMenu = "d-none d-xl-block";
+            toggleBtnIcon = "bi bi-list";
         }
+        Console.WriteLine("1");
     }
 
 }

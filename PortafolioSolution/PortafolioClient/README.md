@@ -42,7 +42,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Adjust css for responsiveness
+	*	Adjust menu and toogle button css for responsiveness
 ]
 
 ## Todos
