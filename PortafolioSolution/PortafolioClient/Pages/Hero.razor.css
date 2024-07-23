@@ -1,6 +1,6 @@
 ﻿#hero {
     width: 100%;
-    height: 94.2vh;
+    height: 100dvh;
     background: url("../img/hero-bg.jpg") top center;
     background-size: cover;
 }
@@ -42,22 +42,19 @@
     border-bottom: 3px solid #149ddd;
 }
 
-@media (min-width: 1024px) {
+@media (width < 1366px) {
     #hero {
         background-attachment: fixed;
     }
-}
 
-@media (max-width: 768px) {
     .hero-h1 {
-        font-size: 28px;
-        line-height: 36px;
+        font-size: 25px;
+        line-height: 30px;
     }
 
-    .hero-h2 {
-        font-size: 18px;
-        line-height: 24px;
-        margin-bottom: 30px;
+    .hero-p {
+        margin-bottom: 50px;
+        font-size: 12px;
     }
 }
 

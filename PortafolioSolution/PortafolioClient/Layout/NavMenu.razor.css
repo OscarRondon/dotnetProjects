@@ -89,3 +89,31 @@
             .nav-menu li:hover > a i {
                 color: #149ddd;
             }
+
+@media (width < 768px) {
+    .profile img {
+        width: 75px;
+        border: 4px solid #2c2f3f;
+    }
+
+    .profile h1 {
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .social-links a {
+        font-size: 15px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .nav-menu a,
+    .nav-menu a:focus {
+        font-size: 10px;
+    }
+
+        .nav-menu a i,
+        .nav-menu a:focus i {
+            font-size: 14px;
+        }
+}
