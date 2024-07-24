@@ -42,8 +42,9 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Adjust menu css for responsiveness
+	*	Adjust Menu css for responsiveness
 	*	Adjust Hero section css for responsiveness
+	*	Adjust About section css for responsiveness
 ]
 
 ## Todos
