@@ -31,3 +31,9 @@
         font-style: italic;
         width: 100%;
     }
+@media (width < 1366px) {
+    .StackCard {
+        height: 105px;
+        width: 85px;
+    }
+}
