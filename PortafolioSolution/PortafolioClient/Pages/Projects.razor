@@ -6,10 +6,10 @@
             <h2>Projects</h2>
             <p>Here are a few projects I had worked.</p>
         </div>
-        
+
     </div>
 
-    <div id="carouselWarper" class="d-flex justify-content-center mb-5">
+    <div id="carouselWarper" class="d-none d-xxl-flex justify-content-center mb-5 pb-5">
         <div id="carouselProjects" class="carousel carousel-custom carousel-dark slide d-flex justify-content-center">
             <div class="carousel-indicators">
                 @for (int i = 0; (i < _projectService.Projects.Count && i <= 4); i++)
@@ -46,6 +46,36 @@
             </button>
         </div>
     </div>
+
+    <div id="acordionWarper" class="d-xxl-none mb-5">
+        <div class="accordion" id="accordionProjects">
+            @for (int i = 0; (i < _projectService.Projects.Count && i <= 4); i++)
+            {
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button 
+                                class="accordion-button  @(i == 0 ? "" : "collapsed")" 
+                                type="button" 
+                                data-bs-toggle="collapse" 
+                                data-bs-target="@("#collapse"+i.ToString())" 
+                                aria-expanded="@(i == 0 ? "true" : "false")" 
+                                aria-controls="@("collapse"+i.ToString())">
+                            @_projectService.Projects[i].Title
+                        </button>
+                    </h2>
+                    <div 
+                         id="@("collapse"+i.ToString())" 
+                         class="accordion-collapse collapse  @(i == 0 ? "show" : "")" 
+                         data-bs-parent="#accordionProjects">
+                        <div class="accordion-body">
+                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
 
 </section>
 

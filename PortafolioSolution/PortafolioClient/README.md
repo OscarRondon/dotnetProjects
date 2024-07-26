@@ -42,11 +42,8 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Adjust About section css for responsiveness
+	*	Adjust Project section add acordion for non pc views
 	*	Adjust Project section css for responsiveness
-	*	Adjust Resume section css for responsiveness
-	*	Adjust TechStack section css for responsiveness
-	*	Adjust StackCard section css for responsiveness
 ]
 
 ## Todos
