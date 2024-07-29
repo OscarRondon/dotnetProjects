@@ -43,7 +43,7 @@ License: https://bootstrapmade.com/license/
 PortafolioSolution
 [
 	*	Adjust Project section add acordion for non pc views
-	*	Adjust Project section css for responsiveness
+	*	Adjust Project section css for responsiveness.
 ]
 
 ## Todos
