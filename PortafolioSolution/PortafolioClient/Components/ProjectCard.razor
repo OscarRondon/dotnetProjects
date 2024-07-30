@@ -1,15 +1,15 @@
 ﻿<section class="projectCard position-relative rounded w-100 p-3">
     <a class="rounded-circle github-icon ms-2 p-0" href=@project.GitHub target="_blank"><i class="bi bi-github m-0 p-0"></i></a>
-    <div id="ProjectImages" class="d-flex justify-content-center gap-3 mb-1 p-2">
+    <div id="ProjectImages" class="d-flex justify-content-center flex-wrap gap-3 mb-1 p-2">
         @foreach (string imgurl in project.ImagesUrls)
         {
-            <img class="d-block rounded projectImages " src=@imgurl>
+            <img class="rounded projectImages " src=@imgurl>
         }
     </div>
-    <div id="Stack" class="d-flex justify-content-center gap-2 mb-1 p-2">
+    <div id="Stack" class="d-flex justify-content-center flex-wrap gap-2 mb-1 p-2">
         @foreach (Tech oTech in project.Technologies)
         {
-            <img class="d-block rounded techImages" src=@oTech.ImageUrl alt=@oTech.Name>
+            <img class="rounded techImages" src=@oTech.ImageUrl alt=@oTech.Name>
         }
     </div>
     <div id="Brief">

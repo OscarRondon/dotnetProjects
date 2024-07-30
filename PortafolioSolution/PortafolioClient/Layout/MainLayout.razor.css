@@ -49,7 +49,6 @@ main {
 
 @media (width < 1366px) {
     main {
-        flex: 1;
         margin-left: 0px;
     }
 
