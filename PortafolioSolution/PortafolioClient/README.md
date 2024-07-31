@@ -42,8 +42,8 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Adjust Project section add acordion for non pc views
-	*	Adjust Project section css for responsiveness.
+	*	Add MyServices section
+	*	Add MyService section css
 ]
 
 ## Todos
