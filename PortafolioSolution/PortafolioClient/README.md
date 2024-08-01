@@ -42,8 +42,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add MyServices section
-	*	Add MyService section css
+	*	Add MyService section css for responsiveness
 ]
 
 ## Todos
