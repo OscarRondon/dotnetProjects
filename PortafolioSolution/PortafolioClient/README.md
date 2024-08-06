@@ -42,7 +42,7 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add MyService section css for responsiveness
+	*	Add Contact component
+	*	Add Contact component css
 ]
-
 ## Todos
