@@ -42,7 +42,6 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add Contact component
-	*	Add Contact component css
+	*	Review send emails functionality options
 ]
 ## Todos
