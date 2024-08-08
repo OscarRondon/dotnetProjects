@@ -20,19 +20,11 @@ License: https://bootstrapmade.com/license/
 
 ### Configuration
 ```
-	- Create a file "appsettings.json" into wwwroot folder
-	- Create a Folder into de Project "Settings"
-	- Create class for settings "ClientAppSettings"
-	- Add the following into Program.cs
-		var settings = new ClientAppSettings();
-		builder.Configuration.Bind(settings);
-		builder.Services.AddSingleton(settings);
+	
 ```
 ### Nuget Packages
 ```
-	- Microsoft.AspNetCore.WebUtilities
-	- MudBlazor
-	- MudBlazor.ThemeManager
+	- Mailjet.Api (https://www.mailjet.com/) [email sending]
 ```
 
 ### 3rd party projects
@@ -42,6 +34,6 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Review send emails functionality options
+	*	Working on email sending
 ]
 ## Todos
