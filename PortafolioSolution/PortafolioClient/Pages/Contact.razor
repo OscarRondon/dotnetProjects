@@ -63,6 +63,26 @@
                 </form>
             </div>
 
+            <EditForm Model="user"
+                      OnValidSubmit="HandleLogin">
+                <DataAnnotationsValidator />
+                <div class="mb-3">
+                    <label for="email">
+                        Email
+                        <InputText class="form-control" id="email" @bind-Value="@user.Email"></InputText>
+                        <ValidationMessage For="@(() => user.Email)" />
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <label for="password">
+                        Password
+                        <InputText class="form-control" id="password" @bind-Value="@user.Password" type="password"></InputText>
+                        <ValidationMessage For="@(() => user.Password)" />
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </EditForm>
+
         </div>
 
     </div>
