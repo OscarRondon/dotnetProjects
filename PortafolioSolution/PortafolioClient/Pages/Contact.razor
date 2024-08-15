@@ -62,14 +62,13 @@
                     <div class="text-center"><button type="submit">Send Message</button></div>
                 </form>
             </div>
-
-            <EditForm Model="user"
+            <EditForm Model="sendMail"
                       OnValidSubmit="HandleLogin">
                 <DataAnnotationsValidator />
                 <div class="mb-3">
                     <label for="email">
                         Email
-                        <InputText class="form-control" id="email" @bind-Value="@user.Email"></InputText>
+                        <InputText class="form-control" id="email" @bind-Value="@sendMail.SenderEmail"></InputText>
                         <ValidationMessage For="@(() => user.Email)" />
                     </label>
                 </div>
@@ -82,7 +81,6 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </EditForm>
-
         </div>
 
     </div>
@@ -90,4 +88,5 @@
 
 @code {
 
+    private SendMail sendMail = new SendMail();
 }
