@@ -32,7 +32,7 @@
                 </div>
 
             </div>
-
+            <!--
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
                 <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                     <div class="row">
@@ -62,25 +62,53 @@
                     <div class="text-center"><button type="submit">Send Message</button></div>
                 </form>
             </div>
-            <EditForm Model="sendMail"
-                      OnValidSubmit="HandleLogin">
-                <DataAnnotationsValidator />
-                <div class="mb-3">
-                    <label for="email">
-                        Email
-                        <InputText class="form-control" id="email" @bind-Value="@sendMail.SenderEmail"></InputText>
-                        <ValidationMessage For="@(() => user.Email)" />
-                    </label>
+            -->
+
+            <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+                <div class="php-email-form">
+                    <EditForm Model="sendMail" OnValidSubmit="HandleSubmit">
+                        <DataAnnotationsValidator />
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="name">
+                                    Your Name
+                                    <InputText class="form-control" id="name" name="name" @bind-Value="@sendMail.SenderName"></InputText>
+                                    <ValidationMessage For="@(() => sendMail.SenderName)" />
+                                </label>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="email">
+                                    Your Email
+                                    <InputText class="form-control" id="email" name="email" @bind-Value="@sendMail.SenderEmail"></InputText>
+                                    <ValidationMessage For="@(() => sendMail.SenderEmail)" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">
+                                Subject
+                                <InputText class="form-control" id="subject" name="subject" @bind-Value="@sendMail.Subject"></InputText>
+                                <ValidationMessage For="@(() => sendMail.Subject)" />
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">
+                                Message
+                                <InputTextArea class="form-control" id="message" name="message" rows="10" @bind-Value="@sendMail.Message"></InputTextArea>
+                                <ValidationMessage For="@(() => sendMail.Message)" />
+                            </label>
+                        </div>
+                        <div class="my-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </EditForm>
                 </div>
-                <div class="mb-3">
-                    <label for="password">
-                        Password
-                        <InputText class="form-control" id="password" @bind-Value="@user.Password" type="password"></InputText>
-                        <ValidationMessage For="@(() => user.Password)" />
-                    </label>
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-            </EditForm>
+            </div>
         </div>
 
     </div>
@@ -89,4 +117,25 @@
 @code {
 
     private SendMail sendMail = new SendMail();
+
+    private async Task HandleSubmit()
+    {
+        /*
+        var result = await _authService.LoginAsync(user);
+
+        if (result.Success)
+        {
+            message = string.Empty;
+            await _localStorage.SetItemAsync("authToken", result.Data);
+            await _authenticationStateProvider.GetAuthenticationStateAsync();
+            await _cartService.StoreCartItemsAsync(true);
+            await _cartService.GetCartItemsCountAsync();
+            _navigationManager.NavigateTo(returnUrl);
+        }
+        else
+        {
+            message = result.Message;
+        }
+        */
+    }
 }
