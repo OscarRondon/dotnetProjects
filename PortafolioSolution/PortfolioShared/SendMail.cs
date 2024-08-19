@@ -9,14 +9,14 @@ namespace PortfolioShared
 {
     public class SendMail
     {
-        [Required]
+        [Required(ErrorMessage = "This field is required.")]
         public string SenderName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This field is required.")]
         [EmailAddress]
         public string SenderEmail { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This field is required.")]
         public string Subject { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This field is required.")]
         public string Message { get; set; }
     }
 }

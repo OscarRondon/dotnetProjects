@@ -35,3 +35,9 @@
 .section-title-pt {
     padding-top: 0.5rem;
 }
+
+.error-text {
+    color: red;
+    font-size: x-small;
+    font-style: italic
+}
