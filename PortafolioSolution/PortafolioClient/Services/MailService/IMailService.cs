@@ -2,6 +2,6 @@
 {
     public interface IMailService
     {
-        public Task SentMailAsync();
+        public Task SentMailAsync(SendMail sendMail);
     }
 }

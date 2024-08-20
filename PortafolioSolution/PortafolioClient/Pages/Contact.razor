@@ -90,22 +90,6 @@
 
     private async Task HandleSubmit()
     {
-        /*
-        var result = await _authService.LoginAsync(user);
-
-        if (result.Success)
-        {
-            message = string.Empty;
-            await _localStorage.SetItemAsync("authToken", result.Data);
-            await _authenticationStateProvider.GetAuthenticationStateAsync();
-            await _cartService.StoreCartItemsAsync(true);
-            await _cartService.GetCartItemsCountAsync();
-            _navigationManager.NavigateTo(returnUrl);
-        }
-        else
-        {
-            message = result.Message;
-        }
-        */
+        await _mailService.SentMailAsync(sendMail);
     }
 }

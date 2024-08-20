@@ -13,4 +13,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IMailService, MailService>();
 
+#if DEBUG
+    await Task.Delay(5000);
+#endif
+
 await builder.Build().RunAsync();

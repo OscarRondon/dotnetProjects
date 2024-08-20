@@ -8,36 +8,42 @@ namespace PortafolioClient.Services.MailService
 {
     public class MailService : IMailService
     {
-        public async Task SentMailAsync()
+        public async Task SentMailAsync(SendMail sendMail)
         {
-            throw new NotImplementedException();
+            try
+            {
 
-            MailjetClient client = new MailjetClient(Environment.GetEnvironmentVariable("MJ_APIKEY_PUBLIC"), Environment.GetEnvironmentVariable("MJ_APIKEY_PRIVATE"));
-            MailjetRequest request = new MailjetRequest
-            {
-                Resource = Send.Resource,
-            }
-               .Property(Send.FromEmail, "pilot@mailjet.com")
-               .Property(Send.FromName, "Mailjet Pilot")
-               .Property(Send.Subject, "Your email flight plan!")
-               .Property(Send.TextPart, "Dear passenger, welcome to Mailjet! May the delivery force be with you!")
-               .Property(Send.HtmlPart, "<h3>Dear passenger, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!<br />May the delivery force be with you!")
-               .Property(Send.Recipients, new JArray {
+                MailjetClient client = new MailjetClient("3a3695d7fa63d3f1d8b1d2fd10b0ea19", "5a68b633bf98f1a5e2ac722b3d4d7a46");
+                MailjetRequest request = new MailjetRequest
+                {
+                    Resource = Send.Resource,
+                }
+                   .Property(Send.FromEmail, sendMail.SenderEmail)
+                   .Property(Send.FromName, sendMail.SenderName)
+                   .Property(Send.Subject, sendMail.Subject)
+                   .Property(Send.TextPart, sendMail.Message)
+                   .Property(Send.HtmlPart, sendMail.Message)
+                   .Property(Send.Recipients, new JArray {
                 new JObject {
-                 {"Email", "passenger@mailjet.com"}
+                 {"Email", "oscar.rondon.c@gmail.com"}
                  }
-                   });
-            MailjetResponse response = await client.PostAsync(request);
-            if (response.IsSuccessStatusCode)
-            {
-                Console.WriteLine(string.Format("Total: {0}, Count: {1}\n", response.GetTotal(), response.GetCount()));
-                Console.WriteLine(response.GetData());
+                       });
+                MailjetResponse response = await client.PostAsync(request);
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine(string.Format("Total: {0}, Count: {1}\n", response.GetTotal(), response.GetCount()));
+                    Console.WriteLine(response.GetData());
+                }
+                else
+                {
+                    Console.WriteLine(string.Format("StatusCode: {0}\n", response.StatusCode));
+                    Console.WriteLine(string.Format("ErrorInfo: {0}\n", response.GetErrorInfo()));
+                    Console.WriteLine(string.Format("ErrorMessage: {0}\n", response.GetErrorMessage()));
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine(string.Format("StatusCode: {0}\n", response.StatusCode));
-                Console.WriteLine(string.Format("ErrorInfo: {0}\n", response.GetErrorInfo()));
-                Console.WriteLine(string.Format("ErrorMessage: {0}\n", response.GetErrorMessage()));
+                Console.WriteLine($"Error: {ex.Message}");
             }
         }
     }
