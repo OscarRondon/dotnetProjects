@@ -1,0 +1,6 @@
+@OARCapiRestTools_HostAddress = http://localhost:5089
+
+GET {{OARCapiRestTools_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
