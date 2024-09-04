@@ -29,6 +29,6 @@
 
 OARCapiRestTools
 [
-	*	Add env files
+	*	Add Controller for email sending from oscar.rondon.c@gmail.com
 ]
 ## Todos

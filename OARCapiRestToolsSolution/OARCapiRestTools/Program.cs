@@ -4,6 +4,8 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddJsonFile("env.json", optional: true, reloadOnChange: true);
+
 // Add services to the container.
 
 builder.Services.AddControllers()
@@ -15,7 +17,7 @@ builder.Services.AddSwaggerGen(opt =>
 {
     opt.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "Api Rest Tools",
+        Title = "OARC Api Rest Tools",
         Description = "restApi for common use for OARC developments",
         Contact = new OpenApiContact
         {
@@ -42,6 +44,17 @@ builder.Services.AddSwaggerGen(opt =>
     });
 }
 );
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        name: "AllowOrigin",
+        configurePolicy =>
+        {
+            configurePolicy.WithOrigins(GetCORS(builder.Configuration))
+            .AllowAnyHeader().AllowAnyMethod();
+        }
+        );
+});
 
 var app = builder.Build();
 
@@ -59,3 +72,10 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+static string[] GetCORS(ConfigurationManager Configuration)
+{
+    // Get values from .env file
+    string[] cors = Configuration.GetSection("AllowedHosts").Get<string[]>().Length > 0 ? Configuration.GetSection("AllowedHosts").Get<string[]>() : ["*"];
+    return cors;
+}
