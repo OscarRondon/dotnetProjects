@@ -1,3 +1,7 @@
+global using MimeKit;
+global using MimeKit.Text;
+global using MailKit.Net.Smtp;
+global using MailKit.Security;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;

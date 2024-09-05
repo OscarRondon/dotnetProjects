@@ -7,6 +7,7 @@
 ##Nuget Packages
 
 	- Swashbuckle.AspNetCore.Newtonsoft
+	- MailKit
 
 ##Instructions
 
@@ -29,6 +30,6 @@
 
 OARCapiRestTools
 [
-	*	Add Controller for email sending from oscar.rondon.c@gmail.com
+	*	Working on Email sending
 ]
 ## Todos
