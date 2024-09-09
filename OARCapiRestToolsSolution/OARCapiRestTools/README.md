@@ -31,5 +31,6 @@
 OARCapiRestTools
 [
 	*	Working on Email sending
+	*	Update env file
 ]
 ## Todos

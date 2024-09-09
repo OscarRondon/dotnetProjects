@@ -20,8 +20,8 @@ namespace OARCapiRestTools.Controllers
             };
 
             using var smtp = new SmtpClient();
-            smtp.Connect("smtp.ethereal.email", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("tania76@ethereal.email", "TNB71W5fRdtBFdwdHP");
+            smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+            smtp.Authenticate("oarc.developer@gmail.com", "htoo yqds rojp gjta");
             smtp.Send(email);
             smtp.Disconnect(true);
 
