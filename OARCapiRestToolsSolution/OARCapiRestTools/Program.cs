@@ -5,6 +5,7 @@ global using MailKit.Security;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
+using OARCapiRestTools.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,6 +60,9 @@ builder.Services.AddCors(options =>
         }
         );
 });
+
+
+builder.Services.AddScoped<IEmailService, EmailServices>();
 
 var app = builder.Build();
 
