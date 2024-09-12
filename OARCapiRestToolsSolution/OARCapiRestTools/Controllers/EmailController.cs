@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OARCapiRestTools.Services;
 
 
 namespace OARCapiRestTools.Controllers
@@ -8,24 +9,24 @@ namespace OARCapiRestTools.Controllers
     [ApiController]
     public class EmailController : ControllerBase
     {
-        [HttpPost("oarcdeveloper", Name = "oarc.developer@gmail.com")]
-        public IActionResult SendEmailFromOARCDeveloperGmailCom()
+        private readonly IEmailService _emailService;
+
+        public EmailController(IEmailService emailService) 
         {
-            var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse("tania76@ethereal.email"));
-            email.To.Add(MailboxAddress.Parse("oscar.rondon.c@gmail.com"));
-            email.Subject = "Email Title";
-            email.Body = new TextPart(TextFormat.Text) {
-                Text = "Email body content"
-            };
+            _emailService = emailService;
+        }
 
-            using var smtp = new SmtpClient();
-            smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("oarc.developer@gmail.com", "htoo yqds rojp gjta");
-            smtp.Send(email);
-            smtp.Disconnect(true);
+        [HttpPost("oarcdeveloper", Name = "oarc.developer@gmail.com")]
+        public async Task<IActionResult> SendEmailFromOARCDeveloperGmailCom(Email email)
+        {
+            var response = await _emailService.SendEmailFromOARCDeveloperGmailCom(email);
 
-            return Ok();
+            if (response.Success)
+            {
+                return Ok();
+            }
+
+            return BadRequest(response.Data);
         }
     }
 }

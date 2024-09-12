@@ -13,4 +13,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.7.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OARCapiRestToolsShared\OARCapiRestToolsShared.csproj" />
+  </ItemGroup>
+
 </Project>

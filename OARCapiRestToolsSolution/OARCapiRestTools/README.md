@@ -30,7 +30,7 @@
 
 OARCapiRestTools
 [
-	*	Working on Email sending
-	*	Update env file
+	*	Add Shared Library project for Data structures
+	*	Add EmailService and refacto email sending
 ]
 ## Todos
