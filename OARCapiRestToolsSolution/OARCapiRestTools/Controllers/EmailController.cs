@@ -17,16 +17,16 @@ namespace OARCapiRestTools.Controllers
         }
 
         [HttpPost("oarcdeveloper", Name = "oarc.developer@gmail.com")]
-        public async Task<IActionResult> SendEmailFromOARCDeveloperGmailCom(Email email)
+        public async Task<ActionResult<ServiceResponse<string>>> SendEmailFromOARCDeveloperGmailCom(Email email)
         {
             var response = await _emailService.SendEmailFromOARCDeveloperGmailCom(email);
 
             if (response.Success)
             {
-                return Ok();
+                return Ok(response);
             }
 
-            return BadRequest(response.Data);
+            return BadRequest(response);
         }
     }
 }

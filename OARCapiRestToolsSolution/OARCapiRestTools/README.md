@@ -30,7 +30,6 @@
 
 OARCapiRestTools
 [
-	*	Add Shared Library project for Data structures
-	*	Add EmailService and refacto email sending
+	*	Adjust on EmailController responses
 ]
 ## Todos

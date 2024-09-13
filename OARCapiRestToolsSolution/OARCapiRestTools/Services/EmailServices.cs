@@ -37,7 +37,7 @@
             if (response.Data.Contains("2.0.0"))
             {
                 response.Success = true;
-                response.Message = "Ok";
+                response.Message = "Email sent successfully";
             }
 
             return response;
