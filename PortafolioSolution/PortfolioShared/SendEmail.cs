@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PortfolioShared
 {
-    public class SendMail
+    public class SendEmail
     {
         [Required(ErrorMessage = "This field is required.")]
         public string SenderName { get; set; }

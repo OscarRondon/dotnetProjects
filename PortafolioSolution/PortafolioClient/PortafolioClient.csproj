@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mailjet.Api" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.8" PrivateAssets="all" />
   </ItemGroup>
@@ -25,6 +24,15 @@
   <ItemGroup>
     <ProjectReference Include="..\BlazorTypewriter\BlazorTypewriter.csproj" />
     <ProjectReference Include="..\PortfolioShared\PortfolioShared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="env.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="env.template.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

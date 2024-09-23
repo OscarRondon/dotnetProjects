@@ -18,13 +18,20 @@ License: https://bootstrapmade.com/license/
 
 ## Client side App (PortafolioClient)
 
+	
+
 ### Configuration
 ```
-	
+	- Create a file "env.json" into root forlder, using "env.template.json"
+	- Set the "env.json" properties as:
+		- Build action: Content
+		- Copy to Output directory: Copy always
+	- Make sure to exclude "env.json" file form the source control
+	- Add to Program.cs > builder.Configuration.AddJsonFile("env.json", optional: true, reloadOnChange: true);
 ```
 ### Nuget Packages
 ```
-	- Mailjet.Api (https://www.mailjet.com/) [email sending]
+
 ```
 
 ### 3rd party projects

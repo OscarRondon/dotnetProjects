@@ -1,4 +1,4 @@
-﻿@inject IMailService _mailService
+﻿@inject IEmailService _mailService
 
 <section id="contact" class="contact">
     <div class="container">
@@ -86,10 +86,10 @@
 
 @code {
 
-    private SendMail sendMail = new SendMail();
+    private SendEmail sendMail = new SendEmail();
 
     private async Task HandleSubmit()
     {
-        await _mailService.SentMailAsync(sendMail);
+        var response = await _mailService.SentMailAsync(sendMail);
     }
 }

@@ -30,6 +30,6 @@
 
 OARCapiRestTools
 [
-	*	Adjust on EmailController responses
+	*	Working on publishing
 ]
 ## Todos
