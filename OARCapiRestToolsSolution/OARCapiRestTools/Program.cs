@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 using OARCapiRestTools.Services;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -68,10 +69,16 @@ builder.Services.AddScoped<IEmailService, EmailServices>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseSwagger();
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
     app.UseSwaggerUI();
+}
+else
+{
+    app.UseSwaggerUI(opt =>
+        opt.SupportedSubmitMethods()
+    );
 }
 
 app.UseCors("AllowOrigin");

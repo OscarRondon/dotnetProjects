@@ -30,6 +30,6 @@
 
 OARCapiRestTools
 [
-	*	Working on publishing
+	*	Api published
 ]
 ## Todos
