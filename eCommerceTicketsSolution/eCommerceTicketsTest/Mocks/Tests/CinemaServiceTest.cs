@@ -4,6 +4,7 @@ using eCommerceTickets.Models;
 using eCommerceTicketsTest.Mocks.Data;
 using eCommerceTicketsTest.Mocks.Utilities;
 using Microsoft.EntityFrameworkCore;
+using MockQueryable;
 using MockQueryable.Moq;
 using Moq;
 using Xunit.Abstractions;

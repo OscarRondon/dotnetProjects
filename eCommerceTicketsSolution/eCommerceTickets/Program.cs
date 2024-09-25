@@ -13,8 +13,8 @@ builder.Configuration.AddJsonFile("env.json", optional: true, reloadOnChange: tr
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
-    opt.UseSqlServer(GetDbStringConnection(builder.Configuration));
-    //opt.UseSqlServer(GetAZDbStringConnection(builder.Configuration));
+    //opt.UseSqlServer(GetDbStringConnection(builder.Configuration));
+    opt.UseSqlServer(GetAZDbStringConnection(builder.Configuration));
 });
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IActorsService, ActorsService>();
