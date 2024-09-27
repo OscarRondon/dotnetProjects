@@ -91,5 +91,6 @@
     private async Task HandleSubmit()
     {
         var response = await _mailService.SentMailAsync(sendMail);
+        sendMail = new SendEmail();
     }
 }

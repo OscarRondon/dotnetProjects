@@ -30,7 +30,7 @@ namespace PortafolioClient.Services.MailService
                 Subject = sendMail.Subject,
                 Body = sendMail.SenderName + "\n" + sendMail.Message
             };
-            var response = await _httpClient.PostAsJsonAsync("https://localhost:44346" + "/api/Email/oarcdeveloper", email);
+            var response = await _httpClient.PostAsJsonAsync(endpointUrl + "/api/Email/oarcdeveloper", email);
 
             return await response.Content.ReadFromJsonAsync<ServiceResponse<string>>();
         }
