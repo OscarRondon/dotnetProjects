@@ -41,6 +41,6 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Working on email sending
+	*	Working on toast notification
 ]
 ## Todos
