@@ -35,6 +35,8 @@
 
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
                 <div class="php-email-form">
+                    <Toasts class="p-3" Messages="messages" Placement="ToastsPlacement.TopRight" />
+                    <Button Color="ButtonColor.Primary" @onclick="() => ShowMessage(ToastType.Primary)">Primary Toast</Button>
                     <EditForm Model="sendMail" OnValidSubmit="HandleSubmit">
                         <DataAnnotationsValidator />
                         <div class="row">
@@ -74,7 +76,7 @@
                             <div class="sent-message">Your message has been sent. Thank you!</div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" >Send Message</button>
+                            <button disabled="@sendingEmail" type="submit">Send Message</button>
                         </div>
                     </EditForm>
                 </div>
@@ -86,11 +88,27 @@
 
 @code {
 
+    public bool sendingEmail { get; set; }
     private SendEmail sendMail = new SendEmail();
+    List<ToastMessage> messages = new List<ToastMessage>();
+
 
     private async Task HandleSubmit()
     {
+        sendingEmail = true;
         var response = await _mailService.SentMailAsync(sendMail);
+        await Task.Delay(1000);
         sendMail = new SendEmail();
+        sendingEmail = false; 
+        ShowMessage(ToastType.Success);
     }
+
+    private void ShowMessage(ToastType toastType) => messages.Add(CreateToastMessage(toastType));
+
+    private ToastMessage CreateToastMessage(ToastType toastType)
+    => new ToastMessage
+    {
+        Type = toastType,
+        Message = $"Email sent successfully. DateTime: {DateTime.Now}",
+    };
 }

@@ -31,6 +31,7 @@ License: https://bootstrapmade.com/license/
 ```
 ### Nuget Packages
 ```
+	- Blazor.Bootstrap
 
 ```
 
