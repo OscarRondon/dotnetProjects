@@ -42,6 +42,6 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Working on toast notification
+	*	Add Loader
 ]
 ## Todos

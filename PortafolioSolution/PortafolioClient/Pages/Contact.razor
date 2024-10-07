@@ -1,5 +1,6 @@
 ﻿@inject IEmailService _mailService
 
+<Loading isVisible=@showLoader />
 <section id="contact" class="contact">
     <div class="container">
 
@@ -88,6 +89,7 @@
 
 @code {
 
+    public string showLoader = "d-none";
     public bool sendingEmail { get; set; }
     private SendEmail sendMail = new SendEmail();
     List<ToastMessage> messages = new List<ToastMessage>();
@@ -96,10 +98,12 @@
     private async Task HandleSubmit()
     {
         sendingEmail = true;
+        showLoader = "d-flex";
         var response = await _mailService.SentMailAsync(sendMail);
-        await Task.Delay(1000);
+        //await Task.Delay(2000);
         sendMail = new SendEmail();
-        sendingEmail = false; 
+        sendingEmail = false;
+        showLoader = "d-none";
         ShowMessage(ToastType.Success);
     }
 
