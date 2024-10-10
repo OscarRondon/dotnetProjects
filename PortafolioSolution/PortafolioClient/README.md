@@ -42,6 +42,6 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Add Loader
+	*	Final adjustments
 ]
 ## Todos
