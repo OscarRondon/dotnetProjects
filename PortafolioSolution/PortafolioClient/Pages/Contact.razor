@@ -37,7 +37,6 @@
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
                 <div class="php-email-form">
                     <Toasts class="p-3" Messages="messages" Placement="ToastsPlacement.TopRight" />
-                    <Button Color="ButtonColor.Primary" @onclick="() => ShowMessage(ToastType.Primary)">Primary Toast</Button>
                     <EditForm Model="sendMail" OnValidSubmit="HandleSubmit">
                         <DataAnnotationsValidator />
                         <div class="row">
@@ -99,20 +98,36 @@
     {
         sendingEmail = true;
         showLoader = "d-flex";
-        var response = await _mailService.SentMailAsync(sendMail);
+        try
+        {
+            var response = await _mailService.SentMailAsync(sendMail);
+            if (response.Data.Contains("2.0.0"))
+            {
+                ShowMessage(ToastType.Success, "Email sent successfully.");
+
+            }
+            else
+            {
+                ShowMessage(ToastType.Danger, "An error has occur sending your email.");
+            }
+        }
+        catch (Exception ex)
+        {
+            ShowMessage(ToastType.Danger, "An error has occur sending your email.");
+        }
         //await Task.Delay(2000);
         sendMail = new SendEmail();
         sendingEmail = false;
         showLoader = "d-none";
-        ShowMessage(ToastType.Success);
+
     }
 
-    private void ShowMessage(ToastType toastType) => messages.Add(CreateToastMessage(toastType));
+    private void ShowMessage(ToastType toastType, string Msg) => messages.Add(CreateToastMessage(toastType, Msg));
 
-    private ToastMessage CreateToastMessage(ToastType toastType)
+    private ToastMessage CreateToastMessage(ToastType toastType, string Msg)
     => new ToastMessage
     {
         Type = toastType,
-        Message = $"Email sent successfully. DateTime: {DateTime.Now}",
+        Message = $" {Msg} DateTime: {DateTime.Now}",
     };
 }
