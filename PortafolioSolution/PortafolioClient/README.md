@@ -42,6 +42,6 @@ License: https://bootstrapmade.com/license/
 
 PortafolioSolution
 [
-	*	Final adjustments (error msg sending emails)
+	*	Final adjustments
 ]
 ## Todos
