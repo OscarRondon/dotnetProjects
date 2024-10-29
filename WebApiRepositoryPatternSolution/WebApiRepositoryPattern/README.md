@@ -1,4 +1,8 @@
-﻿### Nuget packages
+﻿## Details
+
+	Proyect type: Web Api
+
+### Nuget packages
 ```
 Microsoft.AspNetCore.OpenApi
 
@@ -7,5 +11,5 @@ Microsoft.AspNetCore.OpenApi
 
 RepositoryPattern
 [
-	- Add Microsoft.AspNetCore.OpenApi package
+	- Solution and project remane
 ]
