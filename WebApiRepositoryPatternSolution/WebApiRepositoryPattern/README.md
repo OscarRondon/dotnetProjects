@@ -11,5 +11,5 @@ Microsoft.AspNetCore.OpenApi
 
 RepositoryPattern
 [
-	- Solution and project remane
+	- Trying Api UI packages
 ]
