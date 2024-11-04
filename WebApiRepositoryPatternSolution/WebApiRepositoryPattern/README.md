@@ -12,5 +12,5 @@ Swashbuckle.AspNetCore (https://localhost:7269/swagger/index.html) or Scalar.Asp
 
 RepositoryPattern
 [
-	- Trying Api UI packages
+	- Trying Scalar UI for Apis
 ]
