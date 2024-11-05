@@ -12,5 +12,6 @@ Swashbuckle.AspNetCore (https://localhost:7269/swagger/index.html) or Scalar.Asp
 
 RepositoryPattern
 [
-	- Trying Scalar UI for Apis
+	- Add WeatherForecast Services Interface
+	- Add WeatherForecast Services Class
 ]
