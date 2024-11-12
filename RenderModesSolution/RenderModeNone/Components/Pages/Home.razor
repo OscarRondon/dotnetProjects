@@ -1,7 +1,25 @@
 ﻿@page "/"
+<!-- rendermode InteractiveServer -->
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+<MyButton @rendermode="InteractiveServer"></MyButton>
+
+
+<button @onclick="ButtonClickHandler">Click me!!</button>
+<span>@text</span>
+
+@code{
+
+    string text = string.Empty;
+
+    public void ButtonClickHandler()
+    {
+        Console.WriteLine("Clicked");
+        text = "Button Clicked";
+    }
+}

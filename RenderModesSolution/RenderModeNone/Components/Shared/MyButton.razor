@@ -1,0 +1,13 @@
+﻿<button @onclick="ButtonClickHandler">Click me Component Button!!</button>
+<span>@text</span>
+
+@code{
+
+    string text = string.Empty;
+
+    public void ButtonClickHandler()
+    {
+        Console.WriteLine("Clicked");
+        text = "Button Clicked";
+    }
+}
