@@ -1,8 +1,10 @@
 
 Source: https://www.youtube.com/watch?v=C_bYPn-OTtw
 
+- Server side add package: Microsoft.AspNetCore.Components.WebAssembly.Server
+
 
 RenderModesSolution
 [
-	- Add project RenderModeWebAsseblyStandAlone
+	- Interchange between Server, WebAssembly and Auto render mode
 ]

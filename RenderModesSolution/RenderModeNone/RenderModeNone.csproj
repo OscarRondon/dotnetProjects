@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RenderModeWebAssemblyStandalone\RenderModeWebAssemblyStandalone.Client.csproj" />
   </ItemGroup>
 
