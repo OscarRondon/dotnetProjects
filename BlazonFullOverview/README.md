@@ -6,5 +6,6 @@ BlazorSSR (Blazor Web App > Render mode: Server)
 
 BlazorFullOverView
 [
-	- Create project
+	- Blazor arquitecture
+	- Blazor project structure
 ]
