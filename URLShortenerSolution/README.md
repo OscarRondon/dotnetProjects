@@ -7,17 +7,9 @@
 	* ASP.Net Core Web API
 	* .Net Core Class Library
 
+* DataBases
+	* MS SQL Server (loacal)
 
-## Project
------------------------------------------------------------------------------------------------------------------------------------------
-```
-	- Project Template [3 projects]: 
-			- ClassLibrary (eCommerceShared)
-			- ASP.Net Core Web API (eCommerceServer)
-			- Blazor Web Assembly Stand Alone (eCommerceClient)
-			
-	- DataBase: MS SQL Server
-```
 
 ## Server side App (eCommerceServer)
 
@@ -87,7 +79,10 @@
 
 URLShortenerSolution
 [
-	*	Project initializacion
+	*	Add UrlController
+	*	Add Folder Data
+	*	Add Folder Data > Models
+	*	Add Url data model
 ]
 
 
