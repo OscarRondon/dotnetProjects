@@ -79,10 +79,7 @@
 
 URLShortenerSolution
 [
-	*	Add UrlController
-	*	Add Folder Data
-	*	Add Folder Data > Models
-	*	Add Url data model
+	*	Add Url > View > Index.cshtml
 ]
 
 
