@@ -79,7 +79,10 @@
 
 URLShortenerSolution
 [
-	*	Add Url > View > Index.cshtml
+	*	Using Model to pass data
+	*	Using ViewData to pass data
+	*	Using ViewBag to pass data
+	*	Using TempData to pass data
 ]
 
 
