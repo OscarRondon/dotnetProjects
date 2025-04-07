@@ -79,10 +79,10 @@
 
 URLShortenerSolution
 [
-	*	Using Model to pass data
-	*	Using ViewData to pass data
-	*	Using ViewBag to pass data
-	*	Using TempData to pass data
+	*	Add reset.cc file
+	*	Update bootstrap to lastest version
+	*	Add bootstrao-icons
+	*	Clear Homepage controller
 ]
 
 
