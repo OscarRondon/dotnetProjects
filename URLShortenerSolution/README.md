@@ -79,10 +79,7 @@
 
 URLShortenerSolution
 [
-	*	Add reset.cc file
-	*	Update bootstrap to lastest version
-	*	Add bootstrao-icons
-	*	Clear Homepage controller
+	*	Design Homepage view
 ]
 
 
