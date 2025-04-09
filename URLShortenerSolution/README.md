@@ -11,7 +11,7 @@
 	* MS SQL Server (loacal)
 
 
-## Server side App (eCommerceServer)
+## Server side App (ASP.Net Core Web API)
 
 ### Configuration
 ```
@@ -45,7 +45,7 @@
 		- run > dotnet ef database update
 ```
 
-## Client side App (eCommerceClient)
+## Client side App (ASP.Net Core Web app (MVC))
 
 ### Configuration
 ```
@@ -79,7 +79,7 @@
 
 URLShortenerSolution
 [
-	*	Design Homepage view
+	*	Design the Navbar
 ]
 
 
