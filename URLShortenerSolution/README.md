@@ -79,7 +79,7 @@
 
 URLShortenerSolution
 [
-	*	Design the Navbar
+	*	Design the "All links" page
 ]
 
 

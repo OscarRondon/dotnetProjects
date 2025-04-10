@@ -1,34 +1,35 @@
-﻿@model List<Url>;
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-@{
-    var currentDateTime = DateTime.UtcNow;
-    var allUrls = ViewData["AllUrls"] as List<string>;
+﻿@{
+    ViewData["Title"] = "All short links";
 }
 
-<h4>Example</h4>
-<p>Original links using Model</p>
 
-@foreach (var link in @Model)
-{
-    <p>Original link: @link.OriginalLink</p>
-}
+<div class="container">
+    <a class="btn btn-outline-success" asp-controller="Home" asp-action="Index">Add New</a>
+</div>
 
-<p>Original link: @ViewData["ShortenedUrl"]</p>
-@foreach (var link in allUrls)
-{
-    <p>Original DataView link: @link</p>
-}
-
-<p>Original link: @ViewBag.ShortenedUrlVB</p>
-@foreach (var link in ViewBag.AllUrlsVB)
-{
-    <p>Original DataView link: @link</p>
-}
-
-@if (TempData["SuccessMessage"] != null)
-{
-    <p>@TempData["SuccessMessage"]</p>
-}
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Original Link</th>
+                <th scope="col">Shortened Link</th>
+                <th scope="col">Clicks</th>
+                <th scope="col">User</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>https://original.com</td>
+                <td>ertr</td>
+                <td>5</td>
+                <td>Oscar</td>
+                <td>
+                    <a class="btn btn-outline-danger" asp-controller="Url" asp-action="Remove"><i class="bi bi-trash3"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

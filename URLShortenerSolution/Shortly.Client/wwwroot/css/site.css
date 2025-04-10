@@ -101,7 +101,6 @@ html {
         border-radius: 6px;
         outline: none;
         transition: 0.2s;
-        color: inherit;
     }
 
         .url-shorten-form .url-input::placeholder {
