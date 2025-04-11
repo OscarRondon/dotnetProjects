@@ -14,7 +14,7 @@ namespace Shortly.Client.Controllers
                 Id = 1,
                 OriginalLink = "https://original.com",
                 ShortLink = "shrtly",
-                NrOfCliecks = 1,
+                NrOfClicks = 1,
                 UserId = 1,
             };
             var allData = new List<Url>();

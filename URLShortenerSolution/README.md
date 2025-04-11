@@ -79,7 +79,9 @@
 
 URLShortenerSolution
 [
-	*	Design the "All links" page
+	*	Pasing moc datato "All links" page
+	*	Add ViewModel folder
+	*	Add the User model
 ]
 
 
