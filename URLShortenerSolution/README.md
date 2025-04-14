@@ -79,9 +79,7 @@
 
 URLShortenerSolution
 [
-	*	Pasing moc datato "All links" page
-	*	Add ViewModel folder
-	*	Add the User model
+	*	Creating the user controller and view
 ]
 
 
