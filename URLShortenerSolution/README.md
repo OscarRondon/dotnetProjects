@@ -79,7 +79,7 @@
 
 URLShortenerSolution
 [
-	*	Creating the user controller and view
+	*	Desing Login view
 ]
 
 
