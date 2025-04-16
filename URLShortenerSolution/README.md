@@ -79,7 +79,7 @@
 
 URLShortenerSolution
 [
-	*	Desing Login view
+	*	Desing The registration form
 ]
 
 
