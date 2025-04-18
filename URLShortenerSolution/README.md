@@ -59,11 +59,6 @@
 ```
 ### Nuget Packages
 ```
-	- Blazored.LocalStorage (Package to work with local storage)
-	- Microsoft.AspNetCore.Components.Authorization
-	- Microsoft.AspNetCore.WebUtilities
-	- MudBlazor
-	- MudBlazor.ThemeManager
 ```
 
 ## Testing [14]
@@ -79,7 +74,8 @@
 
 URLShortenerSolution
 [
-	*	Desing The registration form
+	*	Passing data as query strings
+	*	Passing data as route data
 ]
 
 

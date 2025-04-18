@@ -18,7 +18,7 @@
                 <th scope="col">Shortened Link</th>
                 <th scope="col">Clicks</th>
                 <th scope="col">User</th>
-                <th scope="col"></th>
+                <th scope="col">Options</th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +31,14 @@
                     <td>@shrotUrl.NrOfClicks</td>
                     <td>@shrotUrl.UserId</td>
                     <td>
-                        <a class="btn btn-outline-danger" asp-controller="Url" asp-action="Remove"><i class="bi bi-trash3"></i></a>
+                        <!-- as query parameter
+                        <a class="btn btn-outline-danger" asp-controller="Url" asp-action="Remove" asp-route-linkIdToRemove="@shrotUrl.Id"><i class="bi bi-trash3"></i></a>
+
+                            <a class="btn btn-outline-danger" href="Url/Remove?linkIdToRemove=@shrotUrl.Id"><i class="bi bi-trash3"></i></a>
+                        -->
+                        <!-- as route data-->
+                        <a class="btn btn-outline-danger" asp-controller="Url" asp-action="RemoveAsRouteData" 
+                           asp-route-id="@shrotUrl.Id"><i class="bi bi-trash3"></i></a>
                     </td>
                 </tr>
             }
