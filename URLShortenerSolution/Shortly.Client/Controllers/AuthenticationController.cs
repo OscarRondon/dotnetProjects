@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Shortly.Client.Data.ViewMoels;
 
 namespace Shortly.Client.Controllers
 {
@@ -11,7 +12,13 @@ namespace Shortly.Client.Controllers
 
         public IActionResult Login()
         {
-            return View();
+            var initial = new LoginVM();
+            return View(initial);
+        }
+
+        public IActionResult LoginSubmitted(LoginVM loginVM)
+        {
+            return Ok(new { Message = "Data processed successfully!" });
         }
 
         public IActionResult Register()

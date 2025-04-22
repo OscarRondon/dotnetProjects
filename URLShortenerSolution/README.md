@@ -74,8 +74,9 @@
 
 URLShortenerSolution
 [
-	*	Passing data as query strings
-	*	Passing data as route data
+	*	Passing data with form submission
+	*	Passing data Form data submission with ViewModel
+	*	Passing data to a controller with Ajax
 ]
 
 

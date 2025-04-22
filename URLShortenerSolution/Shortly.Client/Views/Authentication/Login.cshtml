@@ -1,4 +1,5 @@
-﻿@{
+﻿@model LoginVM
+@{
     ViewData["Title"] = "Login to your account";
 }
 
@@ -7,19 +8,54 @@
         <h4 class="form-header">Login to your account</h4>
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <form asp-controller="Authentication" asp-action="Login">
+                <form asp-controller="Authentication" asp-action="LoginSubmitted">
                     <div class="form-group mb-3">
                         <label for="emailAddress">Email</label>
-                        <input type="email" class="form-control" id="emailAddress" placeholder="yourEmail@email.com" />
+                        <input type="email" class="form-control"
+                               id="emailAddress" name="emailAddress"
+                               asp-for="@Model.EmailAddress"
+                               placeholder="yourEmail@email.com" />
                         <small id="emailAddressSm" class="form-text text-muted">We'll never share you email</small>
                     </div>
                     <div class="form-group mb-3">
                         <label for="emailPassword">Password</label>
-                        <input type="password" class="form-control" id="emailPassword" placeholder="Enter your password"/>
+                        <input type="password" class="form-control"
+                               id="emailPassword" name="emailPassword"
+                               asp-for="@Model.EmailPassword"
+                               placeholder="Enter your password" />
                     </div>
-                    <button type="submit" class="btn btn-outline-success mt-2 btn-login">Log in</button>
+                    <!--
+        <button type="submit" class="btn btn-outline-success mt-2 btn-login">Log in</button>
+            -->
                 </form>
+                <button 
+                        class="btn btn-outline-success mt-2 btn-login"
+                        onclick="login()"
+                 >Log in</button>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function login() {
+        let emailAddress = $("#emailAddress").val();
+        let emailPassword = $("#emailPassword").val();
+
+        $.ajax({
+            url: '@Url.Action("LoginSubmitted", "Authentication")',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                EmailAddress: emailAddress,
+                EmailPassword: emailPassword
+            },
+            success: function (reponse) {
+                console.log("Log in successful")
+            },
+            error: function (xhr,status, error) {
+                console.log("Log in fail")
+            }
+        })
+    }
+</script>
