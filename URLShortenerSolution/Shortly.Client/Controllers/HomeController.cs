@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Shortly.Client.Data.ViewMoels;
 using Shortly.Client.Models;
 using System.Diagnostics;
 
@@ -15,7 +16,14 @@ namespace Shortly.Client.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var postUlrVM = new PostUrlVM();
+            return View(postUlrVM);
+        }
+
+        public IActionResult ShrotenUrl(PostUrlVM postUrlVM)
+        {
+            //return View("Index");
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

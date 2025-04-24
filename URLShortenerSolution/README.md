@@ -74,9 +74,8 @@
 
 URLShortenerSolution
 [
-	*	Passing data with form submission
-	*	Passing data Form data submission with ViewModel
-	*	Passing data to a controller with Ajax
+	*	Passing URL Value to HomeController
+	*	
 ]
 
 
