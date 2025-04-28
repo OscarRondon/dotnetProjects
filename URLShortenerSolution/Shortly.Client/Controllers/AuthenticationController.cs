@@ -18,7 +18,8 @@ namespace Shortly.Client.Controllers
 
         public IActionResult LoginSubmitted(LoginVM loginVM)
         {
-            return Ok(new { Message = "Data processed successfully!" });
+           return RedirectToAction("Index", "Home");
+            // return Ok(new { Message = "Data processed successfully!" });
         }
 
         public IActionResult Register()

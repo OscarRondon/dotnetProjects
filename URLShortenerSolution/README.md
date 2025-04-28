@@ -74,8 +74,8 @@
 
 URLShortenerSolution
 [
-	*	Passing URL Value to HomeController
-	*	
+	*	Format validation with RegEx
+	*	Hnandling Login Form submition
 ]
 
 

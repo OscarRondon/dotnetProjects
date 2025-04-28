@@ -22,7 +22,11 @@ namespace Shortly.Client.Controllers
 
         public IActionResult ShrotenUrl(PostUrlVM postUrlVM)
         {
-            //return View("Index");
+            //Validate Model
+            if (!ModelState.IsValid)
+            {
+                return View("Index", postUrlVM);
+            }
             return RedirectToAction("Index");
         }
 
