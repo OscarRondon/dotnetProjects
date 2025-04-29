@@ -24,13 +24,7 @@
 ```
 ### Nuget Packages
 ```
-	- Swashbuckle.AspNetCore
-	- Swashbuckle.AspNetCore.SwaggerUI
-	- Microsoft.EntityFrameworkCore
-	- Microsoft.EntityFrameworkCore.Design
-	- Microsoft.EntityFrameworkCore.SqlServer
-	- Microsoft.AspNetCore.Authentication.JwtBearer
-	- Stripe.net
+
 ```
 ### Instructions
 ```
@@ -65,17 +59,11 @@
 
 ### Nuget Packages
 ```
-	- Moq
-	- MockQueryable.Moq
-	- Microsoft.EntityFrameworkCore
-
-	// - Microsoft.EntityFrameworkCore.InMemory
 ```
 
 URLShortenerSolution
 [
-	*	Format validation with RegEx
-	*	Hnandling Login Form submition
+	*	Login Form Data Validation with Data Annotations
 ]
 
 
