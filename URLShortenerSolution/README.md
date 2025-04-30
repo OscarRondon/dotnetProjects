@@ -63,7 +63,7 @@
 
 URLShortenerSolution
 [
-	*	Login Form Data Validation with Data Annotations
+	*	Handling register form submission
 ]
 
 
