@@ -63,7 +63,7 @@
 
 URLShortenerSolution
 [
-	*	Handling register form submission
+	*	Register form data validation
 ]
 
 

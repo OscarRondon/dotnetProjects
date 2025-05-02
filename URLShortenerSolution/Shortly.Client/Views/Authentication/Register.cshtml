@@ -11,20 +11,25 @@
                 <form asp-controller="Authentication" asp-action="RegisterUser">
                     <div class="form-group mb-3">
                         <label for="fullName">Full Name</label>
-                        <input type="text" class="form-control" id="fullName" placeholder="John Doe" asp-for="FullName"/>
+                        <input type="text" class="form-control" id="fullName" placeholder="John Doe" asp-for="FullName" />
+                        <span class="text-danger" asp-validation-for="FullName"></span>
                     </div>
                     <div class="form-group mb-3">
                         <label for="emailAddress">Email</label>
-                        <input type="email" class="form-control" id="emailAddress" placeholder="yourEmail@email.com" asp-for="EmailAddress"/>
-                        <small id="emailAddressSm" class="form-text text-muted">We'll never share you email</small>
+                        <input type="email" class="form-control" id="emailAddress" placeholder="yourEmail@email.com" asp-for="EmailAddress" />
+                        <small id="emailAddressSm" class="form-text text-muted">We'll never share you email</small><br />
+                        <span class="text-danger" asp-validation-for="EmailAddress"></span>
                     </div>
                     <div class="form-group mb-3">
                         <label for="emailPassword">Password</label>
-                        <input type="password" class="form-control" id="emailPassword" placeholder="Enter your password" asp-for="Password"/>
+                        <input type="password" class="form-control" id="emailPassword" placeholder="Enter your password" asp-for="Password" />
+                        <span class="text-danger" asp-validation-for="Password"></span>
                     </div>
                     <div class="form-group mb-3">
                         <label for="confirmEmailPassword">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmEmailPassword" placeholder="Re-enter your password" asp-for="ConfirmPassword"/>
+                        <input type="password" class="form-control" id="confirmEmailPassword" placeholder="Re-enter your password" asp-for="ConfirmPassword" />
+                        <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+
                     </div>
                     <button type="submit" class="btn btn-outline-success mt-2 btn-login">Register</button>
                 </form>
