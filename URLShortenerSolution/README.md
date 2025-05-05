@@ -63,7 +63,7 @@
 
 URLShortenerSolution
 [
-	*	Register form data validation
+	*	Creating a custom validation Attribute
 ]
 
 
