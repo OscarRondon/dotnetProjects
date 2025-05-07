@@ -92,8 +92,7 @@
 
 URLShortenerSolution
 [
-	*	Entity Framework Core
-	*	Installing Entity Framework packages
+	*	Creating application models
 ]
 
 

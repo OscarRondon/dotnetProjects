@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Shortly.Client.Data.Models;
 using Shortly.Client.Data.ViewMoels;
 
 namespace Shortly.Client.Controllers
