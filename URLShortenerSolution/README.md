@@ -22,10 +22,12 @@
 	- Register the new file to de app configuration in Program.cs
 	- Make sure to exclude "env.json" file form the source control
 ```
+
 ### Nuget Packages
 ```
 
 ```
+
 ### Instructions
 ```
 	- On Program.cs > builder.Services.AddDbContext (server)
@@ -45,19 +47,15 @@
 ### Configuration
 ```
 ```
+
 ### Nuget Packages
 ```
 ```
 
 ### Instuctions
 ```
-	- - Add the Shortly.Data project as a reference
-```
-
-## Data side App (.Net Core Class Library)
-
-### Configuration
-```
+	- Add the Shortly.Data project as a reference
+	- On Program.cs > builder.Services.AddDbContext (server)
 	- Create a file "env.json" into root forlder, using "env.template.json"
 	- Set the "env.json" properties as:
 		- Build action: Content 
@@ -65,15 +63,23 @@
 	- Register the new file to de app configuration in Program.cs
 	- Make sure to exclude "env.json" file form the source control
 ```
+
+## Data side App (.Net Core Class Library)
+
+### Configuration
+```
+	
+```
+
 ### Nuget Packages
 ```
 	- Microsoft.EntityFrameworkCore (base packege) with all EF core functionality)
 	- Microsoft.EntityFrameworkCore.SqlServer (SQL Server provider)
 	- Microsoft.EntityFrameworkCore.Tools (command line tools for migrations)
 ```
+
 ### Instructions
 ```
-	- On Program.cs > builder.Services.AddDbContext (server)
 	- Install or update Entity framework command line tools
 		- run in Nuget Manager Console: dotnet ef
 		- run in Nuget Manager Console: dotnet tool uninstall --global dotnet-ef
@@ -92,7 +98,8 @@
 
 URLShortenerSolution
 [
-	*	Creating application models
+	*	Creating the db context
+	*	Configuring the DBContext file
 ]
 
 
