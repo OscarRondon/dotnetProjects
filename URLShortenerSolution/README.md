@@ -85,7 +85,6 @@
 		- run in Nuget Manager Console: dotnet tool uninstall --global dotnet-ef
 		- run in Nuget Manager Console: dotnet tool install --global dotnet-ef
 	- Run in Nuget Manager Console (create migration): 
-		- Place on server directory
 		- run > dotnet ef migrations add "Initial Create"
 		- run > dotnet ef database update
 ```
@@ -98,8 +97,8 @@
 
 URLShortenerSolution
 [
-	*	Creating the db context
-	*	Configuring the DBContext file
+	*	Adding DB migrations (Add-Migration)
+	*	Update database (Update-Database)
 ]
 
 
