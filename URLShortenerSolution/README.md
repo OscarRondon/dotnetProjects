@@ -97,8 +97,7 @@
 
 URLShortenerSolution
 [
-	*	Adding DB migrations (Add-Migration)
-	*	Update database (Update-Database)
+	*	Modify Database schema with migrations
 ]
 
 
