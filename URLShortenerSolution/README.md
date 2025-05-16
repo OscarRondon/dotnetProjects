@@ -97,7 +97,7 @@
 
 URLShortenerSolution
 [
-	*	Modify Database schema with migrations
+	*	Data base seeder files (for testing)
 ]
 
 
