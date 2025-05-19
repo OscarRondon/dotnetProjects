@@ -97,7 +97,7 @@
 
 URLShortenerSolution
 [
-	*	Data base seeder files (for testing)
+	*	Getting data from the database with EF
 ]
 
 

@@ -1,10 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Shortly.Client.Data.ViewMoels;
+using Shortly.Data;
 
 namespace Shortly.Client.Controllers
 {
     public class UrlController : Controller
     {
+        private readonly AppDBContext _dbContext;
+
+        public UrlController(AppDBContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public IActionResult Index()
         {
             //hadcoded data-------------------------------
@@ -36,6 +44,15 @@ namespace Shortly.Client.Controllers
                 }
             };
             //---------------------------------------------
+
+            allUrls = _dbContext.Urls.Select(url => new GetUrlVM() 
+            {
+                Id = url.Id,
+                OriginalLink = url.OriginalLink,
+                ShortLink = url.ShortLink,
+                NrOfClicks = url.NrOfClicks,
+                UserId = url.UserId,
+            }).ToList();
             return View(allUrls);
         }
 
