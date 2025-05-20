@@ -97,7 +97,7 @@
 
 URLShortenerSolution
 [
-	*	Getting data from the database with EF
+	*	Shorten a URL and store it in the database with EF
 ]
 
 
