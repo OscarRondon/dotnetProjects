@@ -97,7 +97,8 @@
 
 URLShortenerSolution
 [
-	*	Shorten a URL and store it in the database with EF
+	*	Using TempData to Show a Success Notification
+	*	Removing Data from the Database with EF
 ]
 
 

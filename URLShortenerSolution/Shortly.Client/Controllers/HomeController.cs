@@ -45,6 +45,8 @@ namespace Shortly.Client.Controllers
             _context.Urls.Add(newURL);
             _context.SaveChanges();
 
+            TempData["Message"] = $"URL shortened successfully to {newURL.ShortLink}";
+
             return RedirectToAction("Index");
         }
 

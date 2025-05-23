@@ -63,14 +63,20 @@ namespace Shortly.Client.Controllers
 
         public IActionResult Remove(int linkIdToRemove)
         {
-            return View();
-            //return RedirectToAction("Index");
+            var urlToRemove = _dbContext.Urls.FirstOrDefault(url => url.Id == linkIdToRemove);
+            _dbContext.Urls.Remove(urlToRemove);
+            _dbContext.SaveChanges();
+            //return View();
+            return RedirectToAction("Index");
         }
 
         public IActionResult RemoveAsRouteData(int id)
         {
-            return View();
-            //return RedirectToAction("Index");
+            var urlToRemove = _dbContext.Urls.FirstOrDefault(url => url.Id == id);
+            _dbContext.Urls.Remove(urlToRemove);
+            _dbContext.SaveChanges();
+            //return View();
+            return RedirectToAction("Index");
         }
     }
 }

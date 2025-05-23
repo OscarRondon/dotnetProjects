@@ -31,12 +31,14 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "specific",
-    pattern: "{controller=Home}/{action=Index}/{userId}/{id?}");
-
-app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "specific",
+    pattern: "{controller=Home}/{action=Index}/{userId}/{id}");
+
+
 
 //Seed default data to the database
 DbInitializer.SeedDefaultData(app);
