@@ -97,8 +97,8 @@
 
 URLShortenerSolution
 [
-	*	Using TempData to Show a Success Notification
-	*	Removing Data from the Database with EF
+	*	Loading Users fr the database with EF
+	*	Addig more information to the user view
 ]
 
 

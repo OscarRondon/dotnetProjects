@@ -1,4 +1,4 @@
-﻿
+﻿@model List<User>
 
 @{
     ViewData["Title"] = "All Users";
@@ -6,49 +6,57 @@
 
 <div class="container">
     <div class="row row-cols-1 row-cols-md-1 g-4">
-        <div class="col">
+
+        @foreach (var user in Model)
+        {
+
+            <div class="col">
 
 
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">user@email.com</h5>
-                    <p class="card-text">This user has created 1 link(s) and has a total of 2 click(s).</p>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@user.Email</h5>
+                        <p class="card-text">This user has created @user.Urls.Count link(s) and has a total of @user.Urls.Sum(n => n.NrOfClicks)  click(s).</p>
 
 
-                    <p class="d-inline-flex gap-1">
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Link with href
-                        </a>
-                    </p>
-                    <div class="collapse" id="collapseExample">
-                        <div class="card card-body">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Original Link</th>
-                                        <th>Short Link</th>
-                                        <th>No. Clicks</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>https://original.com</td>
-                                        <td>shrt</td>
-                                        <td>3</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <p class="d-inline-flex gap-1">
+                            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                Link with href
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Original Link</th>
+                                            <th>Short Link</th>
+                                            <th>No. Clicks</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var url in user.Urls)
+                                        {
+                                        <tr>
+                                            <td>@url.OriginalLink</td>
+                                            <td>@url.ShortLink</td>
+                                            <td>@url.NrOfClicks</td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
+
+
                     </div>
+                    <div class="card-footer">
+                        <small>@user.Urls.Count link(s), and @user.Urls.Sum(n => n.NrOfClicks)  click(s)</small>
+                    </div>
+                </div>
 
 
-                </div>
-                <div class="card-footer">
-                    <small>1 link(s), and 2 click(s)</small>
-                </div>
             </div>
-
-
-        </div>
+        }
     </div>
 </div>
