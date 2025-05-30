@@ -97,8 +97,7 @@
 
 URLShortenerSolution
 [
-	*	Loading Users fr the database with EF
-	*	Addig more information to the user view
+	*	Improving all links view with user information
 ]
 
 

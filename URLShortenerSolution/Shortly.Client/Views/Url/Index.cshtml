@@ -29,7 +29,7 @@
                     <td>@shrotUrl.OriginalLink</td>
                     <td>@shrotUrl.ShortLink</td>
                     <td>@shrotUrl.NrOfClicks</td>
-                    <td>@shrotUrl.UserId</td>
+                    <td>@(shrotUrl.User != null ? shrotUrl.User.Email:"No user related")</td>
                     <td>
                         <!-- as query parameter
                         <a class="btn btn-outline-danger" asp-controller="Url" asp-action="Remove" asp-route-linkIdToRemove="@shrotUrl.Id"><i class="bi bi-trash3"></i></a>

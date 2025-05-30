@@ -45,14 +45,24 @@ namespace Shortly.Client.Controllers
             };
             //---------------------------------------------
 
-            allUrls = _dbContext.Urls.Select(url => new GetUrlVM() 
-            {
-                Id = url.Id,
-                OriginalLink = url.OriginalLink,
-                ShortLink = url.ShortLink,
-                NrOfClicks = url.NrOfClicks,
-                UserId = url.UserId,
-            }).ToList();
+            allUrls = _dbContext
+                .Urls
+                .Include(u => u.User)
+                .Select(url => new GetUrlVM()
+                {
+                    Id = url.Id,
+                    OriginalLink = url.OriginalLink,
+                    ShortLink = url.ShortLink,
+                    NrOfClicks = url.NrOfClicks,
+                    UserId = url.UserId,
+                    User = url.User != null?  new GetUserVM()
+                    {
+                        Id = url.User.Id,
+                        FullName = url.User.FullName,
+                        Email = url.User.Email
+                    }: null
+
+                }).ToList();
             return View(allUrls);
         }
 
