@@ -97,7 +97,10 @@
 
 URLShortenerSolution
 [
-	*	Improving all links view with user information
+	*	Add UrlsService
+	*	Add UsersService
+	*	Add Interface for UrlsService > IUrlsService
+	*	Add Interface for UsersService > IUsersService
 ]
 
 
