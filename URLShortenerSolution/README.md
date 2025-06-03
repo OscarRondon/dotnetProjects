@@ -97,10 +97,8 @@
 
 URLShortenerSolution
 [
-	*	Add UrlsService
-	*	Add UsersService
-	*	Add Interface for UrlsService > IUrlsService
-	*	Add Interface for UsersService > IUsersService
+	*	Defining IUsersServices and IUrlsService interface methods
+	
 ]
 
 

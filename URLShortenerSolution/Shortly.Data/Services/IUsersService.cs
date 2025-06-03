@@ -10,5 +10,9 @@ namespace Shortly.Data.Services
     public interface IUsersService
     {
         List<User> GetUsers();
+        Url GetById(int id);
+        User Create(User url);
+        void Delete(int id);
+        Url Update(int id, User url);
     }
 }
