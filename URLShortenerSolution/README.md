@@ -97,7 +97,7 @@
 
 URLShortenerSolution
 [
-	*	Defining IUsersServices and IUrlsService interface methods
+	*	Implementation of UsersService Mthods
 	
 ]
 

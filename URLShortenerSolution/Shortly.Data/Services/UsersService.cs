@@ -17,19 +17,27 @@ namespace Shortly.Data.Services
             _context = context;
         }
 
-        public User Create(User url)
+        public User Create(User user)
         {
-            throw new NotImplementedException();
+            _context.Users.Add(user);
+            _context.SaveChanges();
+            return user;
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var userDB = _context.Users.FirstOrDefault(u => u.Id == id);
+            if (userDB == null)
+            {
+                throw new Exception("User not found");
+            }
+            _context.Users.Remove(userDB);
+            _context.SaveChanges();
         }
 
-        public Url GetById(int id)
+        public User? GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Users.Include(l => l.Urls).FirstOrDefault(u => u.Id == id);
         }
 
         public List<User> GetUsers()
@@ -38,9 +46,19 @@ namespace Shortly.Data.Services
             return allUsers;
         }
 
-        public Url Update(int id, User url)
+        public User Update(int id, User user)
         {
-            throw new NotImplementedException();
+            var userDB = _context.Users.FirstOrDefault(u => u.Id == id);
+            if (userDB == null)
+            {
+                throw new Exception("User not found");
+            }
+            userDB.FullName = user.FullName;
+            userDB.Email = user.Email;
+            userDB.Urls = user.Urls;
+            _context.Users.Update(userDB); //this line is optional as we are modifying the existing entity
+            _context.SaveChanges();
+            return userDB;
         }
     }
 }
