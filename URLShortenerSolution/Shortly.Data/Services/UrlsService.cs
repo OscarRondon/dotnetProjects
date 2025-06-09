@@ -19,17 +19,25 @@ namespace Shortly.Data.Services
 
         public Url Create(Url url)
         {
-            throw new NotImplementedException();
+            _context.Urls.Add(url);
+            _context.SaveChanges();
+            return url;
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var urlDB = _context.Urls.FirstOrDefault(u => u.Id == id);
+            if (urlDB != null)
+            {
+                _context.Urls.Remove(urlDB);
+                _context.SaveChanges();
+            }
+            
         }
 
         public Url GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Urls.Include(u => u.User).FirstOrDefault(u => u.Id == id);
         }
 
         public List<Url> GetUrls()
@@ -40,7 +48,19 @@ namespace Shortly.Data.Services
 
         public Url Update(int id, Url url)
         {
-            throw new NotImplementedException();
+            var urlDB = _context.Urls.FirstOrDefault(u => u.Id == id);
+            if (urlDB != null)
+            {
+                urlDB.OriginalLink = url.OriginalLink;
+                urlDB.ShortLink = url.ShortLink;
+                urlDB.NrOfClicks = url.NrOfClicks;
+                urlDB.UserId = url.UserId;
+                urlDB.DateUpdated = DateTime.Now;
+                _context.Urls.Update(urlDB); //this line is optional as we are modifying the existing entity
+                _context.SaveChanges();
+            }
+            return urlDB;
+
         }
     }
 }

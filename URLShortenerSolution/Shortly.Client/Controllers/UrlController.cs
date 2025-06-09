@@ -2,16 +2,20 @@
 using Microsoft.EntityFrameworkCore;
 using Shortly.Client.Data.ViewMoels;
 using Shortly.Data;
+using Shortly.Data.Services;
 
 namespace Shortly.Client.Controllers
 {
     public class UrlController : Controller
     {
-        private readonly AppDBContext _dbContext;
+        private readonly IUrlsService _urlsService;
 
-        public UrlController(AppDBContext dbContext)
+        //private readonly AppDBContext _dbContext;
+
+        public UrlController(/*AppDBContext dbContext*/IUrlsService urlsService)
         {
-            _dbContext = dbContext;
+            _urlsService = urlsService;
+            //_dbContext = dbContext;
         }
         public IActionResult Index()
         {
@@ -44,7 +48,7 @@ namespace Shortly.Client.Controllers
                 }
             };
             //---------------------------------------------
-
+            /*
             allUrls = _dbContext
                 .Urls
                 .Include(u => u.User)
@@ -63,6 +67,21 @@ namespace Shortly.Client.Controllers
                     }: null
 
                 }).ToList();
+            */
+            allUrls = _urlsService.GetUrls().Select(url => new GetUrlVM()
+            {
+                Id = url.Id,
+                OriginalLink = url.OriginalLink,
+                ShortLink = url.ShortLink,
+                NrOfClicks = url.NrOfClicks,
+                UserId = url.UserId,
+                User = url.User != null ? new GetUserVM()
+                {
+                    Id = url.User.Id,
+                    FullName = url.User.FullName,
+                    Email = url.User.Email
+                } : null
+            }).ToList();
             return View(allUrls);
         }
 
@@ -73,18 +92,35 @@ namespace Shortly.Client.Controllers
 
         public IActionResult Remove(int linkIdToRemove)
         {
+            var urlToRemove = _urlsService.GetById(linkIdToRemove);
+            if (urlToRemove == null)
+            {
+                return NotFound();
+            }
+            _urlsService.Delete(linkIdToRemove);
+
+            /*
             var urlToRemove = _dbContext.Urls.FirstOrDefault(url => url.Id == linkIdToRemove);
             _dbContext.Urls.Remove(urlToRemove);
             _dbContext.SaveChanges();
+            */
             //return View();
             return RedirectToAction("Index");
         }
 
         public IActionResult RemoveAsRouteData(int id)
         {
+            var urlToRemove = _urlsService.GetById(id);
+            if (urlToRemove == null)
+            {
+                return NotFound();
+            }
+            _urlsService.Delete(id);
+            /*
             var urlToRemove = _dbContext.Urls.FirstOrDefault(url => url.Id == id);
             _dbContext.Urls.Remove(urlToRemove);
             _dbContext.SaveChanges();
+            */
             //return View();
             return RedirectToAction("Index");
         }

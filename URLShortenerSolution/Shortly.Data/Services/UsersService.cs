@@ -27,12 +27,12 @@ namespace Shortly.Data.Services
         public void Delete(int id)
         {
             var userDB = _context.Users.FirstOrDefault(u => u.Id == id);
-            if (userDB == null)
+            if (userDB != null)
             {
-                throw new Exception("User not found");
+                _context.Users.Remove(userDB);
+                _context.SaveChanges();
             }
-            _context.Users.Remove(userDB);
-            _context.SaveChanges();
+            
         }
 
         public User? GetById(int id)
@@ -49,15 +49,14 @@ namespace Shortly.Data.Services
         public User Update(int id, User user)
         {
             var userDB = _context.Users.FirstOrDefault(u => u.Id == id);
-            if (userDB == null)
+            if (userDB != null)
             {
-                throw new Exception("User not found");
+                userDB.FullName = user.FullName;
+                userDB.Email = user.Email;
+                userDB.Urls = user.Urls;
+                _context.Users.Update(userDB); //this line is optional as we are modifying the existing entity
+                _context.SaveChanges();
             }
-            userDB.FullName = user.FullName;
-            userDB.Email = user.Email;
-            userDB.Urls = user.Urls;
-            _context.Users.Update(userDB); //this line is optional as we are modifying the existing entity
-            _context.SaveChanges();
             return userDB;
         }
     }
