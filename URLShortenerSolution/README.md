@@ -97,8 +97,7 @@
 
 URLShortenerSolution
 [
-	*	Implementation of UrlsService Methods
-	*	UpdateUrlController to use the UrlsService
+	*	Registering services and configuring the lifetime of them.
 	
 ]
 

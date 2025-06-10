@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Shortly.Client.Data;
 using Shortly.Data;
+using Shortly.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,10 @@ builder.Services.AddDbContext<AppDBContext>(options =>
 {
     options.UseSqlServer(GetDbStringConnection(builder.Configuration));
 });
+
+// Register services
+builder.Services.AddScoped<IUrlsService, UrlsService>();
+builder.Services.AddScoped<IUsersService, UsersService>();
 
 var app = builder.Build();
 
