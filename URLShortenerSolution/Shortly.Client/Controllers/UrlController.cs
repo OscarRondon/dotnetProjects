@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shortly.Client.Data.ViewMoels;
 using Shortly.Data;
@@ -9,17 +10,20 @@ namespace Shortly.Client.Controllers
     public class UrlController : Controller
     {
         private readonly IUrlsService _urlsService;
+        private readonly IMapper _mapper;
 
         //private readonly AppDBContext _dbContext;
 
-        public UrlController(/*AppDBContext dbContext*/IUrlsService urlsService)
+        public UrlController(/*AppDBContext dbContext*/IUrlsService urlsService, IMapper mapper)
         {
             _urlsService = urlsService;
+            _mapper = mapper;
             //_dbContext = dbContext;
         }
         public IActionResult Index()
         {
             //hadcoded data-------------------------------
+            /*
             var allUrls = new List<GetUrlVM>()
             {
                 new GetUrlVM()
@@ -47,6 +51,7 @@ namespace Shortly.Client.Controllers
                     UserId = 3,
                 }
             };
+            */
             //---------------------------------------------
             /*
             allUrls = _dbContext
@@ -68,7 +73,10 @@ namespace Shortly.Client.Controllers
 
                 }).ToList();
             */
-            allUrls = _urlsService.GetUrls().Select(url => new GetUrlVM()
+            var allUrls = _urlsService.GetUrls();
+            var mappedAllUrls = _mapper.Map<List<GetUrlVM>>(allUrls);
+            /*
+                .Select(url => new GetUrlVM()
             {
                 Id = url.Id,
                 OriginalLink = url.OriginalLink,
@@ -82,7 +90,8 @@ namespace Shortly.Client.Controllers
                     Email = url.User.Email
                 } : null
             }).ToList();
-            return View(allUrls);
+            */
+            return View(mappedAllUrls);
         }
 
         public IActionResult Create()

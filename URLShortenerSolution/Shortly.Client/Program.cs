@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Shortly.Client.Data;
+using Shortly.Client.Data.Mapper;
 using Shortly.Data;
 using Shortly.Data.Services;
 
@@ -14,9 +15,12 @@ builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseSqlServer(GetDbStringConnection(builder.Configuration));
 });
 
+
 // Register services
 builder.Services.AddScoped<IUrlsService, UrlsService>();
 builder.Services.AddScoped<IUsersService, UsersService>();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

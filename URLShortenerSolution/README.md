@@ -50,6 +50,7 @@
 
 ### Nuget Packages
 ```
+	- AutoMapper
 ```
 
 ### Instuctions
@@ -62,6 +63,7 @@
 		- Copy to Output directory: Copy always
 	- Register the new file to de app configuration in Program.cs
 	- Make sure to exclude "env.json" file form the source control
+	- Add builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); to Program.cs
 ```
 
 ## Data side App (.Net Core Class Library)
@@ -97,7 +99,8 @@
 
 URLShortenerSolution
 [
-	*	Registering services and configuring the lifetime of them.
+	*	Update authentication controller to use IUserService
+	*	Adding AutoMapper to the ASP.Net Core Applications
 	
 ]
 
