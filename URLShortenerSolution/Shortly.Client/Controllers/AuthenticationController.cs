@@ -18,7 +18,7 @@ namespace Shortly.Client.Controllers
             _usersService = usersService;
         }
 
-        public IActionResult Users()
+        public async IActionResult Users()
         {
             /*
             var users = _context
@@ -26,7 +26,7 @@ namespace Shortly.Client.Controllers
                 .Include(u => u.Urls)
                 .ToList();
             */
-            var users = _usersService.GetUsers();
+            var users = await _usersService.GetUsersAsync();
             return View(users);
         }
 

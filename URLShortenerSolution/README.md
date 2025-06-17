@@ -99,9 +99,7 @@
 
 URLShortenerSolution
 [
-	*	Update authentication controller to use IUserService
-	*	Adding AutoMapper to the ASP.Net Core Applications
-	
+	*	Converting UserService from Synchronous to Asynchronous Programming
 ]
 
 

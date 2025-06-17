@@ -17,45 +17,46 @@ namespace Shortly.Data.Services
             _context = context;
         }
 
-        public User Create(User user)
+        public async Task<User> CreateAsync(User user)
         {
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
             return user;
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            var userDB = _context.Users.FirstOrDefault(u => u.Id == id);
+            var userDB = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
             if (userDB != null)
             {
                 _context.Users.Remove(userDB);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             
         }
 
-        public User? GetById(int id)
+        public async Task<User> GetByIdAsync(int id)
         {
-            return _context.Users.Include(l => l.Urls).FirstOrDefault(u => u.Id == id);
+            var user = await _context.Users.Include(l => l.Urls).FirstOrDefaultAsync(u => u.Id == id);
+            return user;
         }
 
-        public List<User> GetUsers()
+        public async Task<List<User>> GetUsersAsync()
         {
-            var allUsers = _context.Users.Include(l => l.Urls).ToList();
+            var allUsers = await _context.Users.Include(l => l.Urls).ToListAsync();
             return allUsers;
         }
 
-        public User Update(int id, User user)
+        public async Task<User> UpdateAsync(int id, User user)
         {
-            var userDB = _context.Users.FirstOrDefault(u => u.Id == id);
+            var userDB = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
             if (userDB != null)
             {
                 userDB.FullName = user.FullName;
                 userDB.Email = user.Email;
                 userDB.Urls = user.Urls;
                 _context.Users.Update(userDB); //this line is optional as we are modifying the existing entity
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             return userDB;
         }
