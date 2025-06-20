@@ -17,38 +17,38 @@ namespace Shortly.Data.Services
             _context = context;
         }
 
-        public Url Create(Url url)
+        public async Task<Url> CreateAsync(Url url)
         {
-            _context.Urls.Add(url);
-            _context.SaveChanges();
+            await _context.Urls.AddAsync(url);
+            await _context.SaveChangesAsync();
             return url;
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             var urlDB = _context.Urls.FirstOrDefault(u => u.Id == id);
             if (urlDB != null)
             {
                 _context.Urls.Remove(urlDB);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             
         }
 
-        public Url GetById(int id)
+        public async Task<Url> GetByIdAsync(int id)
         {
-            return _context.Urls.Include(u => u.User).FirstOrDefault(u => u.Id == id);
+            return await _context.Urls.Include(u => u.User).FirstOrDefaultAsync(u => u.Id == id);
         }
 
-        public List<Url> GetUrls()
+        public async Task<List<Url>> GetUrlsAsync()
         {
-            var allUrls = _context.Urls.Include(u => u.User).ToList();
+            var allUrls = await _context.Urls.Include(u => u.User).ToListAsync();
             return allUrls;
         }
 
-        public Url Update(int id, Url url)
+        public async Task<Url> UpdateAsync(int id, Url url)
         {
-            var urlDB = _context.Urls.FirstOrDefault(u => u.Id == id);
+            var urlDB = await _context.Urls.FirstOrDefaultAsync(u => u.Id == id);
             if (urlDB != null)
             {
                 urlDB.OriginalLink = url.OriginalLink;
@@ -56,8 +56,8 @@ namespace Shortly.Data.Services
                 urlDB.NrOfClicks = url.NrOfClicks;
                 urlDB.UserId = url.UserId;
                 urlDB.DateUpdated = DateTime.Now;
-                _context.Urls.Update(urlDB); //this line is optional as we are modifying the existing entity
-                _context.SaveChanges();
+                //_context.Urls.Update(urlDB); //this line is optional as we are modifying the existing entity
+                await _context.SaveChangesAsync();
             }
             return urlDB;
 

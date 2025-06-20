@@ -20,7 +20,7 @@ namespace Shortly.Client.Controllers
             _mapper = mapper;
             //_dbContext = dbContext;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             //hadcoded data-------------------------------
             /*
@@ -73,7 +73,7 @@ namespace Shortly.Client.Controllers
 
                 }).ToList();
             */
-            var allUrls = _urlsService.GetUrls();
+            var allUrls = await _urlsService.GetUrlsAsync();
             var mappedAllUrls = _mapper.Map<List<GetUrlVM>>(allUrls);
             /*
                 .Select(url => new GetUrlVM()
@@ -94,19 +94,19 @@ namespace Shortly.Client.Controllers
             return View(mappedAllUrls);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             return RedirectToAction("Index");
         }
 
-        public IActionResult Remove(int linkIdToRemove)
+        public async Task<IActionResult> Remove(int linkIdToRemove)
         {
-            var urlToRemove = _urlsService.GetById(linkIdToRemove);
+            var urlToRemove = await _urlsService.GetByIdAsync(linkIdToRemove);
             if (urlToRemove == null)
             {
                 return NotFound();
             }
-            _urlsService.Delete(linkIdToRemove);
+            await _urlsService.DeleteAsync(linkIdToRemove);
 
             /*
             var urlToRemove = _dbContext.Urls.FirstOrDefault(url => url.Id == linkIdToRemove);
@@ -117,14 +117,14 @@ namespace Shortly.Client.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult RemoveAsRouteData(int id)
+        public async Task<IActionResult> RemoveAsRouteData(int id)
         {
-            var urlToRemove = _urlsService.GetById(id);
+            var urlToRemove = await _urlsService.GetByIdAsync(id);
             if (urlToRemove == null)
             {
                 return NotFound();
             }
-            _urlsService.Delete(id);
+            await _urlsService.DeleteAsync(id);
             /*
             var urlToRemove = _dbContext.Urls.FirstOrDefault(url => url.Id == id);
             _dbContext.Urls.Remove(urlToRemove);

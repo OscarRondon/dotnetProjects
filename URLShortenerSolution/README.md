@@ -99,7 +99,9 @@
 
 URLShortenerSolution
 [
-	*	Converting UserService from Synchronous to Asynchronous Programming
+	*	Converting AuthenticationController to Asynchronous Programming
+	*	Converting UrlsService to Asynchronous Programming
+	*	Converting UrlController to Asynchronous Programming
 ]
 
 

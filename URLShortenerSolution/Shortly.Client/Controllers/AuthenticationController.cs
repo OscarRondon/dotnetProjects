@@ -18,7 +18,7 @@ namespace Shortly.Client.Controllers
             _usersService = usersService;
         }
 
-        public async IActionResult Users()
+        public async Task<IActionResult> Users()
         {
             /*
             var users = _context
@@ -30,13 +30,13 @@ namespace Shortly.Client.Controllers
             return View(users);
         }
 
-        public IActionResult Login()
+        public async Task<IActionResult> Login()
         {
             var initial = new LoginVM();
             return View(initial);
         }
 
-        public IActionResult LoginSubmitted(LoginVM loginVM)
+        public async Task<IActionResult> LoginSubmitted(LoginVM loginVM)
         {
             if (!ModelState.IsValid)
             {
@@ -46,12 +46,12 @@ namespace Shortly.Client.Controllers
             // return Ok(new { Message = "Data processed successfully!" });
         }
 
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
             return View(new RegisterVM());
         }
 
-        public IActionResult RegisterUser(RegisterVM registerVM)
+        public async Task<IActionResult> RegisterUser(RegisterVM registerVM)
         {
             if (!ModelState.IsValid)
             {
