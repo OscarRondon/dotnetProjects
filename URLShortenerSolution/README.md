@@ -51,6 +51,8 @@
 ### Nuget Packages
 ```
 	- AutoMapper
+	- Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
 ```
 
 ### Instuctions
@@ -99,9 +101,7 @@
 
 URLShortenerSolution
 [
-	*	Converting AuthenticationController to Asynchronous Programming
-	*	Converting UrlsService to Asynchronous Programming
-	*	Converting UrlController to Asynchronous Programming
+	*	Add UserManager and RoleManager
 ]
 
 
