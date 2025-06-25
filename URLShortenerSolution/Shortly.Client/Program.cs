@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Shortly.Client.Data;
 using Shortly.Client.Data.Mapper;
@@ -15,8 +16,21 @@ builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseSqlServer(GetDbStringConnection(builder.Configuration));
 });
 
+// Configure authentication
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDBContext>().AddDefaultTokenProviders();
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    options.LoginPath = "Authentication/Login";
+    /*
+    options.LogoutPath = "Authentication/Logout";
+    options.AccessDeniedPath = "Authentication/AccessDenied";
+    */
+    options.SlidingExpiration = true;
+});
 
-// Register services
+// Register Custom services
 builder.Services.AddScoped<IUrlsService, UrlsService>();
 builder.Services.AddScoped<IUsersService, UsersService>();
 
@@ -36,6 +50,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// Enable authentication and authorization
+app.UseAuthentication();
 
 app.UseAuthorization();
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Shortly.Data.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Shortly.Data
 {
-    public class AppDBContext: DbContext
+    public class AppDBContext: IdentityDbContext<IdentityUser>
     {
         public AppDBContext(DbContextOptions<AppDBContext> dbContextOptions): base(dbContextOptions)
         {

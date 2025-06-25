@@ -66,6 +66,21 @@
 	- Register the new file to de app configuration in Program.cs
 	- Make sure to exclude "env.json" file form the source control
 	- Add builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); to Program.cs
+	- Add Authentication
+		1. Add Identity service: builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDBContext>().AddDefaultTokenProviders();
+		2. Configure the application cookie:
+			builder.Services.ConfigureApplicationCookie(options =>
+			{
+				options.Cookie.HttpOnly = true;
+				options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+				options.LoginPath = "Authentication/Login";
+				/*
+				options.LogoutPath = "Authentication/Logout";
+				options.AccessDeniedPath = "Authentication/AccessDenied";
+				*/
+				options.SlidingExpiration = true;
+			});
+		3. Add Authentication middleware: app.UseAuthentication(); (this line goes after app.UseRouting())
 ```
 
 ## Data side App (.Net Core Class Library)
@@ -80,6 +95,7 @@
 	- Microsoft.EntityFrameworkCore (base packege) with all EF core functionality)
 	- Microsoft.EntityFrameworkCore.SqlServer (SQL Server provider)
 	- Microsoft.EntityFrameworkCore.Tools (command line tools for migrations)
+	- Microsoft.AspNetCore.Identity.EntityFrameworkCore
 ```
 
 ### Instructions
@@ -101,7 +117,7 @@
 
 URLShortenerSolution
 [
-	*	Add UserManager and RoleManager
+	*	Setting up Authentication
 ]
 
 
