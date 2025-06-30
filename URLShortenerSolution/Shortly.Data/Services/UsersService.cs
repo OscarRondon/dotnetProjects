@@ -17,7 +17,7 @@ namespace Shortly.Data.Services
             _context = context;
         }
 
-        public async Task<User> CreateAsync(User user)
+        public async Task<AppUser> CreateAsync(AppUser user)
         {
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
@@ -35,19 +35,19 @@ namespace Shortly.Data.Services
             
         }
 
-        public async Task<User> GetByIdAsync(int id)
+        public async Task<AppUser> GetByIdAsync(int id)
         {
             var user = await _context.Users.Include(l => l.Urls).FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }
 
-        public async Task<List<User>> GetUsersAsync()
+        public async Task<List<AppUser>> GetUsersAsync()
         {
             var allUsers = await _context.Users.Include(l => l.Urls).ToListAsync();
             return allUsers;
         }
 
-        public async Task<User> UpdateAsync(int id, User user)
+        public async Task<AppUser> UpdateAsync(int id, AppUser user)
         {
             var userDB = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
             if (userDB != null)

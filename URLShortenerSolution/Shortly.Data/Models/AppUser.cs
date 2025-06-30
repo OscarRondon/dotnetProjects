@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +7,12 @@ using System.Threading.Tasks;
 
 namespace Shortly.Data.Models
 {
-    public class User
+    public class AppUser: IdentityUser  // Inherits from IdentityUser to leverage ASP.NET Core Identity features
     {
-        public int Id { get; set; }
         public string? FullName { get; set; }
-        public string Email { get; set; }
         public List<Url> Urls { get; set; }
 
-        public User()
+        public AppUser()
         {
             Urls = new List<Url>();
         }

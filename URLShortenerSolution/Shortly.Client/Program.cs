@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Shortly.Client.Data;
 using Shortly.Client.Data.Mapper;
 using Shortly.Data;
+using Shortly.Data.Models;
 using Shortly.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +18,7 @@ builder.Services.AddDbContext<AppDBContext>(options =>
 });
 
 // Configure authentication
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDBContext>().AddDefaultTokenProviders();
+builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDBContext>().AddDefaultTokenProviders();
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;

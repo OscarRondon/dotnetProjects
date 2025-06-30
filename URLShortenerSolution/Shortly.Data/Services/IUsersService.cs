@@ -9,10 +9,10 @@ namespace Shortly.Data.Services
 {
     public interface IUsersService
     {
-        Task<List<User>> GetUsersAsync();
-        Task<User> GetByIdAsync(int id);
-        Task<User> CreateAsync(User url);
+        Task<List<AppUser>> GetUsersAsync();
+        Task<AppUser> GetByIdAsync(int id);
+        Task<AppUser> CreateAsync(AppUser url);
         Task DeleteAsync(int id);
-        Task<User> UpdateAsync(int id, User url);
+        Task<AppUser> UpdateAsync(int id, AppUser url);
     }
 }

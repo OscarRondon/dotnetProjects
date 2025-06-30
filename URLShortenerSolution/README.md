@@ -117,7 +117,7 @@
 
 URLShortenerSolution
 [
-	*	Setting up Authentication
+	*	Customize IdentityUser model
 ]
 
 
