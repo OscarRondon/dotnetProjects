@@ -81,6 +81,10 @@
 				options.SlidingExpiration = true;
 			});
 		3. Add Authentication middleware: app.UseAuthentication(); (this line goes after app.UseRouting())
+		4. Create DB migration fot Identity tables:
+			- run > dotnet ef migrations add "Identity" [Add-Migration Identity]
+			- run > dotnet ef database update [Update-Database]
+
 ```
 
 ## Data side App (.Net Core Class Library)
@@ -117,7 +121,7 @@
 
 URLShortenerSolution
 [
-	*	Customize IdentityUser model
+	*	Create ASP.Net Identity tables with migrations
 ]
 
 

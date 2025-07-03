@@ -24,7 +24,7 @@ namespace Shortly.Data.Services
             return user;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(string id)
         {
             var userDB = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
             if (userDB != null)
@@ -35,7 +35,7 @@ namespace Shortly.Data.Services
             
         }
 
-        public async Task<AppUser> GetByIdAsync(int id)
+        public async Task<AppUser> GetByIdAsync(string id)
         {
             var user = await _context.Users.Include(l => l.Urls).FirstOrDefaultAsync(u => u.Id == id);
             return user;
@@ -47,7 +47,7 @@ namespace Shortly.Data.Services
             return allUsers;
         }
 
-        public async Task<AppUser> UpdateAsync(int id, AppUser user)
+        public async Task<AppUser> UpdateAsync(string id, AppUser user)
         {
             var userDB = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
             if (userDB != null)

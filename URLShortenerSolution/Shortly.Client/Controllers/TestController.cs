@@ -15,7 +15,7 @@ namespace Shortly.Client.Controllers
                 OriginalLink = "https://original.com",
                 ShortLink = "shrtly",
                 NrOfClicks = 1,
-                UserId = 1,
+                UserId = "1",
             };
             var allData = new List<Url>();
             allData.Add(urlDB);
