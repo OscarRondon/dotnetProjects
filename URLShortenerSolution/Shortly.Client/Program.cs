@@ -23,7 +23,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;
     options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-    options.LoginPath = "Authentication/Login";
+    options.LoginPath = "/Authentication/Login";
     /*
     options.LogoutPath = "Authentication/Logout";
     options.AccessDeniedPath = "Authentication/AccessDenied";
@@ -68,7 +68,7 @@ app.MapControllerRoute(
 
 
 //Seed default data to the database
-DbInitializer.SeedDefaultData(app);
+DbInitializer.SeedDefaulUsersAndRolesAsync(app).Wait();
 
 app.Run();
 

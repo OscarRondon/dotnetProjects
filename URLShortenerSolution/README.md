@@ -121,7 +121,7 @@
 
 URLShortenerSolution
 [
-	*	Create ASP.Net Identity tables with migrations
+	*	Create Database roles and Users Seeders
 ]
 
 

@@ -1,4 +1,5 @@
-﻿using Shortly.Data;
+﻿using Microsoft.AspNetCore.Identity;
+using Shortly.Data;
 using Shortly.Data.Models;
 
 namespace Shortly.Client.Data
@@ -42,5 +43,65 @@ namespace Shortly.Client.Data
                 }
             }
         }
+
+        public static async Task SeedDefaulUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
+        {
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            {
+                var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
+
+                //Roles to be created
+                string[] roleNames = { "Admin", "User" };
+                // Check if roles exist, if not create them
+                foreach (var roleName in roleNames)
+                {
+                    if (!await roleManager.RoleExistsAsync(roleName))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(roleName) { Name = roleName});
+                    }
+                }
+
+                //simple user related data
+                var simpleUserRole = "User";
+                var simpleUser = new AppUser
+                {
+                    UserName = "simpleUser",
+                    FullName = "Simple User",
+                    Email = "user@user.com",
+                    EmailConfirmed = true
+                };
+
+                if (await userManager.FindByEmailAsync(simpleUser.Email) == null)
+                {
+                    var result = await userManager.CreateAsync(simpleUser, "User.123");
+                    if (result.Succeeded)
+                    {
+                        await userManager.AddToRoleAsync(simpleUser, simpleUserRole);
+                    }
+                }
+
+                //admin user related data
+                var adminUserRole = "User";
+                var adminUser = new AppUser
+                {
+                    UserName = "adminUser",
+                    FullName = "Admin User",
+                    Email = "admin@admin.com",
+                    EmailConfirmed = true
+                };
+
+                if (await userManager.FindByEmailAsync(adminUser.Email) == null)
+                {
+                    var result = await userManager.CreateAsync(adminUser, "Admin.123");
+                    if (result.Succeeded)
+                    {
+                        await userManager.AddToRoleAsync(adminUser, adminUserRole);
+                    }
+                }
+
+            }
+        }
+
     }
 }
