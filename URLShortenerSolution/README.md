@@ -121,7 +121,7 @@
 
 URLShortenerSolution
 [
-	*	Create Database roles and Users Seeders
+	*	Sign Users in using SignInManager 
 ]
 
 
